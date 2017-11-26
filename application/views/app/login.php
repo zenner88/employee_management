@@ -7,77 +7,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="<?php echo base_url(); ?>asset/css/bootstrap.css" rel="stylesheet">
-    <!-- <link href="<?php echo base_url(); ?>asset/css/bootstrap-.min.css" rel="stylesheet"> -->
-    <!-- <link href="<?php echo base_url(); ?>asset/css/docs.css" rel="stylesheet"> -->
-	
-    <script src="<?php echo base_url(); ?>asset/js/jquery-latest.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/bootstrap-tooltip.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/application.js"></script>
+    <!-- Bootstrap core CSS-->
+    <link href="<?php echo base_url(); ?>asset/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="<?php echo base_url(); ?>asset/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="<?php echo base_url(); ?>asset/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="<?php echo base_url(); ?>asset/css/sb-admin.css" rel="stylesheet">
   </head>
 
-  <body>
-
-    <div class="navbar navbar-dark navbar-fixed-top">
-      <div class="navbar-dark">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="<?php echo base_url(); ?>"><?php echo $judul_pendek; ?></a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href="<?php echo base_url(); ?>"><i class="icon-home icon-white"></i> Beranda</a></li>
-			  <li class="dropdown">
-			  	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment icon-white"></i> Panduan <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#"><i class="icon-fire"></i> Administrator</a></li>
-                  <li><a href="#"><i class="icon-asterisk"></i> Operator</a></li>
-                  <li><a href="#"><i class="icon-leaf"></i> Executive</a></li>
-                </ul>
-              </li>
-            </ul>
-			<?php echo form_open('app/index','class="navbar-form pull-right"'); ?>
-              <input class="span2" type="text" name="username" placeholder="Username..." value="<?php echo set_value('username'); ?>">
-              <input class="span2" type="password" name="password" placeholder="Password...">
-              <button type="submit" class="btn btn-primary "><i class="icon-share icon-white"></i> Log in</button>
-           <?php echo form_close(); ?>
-          </div><!--/.nav-collapse -->
+  <body class="bg-dark">
+    <div class="container">
+      <div class="card card-login mx-auto mt-5">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+        <?php echo form_open('app/index'); ?>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Username</label>
+              <input class="form-control" id="exampleInput" type="text" name="username" placeholder="Enter username  ">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input class="form-control" id="exampleInputPassword1" name="password" type="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox"> Remember Password</label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" href="index.html">Login</button>
+        <?php echo form_close(); ?>
         </div>
       </div>
     </div>
-    <div class="container">
-	
-	<?php if(validation_errors()) { ?>
-	<div class="alert alert-block">
-	  <button type="button" class="close" data-dismiss="alert">×</button>
-	  	<h4>Terjadi Kesalahan!</h4>
-		<?php echo validation_errors(); ?>
-	</div>
-	<?php } ?>
-	
-	<?php if($this->session->flashdata('result_login')) { ?>
-	<div class="alert alert-block">
-	  <button type="button" class="close" data-dismiss="alert">×</button>
-	  	<h4>Terjadi Kesalahan!</h4>
-		<?php echo $this->session->flashdata('result_login'); ?>
-	</div>
-	<?php } ?>
-      <div class="hero-unit">
-        <h2>Selamat Datang di <?php echo $judul_lengkap.' '.$instansi; ?></h2>
-        <p>Sistem Informasi SDM YPBPI merupakan sebuah aplikasi untuk melakukan manajemen data kepegawaian dilingkungan YPBPI. Silahkan masukkan username dan password anda untuk mulai untuk melakukan manajemen atau pengolahan data kepegawaian sesuai dengan hak akses yang anda miliki.</p>
-        <p><a class="btn btn-primary btn-large">Pelajari Lebih Lanjut <i class="icon-circle-arrow-right icon-white"></i> </a></p>
-      </div>
-
-
-      <footer class="well">
-        <p><?php echo $credit; ?></p>
-      </footer>
-
-    </div> <!-- /container -->
-
+    <!-- Bootstrap core JavaScript-->
+    <script src="<?php echo base_url(); ?>asset/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="<?php echo base_url(); ?>asset/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="<?php echo base_url(); ?>asset/vendor/chart.js/Chart.min.js"></script>
+    <script src="<?php echo base_url(); ?>asset/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="<?php echo base_url(); ?>asset/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="<?php echo base_url(); ?>asset/js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="<?php echo base_url(); ?>asset/js/sb-admin-datatables.min.js"></script>
+    <script src="<?php echo base_url(); ?>asset/js/sb-admin-charts.min.js"></script>
   </body>
 </html>
