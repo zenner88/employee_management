@@ -3,34 +3,18 @@
 
 <div class="page-wrapper">
 	<div class="container-fluid">
-	  <div class="row">
-		<div class="span">
-		  <h3><?php echo $judul_lengkap.' '.$instansi; ?></h3>
-		  <p><?php echo $alamat; ?></p>
-		</div>
-	  </div>
-	</div>
 
-  <div class="well">
-	<div class="navbar navbar-inverse">
-	  <div class="navbar-inner">
-		<div class="container">
-		  <a class="brand" href="#">Master Status Pegawai</a>
-		  <div class="nav-collapse">
-			<ul class="nav">
-			  <li><a href="<?php echo base_url(); ?>master_status_pegawai/tambah" class="small-box"><i class="icon-plus-sign icon-white"></i> Tambah Status Pegawai</a></li>
-			</ul>
-		  </div>
-		<div class="span6 pull-right">
-		<?php echo form_open('master_status_pegawai/cari','class="navbar-form pull-right"'); ?>
-		  <input type="text" class="span3" name="cari" placeholder="Masukkan kata kunci pencarian">
-		  <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Cari Data</button>
-		<?php echo form_close(); ?>
-		</div>
-		</div>
-	  </div><!-- /navbar-inner -->
-	</div><!-- /navbar -->
-  
+	<div class="row">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-block">
+<div class="pull-right">
+	<?php echo form_open("master_status_pegawai/cari", 'class="navbar-form pull-right"'); ?>
+	<input type="text" class="w-75 form-control" name="cari" placeholder="Cari Nama Pegawai">
+	<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i></button>
+	<?php echo form_close(); ?>
+</div>
+<h4 class="card-title">Master Status Pegawai <a href="<?php echo base_url(); ?>master_status_pegawai/tambah"><i class="fa fa-fw fa-plus"></i></h4>
 	  <section>
   <table class="table table-hover table-condensed">
     <thead>
@@ -79,11 +63,10 @@
 </section>
   </div>
 
-
-      <footer class="well">
-        <p><?php echo $credit; ?></p>
-      </footer>
-
+	</div>
+		</div>
+	  </div><!-- /navbar-inner -->
+	</div><!-- /navbar -->
     </div> <!-- /container -->
     <?php include "application/views/dashboard_admin/home/footer.php" ?>	
     

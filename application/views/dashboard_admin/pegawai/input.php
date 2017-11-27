@@ -5,11 +5,11 @@
 	
 	<?php echo form_open_multipart('pegawai/simpan','class="form-horizontal"'); ?>
 	<ul class="nav nav-tabs">
-        <li class="nav-item"><a href="#dtpegawai" class="nav-link active" data-toggle="tab">Data Pegawai</a></li>
-        <li class="nav-item"><a href="#dtpangkat" class="nav-link" data-toggle="tab">Data Pangkat</a></li>
-        <li class="nav-item"><a href="#dtjabatan" class="nav-link" data-toggle="tab">Data Jabatan</a></li>
-        <li class="nav-item"><a href="#dtfoto"  class="nav-link" data-toggle="tab">Foto Pegawai</a></li>
-    </ul>
+		<li class="nav-item"><a href="#dtpegawai" class="nav-link active" data-toggle="tab">Data Pegawai</a></li>
+		<li class="nav-item"><a href="#dtpangkat" class="nav-link" data-toggle="tab">Data Pangkat</a></li>
+		<li class="nav-item"><a href="#dtjabatan" class="nav-link" data-toggle="tab">Data Jabatan</a></li>
+		<li class="nav-item"><a href="#dtfoto"  class="nav-link" data-toggle="tab">Foto Pegawai</a></li>
+  </ul>
     <?php if(validation_errors()) { ?>
 	<div class="alert alert-block">
 	  <button type="button" class="close" data-dismiss="alert">×</button>

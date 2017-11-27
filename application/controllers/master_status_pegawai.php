@@ -67,7 +67,7 @@ class Master_Status_Pegawai extends CI_Controller {
 		}
 		else
 		{
-			header('location:'.base_url().'');
+			header('location:'.base_url().'/master_status_pegawai');
 		}
 	}
 
@@ -89,7 +89,7 @@ class Master_Status_Pegawai extends CI_Controller {
 		}
 		else
 		{
-			header('location:'.base_url().'');
+			header('location:'.base_url().'/master_status_pegawai');
 		}
 	}
 
@@ -104,7 +104,7 @@ class Master_Status_Pegawai extends CI_Controller {
 		}
 		else
 		{
-			header('location:'.base_url().'');
+			header('location:'.base_url().'/master_status_pegawai');
 		}
 	}
 
@@ -154,7 +154,7 @@ class Master_Status_Pegawai extends CI_Controller {
 		}
 		else
 		{
-			header('location:'.base_url().'');
+			header('location:'.base_url().'/master_status_pegawai');
 		}
 	}
 
@@ -168,7 +168,7 @@ class Master_Status_Pegawai extends CI_Controller {
 		}
 		else
 		{
-			header('location:'.base_url().'');
+			header('location:'.base_url().'/master_status_pegawai');
 		}
 	}
 
@@ -210,7 +210,7 @@ class Master_Status_Pegawai extends CI_Controller {
 					$upd['nama_status'] = $this->input->post("nama_status");
 					$this->db->update("tbl_master_status_pegawai",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'/master_status_pegawai');
 }
 				}
 				else if($st=="tambah")
@@ -218,7 +218,7 @@ header('location:'.base_url().' ');
 					$in['nama_status'] = $this->input->post("nama_status");
 					$this->db->insert("tbl_master_status_pegawai",$in);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'/master_status_pegawai');
 }
 				}
 			
@@ -226,7 +226,7 @@ header('location:'.base_url().' ');
 		}
 		else
 		{
-			header('location:'.base_url().'');
+			header('location:'.base_url().'/master_status_pegawai');
 		}
 	}
 	

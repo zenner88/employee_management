@@ -1,88 +1,7 @@
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title><?php echo $judul_lengkap.' - '.$instansi; ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="<?php echo base_url(); ?>asset/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>asset/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>asset/css/docs.css" rel="stylesheet">
-	
-    <script src="<?php echo base_url(); ?>asset/js/jquery-latest.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/application.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/bootstrap-tooltip.js"></script>
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="<?php echo base_url(); ?>"><?php echo $judul_pendek; ?></a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="<?php echo base_url(); ?>"><i class="icon-home icon-white"></i> Beranda</a></li>
-			  <li class="dropdown">
-			  	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-white"></i> Master <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="<?php echo base_url(); ?>master_status_pegawai"><i class="icon-tag"></i> Status Pegawai</a></li>
-                  <li><a href="<?php echo base_url(); ?>master_unit_kerja"><i class="icon-question-sign"></i> Unit Kerja</a></li>
-                  <li><a href="<?php echo base_url(); ?>master_satuan_kerja"><i class="icon-ok-sign"></i> Satuan Kerja</a></li>
-                  <!-- <li><a href="<?php echo base_url(); ?>master_ppk"><i class="icon-eye-open"></i> PPK</a></li> -->
-                  <li><a href="<?php echo base_url(); ?>master_golongan"><i class="icon-random"></i> Golongan</a></li>
-                  <li><a href="<?php echo base_url(); ?>master_eselon"><i class="icon-retweet"></i> Pangkat</a></li>
-                  <li><a href="<?php echo base_url(); ?>master_pelatihan"><i class="icon-folder-open"></i> Pelatihan</a></li>
-                  <li><a href="<?php echo base_url(); ?>master_jabatan"><i class="icon-hdd"></i> Jabatan</a></li>
-                  <li><a href="<?php echo base_url(); ?>master_status_jabatan"><i class="icon-tasks"></i> Status Jabatan</a></li>
-                  <li><a href="<?php echo base_url(); ?>master_penghargaan"><i class="icon-filter"></i> Penghargaan</a></li>
-                  <li><a href="<?php echo base_url(); ?>master_hukuman"><i class="icon-briefcase"></i> Hukuman</a></li>
-                  <li><a href="<?php echo base_url(); ?>master_lokasi_pelatihan"><i class="icon-fullscreen"></i> Lokasi Pelatihan</a></li>
-                </ul>
-              </li>
-			  <li class="dropdown">
-			  	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment icon-white"></i> Panduan <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="<?php echo base_url(); ?>panduan_administrator"><i class="icon-fire"></i> Administrator</a></li>
-                  <li><a href="<?php echo base_url(); ?>panduan_operator"><i class="icon-asterisk"></i> Operator</a></li>
-                  <li><a href="<?php echo base_url(); ?>panduan_executive"><i class="icon-leaf"></i> Executive</a></li>
-                </ul>
-              </li>
-            </ul>
-            <div class="btn-group pull-right">
-			  <button class="btn btn-primary"><i class="icon-user icon-white"></i> <?php echo $this->session->userdata('nama'); ?></button>
-			  <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-				<span class="caret"></span>
-			  </button>
-			  <ul class="dropdown-menu">
-				<li><a href="#"><i class="icon-wrench"></i> Pengaturan Akun</a></li>
-				<li><a href="<?php echo base_url(); ?>app/logout"><i class="icon-off"></i> Log Out</a></li>
-			  </ul>
-			</div>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-	
-    <div class="container">
-	
-	<div class="well">
-	  <div class="row">
-		<div class="span">
-		  <h3><?php echo $judul_lengkap.' '.$instansi; ?></h3>
-		  <p><?php echo $alamat; ?></p>
-		</div>
-	  </div>
-	</div>
-	
+<?php include "application/views/dashboard_admin/home/header.php" ?>
+<div class="page-wrapper">
+	<div class="container-fluid">
+		
 	<header class="jumbotron subhead" id="overview">
 	  <div class="subnav">
 		<ul class="nav nav-pills">
@@ -729,12 +648,6 @@
   </div>
 </section>
 
-
-      <footer class="well">
-        <p><?php echo $credit; ?></p>
-      </footer>
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+    </div>
+</div>
+<?php include "application/views/dashboard_admin/home/footer.php" ?>	

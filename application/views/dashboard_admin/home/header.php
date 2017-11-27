@@ -43,7 +43,7 @@
 						<!-- Logo -->
 						<!-- ============================================================== -->
 						<div class="navbar-header">
-								<a class="navbar-brand" href="index.html">
+								<a class="navbar-brand" href="<?php echo base_url(); ?>">
 										<!-- Logo icon -->
 										<b>
 												<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
