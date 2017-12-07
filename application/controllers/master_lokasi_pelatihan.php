@@ -62,7 +62,11 @@ class Master_Lokasi_Pelatihan extends CI_Controller {
 				$d['nama_lokasi'] = $dt->nama_lokasi;
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_lokasi_pelatihan/input',$d);
 		}
 		else
@@ -84,7 +88,11 @@ class Master_Lokasi_Pelatihan extends CI_Controller {
 				$d['nama_lokasi'] = $dt->nama_lokasi;
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_lokasi_pelatihan/detail',$d);
 		}
 		else
@@ -100,6 +108,11 @@ class Master_Lokasi_Pelatihan extends CI_Controller {
 			$d['id_param'] = "";
 			$d['nama_lokasi'] = "";
 			$d['st'] = "tambah";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_lokasi_pelatihan/input',$d);
 		}
 		else
@@ -210,7 +223,7 @@ class Master_Lokasi_Pelatihan extends CI_Controller {
 					$upd['nama_lokasi'] = $this->input->post("nama_lokasi");
 					$this->db->update("tbl_master_lokasi_pelatihan",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'master_lokasi_pelatihan');
 }
 				}
 				else if($st=="tambah")
@@ -218,7 +231,7 @@ header('location:'.base_url().' ');
 					$in['nama_lokasi'] = $this->input->post("nama_lokasi");
 					$this->db->insert("tbl_master_lokasi_pelatihan",$in);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'master_lokasi_pelatihan');
 }
 				}
 			

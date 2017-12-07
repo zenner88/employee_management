@@ -1,7 +1,7 @@
 <?php include "application/views/dashboard_admin/home/header.php" ?>
 
-<div class="page-wrapper">
-	<div class="container-fluid">
+<div class="container">
+	<div class="well">
 	
 	<?php echo form_open_multipart('pegawai/simpan','class="form-horizontal"'); ?>
 	<ul class="nav nav-tabs">
@@ -273,13 +273,25 @@
 			if($st=="tambah")
 			{
 			?>
-			  <input type="text" class="span6" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo set_value('tanggal_lahir'); ?>" placeholder="Tanggal Lahir">
+			  <div class="input-group date" data-provide="datepicker">
+			  <input type="text" class="form-control datepicker" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo set_value('tanggal_lahir'); ?>" placeholder="Tanggal Lahir">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			else
 			{
 			?>
-			  <input type="text" class="span6" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>" placeholder="Tanggal Lahir">
+			  <div class="input-group date" data-provide="datepicker">
+			  <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>" placeholder="Tanggal Lahir">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			?>
@@ -311,15 +323,27 @@
 			if($st=="tambah")
 			{
 			?>
-			  <input type="text" class="span6" name="tanggal_pengangkatan_cpns" id="tanggal_pengangkatan_cpns" value="<?php echo set_value('tanggal_pengangkatan_cpns'); ?>" placeholder=
+				<div class="input-group date" data-provide="datepicker">
+			  <input type="text" class="form-control" name="tanggal_pengangkatan_cpns" id="tanggal_pengangkatan_cpns" value="<?php echo set_value('tanggal_pengangkatan_cpns'); ?>" placeholder=
 			  "Tanggal Pengangkatan Capeg">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			else
 			{
 			?>
-			  <input type="text" class="span6" name="tanggal_pengangkatan_cpns" id="tanggal_pengangkatan_cpns" value="<?php echo $tanggal_pengangkatan_cpns; ?>" placeholder=
+				<div class="input-group date" data-provide="datepicker">
+			  <input type="text" class="form-control" name="tanggal_pengangkatan_cpns" id="tanggal_pengangkatan_cpns" value="<?php echo $tanggal_pengangkatan_cpns; ?>" placeholder=
 			  "Tanggal Pengangkatan PEGAWAI">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			?>
@@ -439,15 +463,27 @@
 			if($st=="tambah")
 			{
 			?>
+			<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_sk_pangkat" id="tanggal_sk_pangkat" value="<?php echo set_value('tanggal_sk_pangkat'); ?>" placeholder=
 			  "Tanggal SK Pangkat">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			else
 			{
 			?>
+			<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_sk_pangkat" id="tanggal_sk_pangkat" value="<?php echo $tanggal_sk_pangkat; ?>" placeholder=
 			  "Tanggal SK Pangkat">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			?>
@@ -460,15 +496,27 @@
 			if($st=="tambah")
 			{
 			?>
+			<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_mulai_pangkat" id="tanggal_mulai_pangkat" value="<?php echo set_value('tanggal_mulai_pangkat'); ?>" placeholder=
 			  "Tanggal Mulai Pangkat">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			else
 			{
 			?>
+				<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_mulai_pangkat" id="tanggal_mulai_pangkat" value="<?php echo $tanggal_mulai_pangkat; ?>" placeholder=
 			  "Tanggal Mulai Pangkat">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			?>
@@ -481,15 +529,27 @@
 			if($st=="tambah")
 			{
 			?>
+			<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_selesai_pangkat" id="tanggal_selesai_pangkat" value="<?php echo set_value('tanggal_selesai_pangkat'); ?>" placeholder=
 			  "Tanggal Selesai Pangkat">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			else
 			{
 			?>
+			<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_selesai_pangkat" id="tanggal_selesai_pangkat" value="<?php echo $tanggal_selesai_pangkat; ?>" placeholder=
 			  "Tanggal Selesai Pangkat">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			?>
@@ -731,15 +791,27 @@
 			if($st=="tambah")
 			{
 			?>
+			<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_sk_jabatan" id="tanggal_sk_jabatan" value="<?php echo set_value('tanggal_sk_jabatan'); ?>" placeholder=
 			  "Tanggal SK Jabatan">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			else
 			{
 			?>
+			<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_sk_jabatan" id="tanggal_sk_jabatan" value="<?php echo $tanggal_sk_jabatan; ?>" placeholder=
 			  "Tanggal SK Jabatan">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			?>
@@ -752,15 +824,27 @@
 			if($st=="tambah")
 			{
 			?>
+				<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_mulai_jabatan" id="tanggal_mulai_jabatan" value="<?php echo set_value('tanggal_mulai_jabatan'); ?>" placeholder=
 			  "Tanggal Mulai Jabatan">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			else
 			{
 			?>
+				<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_mulai_jabatan" id="tanggal_mulai_jabatan" value="<?php echo $tanggal_mulai_jabatan; ?>" placeholder=
 			  "Tanggal Mulai Jabatan">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			?>
@@ -773,15 +857,27 @@
 			if($st=="tambah")
 			{
 			?>
+				<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_selesai_jabatan" id="tanggal_selesai_jabatan" value="<?php echo set_value('tanggal_selesai_jabatan'); ?>" placeholder=
 			  "Tanggal Selesai Jabatan">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			else
 			{
 			?>
+			<div class="input-group date" data-provide="datepicker">
 			  <input type="text" class="span6" name="tanggal_selesai_jabatan" id="tanggal_selesai_jabatan" value="<?php echo $tanggal_selesai_jabatan; ?>" placeholder=
 			  "Tanggal Selesai Jabatan">
+			    <div class="input-group-addon">
+			        <span class="glyphicon glyphicon-th"></span>
+			    </div>
+			</div>
+			  
 			<?php
 			}
 			?>

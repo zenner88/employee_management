@@ -1,6 +1,9 @@
+<?php include "application/views/dashboard_admin/home/header.php" ?>
 
+<section>
+<div class="container">
+	
 
-<section id="data-keluarga">
   <div class="well">
   	<?php echo $this->session->flashdata('pass'); ?>
     <?php if(validation_errors()) { ?>
@@ -77,14 +80,8 @@
 	  </div>
 	</div> <!-- /tabbable -->
   </div>
+</div>
 </section>
-
-
-      <footer class="well">
-        <p><?php echo $credit; ?></p>
-      </footer>
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+<div class="container">
+<?php include "application/views/dashboard_admin/home/footer.php" ?>  
+</div>

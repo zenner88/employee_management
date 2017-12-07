@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/simpeg/';
+$config['base_url']	= 'http://localhost/employee_management';
 //$config['base_url']	= 'http://simpeg.gedelumbung.com/';
 
 /*

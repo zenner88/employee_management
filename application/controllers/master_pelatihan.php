@@ -63,7 +63,11 @@ class Master_Pelatihan extends CI_Controller {
 				$d['level'] = $dt->level; 
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_pelatihan/input',$d);
 		}
 		else
@@ -86,7 +90,11 @@ class Master_Pelatihan extends CI_Controller {
 				$d['level'] = $dt->level; 
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_pelatihan/detail',$d);
 		}
 		else
@@ -103,6 +111,11 @@ class Master_Pelatihan extends CI_Controller {
 			$d['nama_pelatihan'] = ""; 
 			$d['level'] = ""; 
 			$d['st'] = "tambah";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_pelatihan/input',$d);
 		}
 		else
@@ -217,7 +230,7 @@ class Master_Pelatihan extends CI_Controller {
 					$upd['level'] = $this->input->post("level");
 					$this->db->update("tbl_master_pelatihan",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'master_pelatihan');
 }
 				}
 				else if($st=="tambah")
@@ -226,7 +239,7 @@ header('location:'.base_url().' ');
 					$in['level'] = $this->input->post("level");
 					$this->db->insert("tbl_master_pelatihan",$in);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'master_pelatihan');
 }
 				}
 			

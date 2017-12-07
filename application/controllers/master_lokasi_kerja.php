@@ -62,7 +62,11 @@ class master_lokasi_kerja extends CI_Controller {
 				$d['lokasi_kerja'] = $dt->lokasi_kerja;
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_lokasi_kerja/input',$d);
 		}
 		else
@@ -84,7 +88,11 @@ class master_lokasi_kerja extends CI_Controller {
 				$d['lokasi_kerja'] = $dt->lokasi_kerja;
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_lokasi_kerja/detail',$d);
 		}
 		else
@@ -100,6 +108,11 @@ class master_lokasi_kerja extends CI_Controller {
 			$d['id_param'] = "";
 			$d['lokasi_kerja'] = "";
 			$d['st'] = "tambah";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_lokasi_kerja/input',$d);
 		}
 		else
@@ -162,7 +175,7 @@ class master_lokasi_kerja extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
-			$id['id_lokasi_pelatihan'] = $this->uri->segment(3);
+			$id['id_lokasi_kerja'] = $this->uri->segment(3);
 			$this->db->delete("tbl_master_lokasi_kerja",$id);
 			header('location:'.base_url().'master_lokasi_kerja');
 		}
@@ -210,7 +223,7 @@ class master_lokasi_kerja extends CI_Controller {
 					$upd['lokasi_kerja'] = $this->input->post("lokasi_kerja");
 					$this->db->update("tbl_master_lokasi_kerja",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'master_lokasi_kerja');
 }
 				}
 				else if($st=="tambah")
@@ -218,7 +231,7 @@ header('location:'.base_url().' ');
 					$in['lokasi_kerja'] = $this->input->post("lokasi_kerja");
 					$this->db->insert("tbl_master_lokasi_kerja",$in);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'master_lokasi_kerja');
 }
 				}
 			

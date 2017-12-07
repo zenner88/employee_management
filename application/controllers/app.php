@@ -55,8 +55,8 @@ class App extends CI_Controller {
 			$d['credit'] = $this->config->item('credit_aplikasi');
 			$d['alamat'] = $this->config->item('alamat_instansi');
 			
-			$this->load->view('dashboard_admin/user/header',$d);
-			$this->load->view('dashboard_admin/user/bg_change_password');
+			//$this->load->view('dashboard_admin/user/header',$d);
+			$this->load->view('dashboard_admin/user/bg_change_password', $d);
 		}
 		else
 		{

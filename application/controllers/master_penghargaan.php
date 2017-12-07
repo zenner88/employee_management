@@ -62,7 +62,11 @@ class Master_Penghargaan extends CI_Controller {
 				$d['nama_penghargaan'] = $dt->nama_penghargaan;
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_penghargaan/input',$d);
 		}
 		else
@@ -84,7 +88,11 @@ class Master_Penghargaan extends CI_Controller {
 				$d['nama_penghargaan'] = $dt->nama_penghargaan;
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_penghargaan/detail',$d);
 		}
 		else
@@ -100,6 +108,11 @@ class Master_Penghargaan extends CI_Controller {
 			$d['id_param'] = "";
 			$d['nama_penghargaan'] = "";
 			$d['st'] = "tambah";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_penghargaan/input',$d);
 		}
 		else
@@ -210,7 +223,7 @@ class Master_Penghargaan extends CI_Controller {
 					$upd['nama_penghargaan'] = $this->input->post("nama_penghargaan");
 					$this->db->update("tbl_master_penghargaan",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'master_penghargaan');
 }
 				}
 				else if($st=="tambah")
@@ -218,7 +231,7 @@ header('location:'.base_url().' ');
 					$in['nama_penghargaan'] = $this->input->post("nama_penghargaan");
 					$this->db->insert("tbl_master_penghargaan",$in);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'master_penghargaan');
 }
 				}
 			

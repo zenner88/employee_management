@@ -1,6 +1,6 @@
 <?php include "application/views/dashboard_admin/home/header.php" ?>
-<div class="page-wrapper">
-	<div class="container-fluid">
+<div class="">
+	<div class="container">
     <div class="well">
 	<?php if(validation_errors()) { ?>
 	<div class="alert alert-block">
@@ -29,4 +29,7 @@
 	</div>    
     </div>
 </div>
+<div class="container">
 <?php include "application/views/dashboard_admin/home/footer.php" ?>	
+</div>
+	

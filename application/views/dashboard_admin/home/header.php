@@ -1,173 +1,101 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?php echo $judul_lengkap.' - '.$instansi; ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>asset/images/favicon.png">
-    <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url(); ?>asset/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="<?php echo base_url(); ?>asset/css/style.css" rel="stylesheet">
-    <!-- You can change the theme colors from here -->
-    <link href="<?php echo base_url(); ?>asset/css/colors/blue.css" id="theme" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-</head>
-<body class="fix-header fix-sidebar card-no-border">
-<!-- ============================================================== -->
-<!-- Preloader - style you can find in spinners.css -->
-<!-- ============================================================== -->
-<div class="preloader">
-		<svg class="circular" viewBox="25 25 50 50">
-				<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-</div>
-<!-- ============================================================== -->
-<!-- Main wrapper - style you can find in pages.scss -->
-<!-- ============================================================== -->
-<div id="main-wrapper">
-		<!-- ============================================================== -->
-		<!-- Topbar header - style you can find in pages.scss -->
-		<!-- ============================================================== -->
-		<header class="topbar">
-				<nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
-						<!-- ============================================================== -->
-						<!-- Logo -->
-						<!-- ============================================================== -->
-						<div class="navbar-header">
-								<a class="navbar-brand" href="<?php echo base_url(); ?>">
-										<!-- Logo icon -->
-										<b>
-												<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-												<!-- Dark Logo icon -->
-												<img src="<?php echo base_url(); ?>asset/images/logo-icon.png" alt="homepage" class="dark-logo" />
-												
-										</b>
-										<!--End Logo icon -->
-										<!-- Logo text -->
-										<span>
-												<!-- dark Logo text -->
-												<img src="<?php echo base_url(); ?>asset/images/logo-text.png" alt="homepage" class="dark-logo" />
-										</span>
-								</a>
-						</div>
-						<!-- ============================================================== -->
-						<!-- End Logo -->
-						<!-- ============================================================== -->
-						<div class="navbar-collapse">
-								<!-- ============================================================== -->
-								<!-- toggle and nav items -->
-								<!-- ============================================================== -->
-								<ul class="navbar-nav mr-auto mt-md-0 ">
-										<!-- This is  -->
-										<li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-										<li class="nav-item hidden-sm-down">
-												<form class="app-search p-l-20">
-														<input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
-												</form>
-										</li>
-								</ul>
-								<!-- ============================================================== -->
-								<!-- User profile and search -->
-								<!-- ============================================================== -->
-								<ul class="navbar-nav my-lg-0">
-										<li class="nav-item dropdown">
-												<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>asset/images/users/6.png" alt="user" class="profile-pic m-r-5" /><?php echo $this->session->userdata('nama'); ?></a>
-													<div class="dropdown-menu" >
-													<a class="dropdown-item" href="<?php echo base_url(); ?>app/change_password">
-														<i class="fa fa-fw fa-wrench"></i> Pengaturan Akun
-													</a>
-													<div class="dropdown-divider"></div>
-													<a class="dropdown-item" href="#">
-														<i class="fa fa-fw fa-briefcase"></i> Manajemen User
-													</a>
-													<div class="dropdown-divider"></div>
-													<a class="dropdown-item" href="#">
-														<i class="fa fa-fw fa-sign-out"></i> Log Out
-													</a>
-												</div>
-										</li>
-								</ul>
-						</div>
-				</nav>
-		</header>
-		<aside class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-												<li>
-												<a class="waves-effect" href="<?php echo base_url(); ?>">
-													<i class="fa fa-fw fa-home" aria-hidden="true"></i>
-													Dashboard
-												</a>
-											</li>
-											<li>
-											<a class="waves-effect">
-													<i class="fa fa-fw fa-files-o"></i>
-													Master
-												</a>
-												<ul>
-														<li><a href="<?php echo base_url(); ?>master_status_pegawai"><i class="fa fa-fw fa-file-o"></i> Status Pegawai</a></li>
-														<li><a href="<?php echo base_url(); ?>master_unit_kerja"><i class="fa fa-fw fa-file-o"></i>  Unit Kerja</a></li>
-														<li><a href="<?php echo base_url(); ?>master_satuan_kerja"><i class="fa fa-fw fa-file-o"></i>  Satuan Kerja</a></li>
-														<!-- <li><a href="<?php echo base_url(); ?>master_ppk"><i class="fa-eye-open"></i> PPK</a></li> -->
-														<li><a href="<?php echo base_url(); ?>master_kelompok_pegawai"><i class="fa fa-fw fa-file-o"></i>  Kelompok Pegawai</a></li>                  
-														<li><a href="<?php echo base_url(); ?>master_golongan"><i class="fa fa-fw fa-file-o"></i>  Golongan</a></li>
-														<li><a href="<?php echo base_url(); ?>master_eselon"><i class="fa fa-fw fa-file-o"></i>  Pangkat</a></li>
-														<li><a href="<?php echo base_url(); ?>master_pelatihan"><i class="fa fa-fw fa-file-o"></i>  Pelatihan</a></li>
-														<li><a href="<?php echo base_url(); ?>master_jabatan"><i class="fa fa-fw fa-file-o"></i>  Jabatan</a></li>
-														<li><a href="<?php echo base_url(); ?>master_status_jabatan"><i class="fa fa-fw fa-file-o"></i>  Status Jabatan</a></li>
-														<li><a href="<?php echo base_url(); ?>master_penghargaan"><i class="fa fa-fw fa-file-o"></i>  Penghargaan</a></li>
-														<li><a href="<?php echo base_url(); ?>master_hukuman"><i class="fa fa-fw fa-file-o"></i>  Hukuman</a></li>
-														<li><a href="<?php echo base_url(); ?>master_lokasi_pelatihan"><i class="fa fa-fw fa-file-o"></i>  Lokasi Pelatihan</a></li>
-														<li><a href="<?php echo base_url(); ?>master_lokasi_kerja"><i class="fa fa-fw fa-file-o"></i> Lokasi Kerja</a></li>
-												</ul>
-											</li>
-											<li>
-											<a class="waves-effect">
-													<i class="fa fa-fw fa-book"></i>
-													Panduan
-												</a>
-												<ul>
-														<li><a href="<?php echo base_url(); ?>panduan_administrator"><i class="fa fa-fw fa-check-circle-o"></i>  Administrator</a></li>
-														<li><a href="<?php echo base_url(); ?>panduan_operator"><i class="fa fa-fw fa-check-circle-o"></i>Operator</a></li>
-														<li><a href="<?php echo base_url(); ?>panduan_executive"><i class="fa fa-fw fa-check-circle-o"></i> Executive</a></li>
-												</ul>
-											</li>
-											<li>
-												<a class="waves-effect">
-													<i class="fa fa-fw fa-file-text"></i>
-													Laporan
-												</a>
-												<ul>
-														<li><a href="<?php echo base_url(); ?>laporan_pegawai_unit_satuan"><i class="fa fa-fw fa-paste"></i>  Unit Kerja dan Satuan Kerja</a></li>
-														<li><a href="<?php echo base_url(); ?>laporan_pegawai_penempatan_kerja"><i class="fa fa-fw fa-paste"></i>  Penempatan Kerja</a></li>
-														<li><a href="<?php echo base_url(); ?>laporan_pegawai_ikut_pelatihan"><i class="fa fa-fw fa-paste"></i>  Mengikuti Pelatihan</a></li>
-														<li><a href="<?php echo base_url(); ?>laporan_pegawai_status_golongan"><i class="fa fa-fw fa-paste"></i>  Status Pegawai dan Golongan</a></li>
-														<li><a href="<?php echo base_url(); ?>laporan_pegawai_struktural_fungsional"><i class="fa fa-fw fa-paste"></i>  Struktural dan Fungsional</a></li>
-														<li><a href="<?php echo base_url(); ?>laporan_pegawai_urut_kepangkatan"><i class="fa fa-fw fa-paste"></i> Laporan Daftar Urut Kepangkatan</a></li>
-														<li><a href="<?php echo base_url(); ?>kenaikan_pangkat"><i class="fa fa-fw fa-paste"></i> Rencana Usulan Kenaikan Pangkat (RUKP)</a></li>
-														<li><a href="<?php echo base_url(); ?>kenaikan_gaji"><i class="fa fa-fw fa-paste"></i> Usulan Kenaikan Gaji Berkala (UKGB)</a></li>
-														<li><a href="<?php echo base_url(); ?>laporan_pegawai_unit_satuan"><i class="fa fa-fw fa-paste"></i>  Dosen</a></li>
-														<li><a href="<?php echo base_url(); ?>laporan_pegawai_unit_satuan"><i class="fa fa-fw fa-paste"></i>  Staf</a></li>
-												</ul>
-											</li>
-                    </ul>
-                  
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-						<!-- End Sidebar scroll-->
-						
-        </aside>
-   
+    <link href="<?php echo base_url(); ?>asset/theme-new/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>asset/theme-new/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>asset/theme-new/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>asset/theme-new/css/bootstrap-datepicker3.css">
+	
+    <script src="<?php echo base_url(); ?>asset/theme-new/js/jquery-latest.js"></script>
+    <script src="<?php echo base_url(); ?>asset/theme-new/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>asset/theme-new/js/application.js"></script>
+    <script src="<?php echo base_url(); ?>asset/theme-new/js/bootstrap-tooltip.js"></script>
+	<link rel="stylesheet" href="<?php echo base_url(); ?>asset/theme-new/colorbox/colorbox.css" />
+	<script src="<?php echo base_url(); ?>asset/theme-new/colorbox/jquery.colorbox.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>asset/theme-new/js/bootstrap-datepicker.js"></script>
+	<script>
+		  $(document).ready(function(){
+			  //Examples of how to assign the ColorBox event to elements
+			  $(".medium-box").colorbox({rel:'group', iframe:true, width:"90%", height:"90%"});
+		  });
+	</script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="<?php echo base_url(); ?>"><?php echo $judul_pendek; ?></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="<?php echo base_url(); ?>"><i class="icon-home icon-white"></i> Beranda</a></li>
+			  <li class="dropdown">
+			  	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-white"></i> Master <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<?php echo base_url(); ?>master_status_pegawai"><i class="icon-tag"></i> Status Pegawai</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_unit_kerja"><i class="icon-question-sign"></i> Unit Kerja</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_satuan_kerja"><i class="icon-ok-sign"></i> Satuan Kerja</a></li>
+                  <!-- <li><a href="<?php echo base_url(); ?>master_ppk"><i class="icon-eye-open"></i> PPK</a></li> -->
+                  <li><a href="<?php echo base_url(); ?>master_golongan"><i class="icon-random"></i> Golongan</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_eselon"><i class="icon-retweet"></i> Pangkat</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_pelatihan"><i class="icon-folder-open"></i> Pelatihan</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_jabatan"><i class="icon-hdd"></i> Jabatan</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_status_jabatan"><i class="icon-tasks"></i> Status Jabatan</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_penghargaan"><i class="icon-filter"></i> Penghargaan</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_hukuman"><i class="icon-briefcase"></i> Hukuman</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_lokasi_pelatihan"><i class="icon-fullscreen"></i> Lokasi Pelatihan</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_lokasi_kerja"><i class="icon-briefcase"></i> Lokasi Kerja</a></li>
+                </ul>
+              </li>
+			  <li class="dropdown">
+			  	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment icon-white"></i> Panduan <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><i class="icon-fire"></i> Administrator</a></li>
+                  <li><a href="#"><i class="icon-asterisk"></i> Operator</a></li>
+                  <li><a href="#"><i class="icon-leaf"></i> Executive</a></li>
+                </ul>
+              </li>
+			  <li class="dropdown">
+			  	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tasks icon-white"></i> Laporan <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<?php echo base_url(); ?>laporan_pegawai_unit_satuan"><i class="icon-tag"></i> Laporan Pegawai - Unit Kerja dan Satuan Kerja</a></li>
+                  <li><a href="<?php echo base_url(); ?>laporan_pegawai_penempatan_kerja"><i class="icon-question-sign"></i> Laporan Pegawai - Penempatan Kerja</a></li>
+                  <li><a href="<?php echo base_url(); ?>laporan_pegawai_ikut_pelatihan"><i class="icon-ok-sign"></i> Laporan Pegawai - Mengikuti Pelatihan</a></li>
+                  <li><a href="<?php echo base_url(); ?>laporan_pegawai_status_golongan"><i class="icon-eye-open"></i> Laporan Pegawai - Status Pegawai dan Golongan</a></li>
+                  <li><a href="<?php echo base_url(); ?>laporan_pegawai_struktural_fungsional"><i class="icon-random"></i> Laporan Pegawai - Struktural dan Fungsional</a></li>
+                  <li><a href="<?php echo base_url(); ?>laporan_pegawai_urut_kepangkatan"><i class="icon-retweet"></i> Laporan Daftar Urut Kepangkatan</a></li>
+				                  <li><a href="<?php echo base_url(); ?>kenaikan_pangkat"><i class="icon-eye-open"></i> Rencana Usulan Kenaikan Pangkat (RUKP)</a></li>
+                   <li><a href="<?php echo base_url(); ?>kenaikan_gaji"><i class="icon-eye-open"></i> Usulan Kenaikan Gaji Berkala (UKGB)</a></li>
+                   <li><a href="<?php echo base_url(); ?>laporan_pegawai_unit_satuan"><i class="icon-tag"></i> Laporan Pegawai - Dosen</a></li>
+                   <li><a href="<?php echo base_url(); ?>laporan_pegawai_unit_satuan"><i class="icon-tag"></i> Laporan Pegawai - Staf</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div class="btn-group pull-right">
+			  <button class="btn btn-primary"><i class="icon-user icon-white"></i> <?php echo $this->session->userdata('nama'); ?></button>
+			  <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu">
+				<li><a href="<?php echo base_url(); ?>app/change_password"><i class="icon-wrench"></i> Pengaturan Akun</a></li>
+				<li><a href="<?php echo base_url(); ?>manage_user"><i class="icon-tasks"></i> Manajemen User</a></li>
+				<li><a href="<?php echo base_url(); ?>app/logout"><i class="icon-off"></i> Log Out</a></li>
+			  </ul>
+			</div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+	

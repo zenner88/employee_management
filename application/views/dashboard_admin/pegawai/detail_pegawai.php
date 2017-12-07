@@ -1,6 +1,6 @@
 <?php include "application/views/dashboard_admin/home/header.php" ?>
-<div class="page-wrapper">
-	<div class="container-fluid">
+<div class="container">
+	<div class="well">
 <!-- 		
 	<header class="jumbotron subhead" id="overview">
 		<ul class="nav nav-tabs">
@@ -19,8 +19,8 @@
 		</ul>
 	</header> -->
 
-<section id="data-pegawai">
-  <div class="well">
+<section>
+  <div>
 	<div class="page-header">
     	<h1>Data Pegawai</h1>
   	</div>

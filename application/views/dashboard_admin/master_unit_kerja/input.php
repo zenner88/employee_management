@@ -1,30 +1,7 @@
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="<?php echo base_url(); ?>asset/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>asset/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>asset/css/docs.css" rel="stylesheet">
-	<style>
-		body{
-			margin:20px;
-			}
-	</style>
-	
-    <script src="<?php echo base_url(); ?>asset/js/jquery-latest.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/application.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/bootstrap-tooltip.js"></script>
-  </head>
-
-  <body>
-	<div class="well">
-	<?php if(validation_errors()) { ?>
+<?php include "application/views/dashboard_admin/home/header.php" ?>
+<div class="container">
+  <div class="well">
+          <?php if(validation_errors()) { ?>
 	<div class="alert alert-block">
 	  <button type="button" class="close" data-dismiss="alert">×</button>
 	  	<h4>Terjadi Kesalahan!</h4>
@@ -32,20 +9,20 @@
 	</div>
 	<?php } ?>
 		<?php echo form_open('master_unit_kerja/simpan','class="form-horizontal"'); ?>
-		  <div class="control-group">
+		  <div class="control-group form-group">
 		  	<legend>Master Unit Kerja</legend>
 			<label class="control-label" for="nama_unit_kerja">Nama Unit Kerja</label>
 			<div class="controls">
 			  <input type="text" class="span" name="nama_unit_kerja" id="nama_unit_kerja" value="<?php echo $nama_unit_kerja; ?>" placeholder="Nama Unit Kerja">
 			</div>
 		  </div>
-		  <div class="control-group">
+		  <div class="control-group form-group">
 			<label class="control-label" for="eselon">Golongan</label>
 			<div class="controls">
 			  <input type="text" class="span" name="eselon" id="eselon" value="<?php echo $eselon; ?>" placeholder="Golongan">
 			</div>
 		  </div>
-		  <div class="control-group">
+		  <div class="control-group form-group">
 			<label class="control-label" for="parent_unit">Parent Unit</label>
 			<div class="controls">
 			  <input type="text" class="span" name="parent_unit" id="parent_unit" value="<?php echo $parent_unit; ?>" placeholder="Parent Unit">
@@ -60,7 +37,10 @@
 			</div>
 		  </div>
 		<?php echo form_close(); ?>
-	</div>    
-	
-  </body>
-</html>
+          
+  </div>
+</div>
+<div class="container">
+<?php include "application/views/dashboard_admin/home/footer.php" ?>	
+</div>    
+

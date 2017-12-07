@@ -62,7 +62,11 @@ class Master_Kelompok_Pegawai extends CI_Controller {
 				$d['nama_kelompok_pegawai'] = $dt->nama_kelompok_pegawai;
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_kelompok_pegawai/input',$d);
 		}
 		else
@@ -84,7 +88,11 @@ class Master_Kelompok_Pegawai extends CI_Controller {
 				$d['nama_kelompok_pegawai'] = $dt->nama_kelompok_pegawai;
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_kelompok_pegawai/detail',$d);
 		}
 		else
@@ -100,6 +108,11 @@ class Master_Kelompok_Pegawai extends CI_Controller {
 			$d['id_param'] = "";
 			$d['nama_kelompok_pegawai'] = "";
 			$d['st'] = "tambah";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_kelompok_pegawai/input',$d);
 		}
 		else

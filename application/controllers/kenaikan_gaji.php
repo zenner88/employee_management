@@ -23,8 +23,7 @@ class kenaikan_gaji extends CI_Controller {
 			{
 				$d['data_pegawai'] = $this->db->query("SELECT 
 				a.nip, a.nama_pegawai, b.nama_jabatan, c.uraian, c.golongan, d.golongan AS gol,d.uraian AS ura,
-				f.tanggal_sk, SUBSTRING(tanggal_sk,-4), 
-				LEFT(f.tanggal_sk, CHAR_LENGTH(tanggal_sk)-5)
+				f.tanggal_sk
 				
 				FROM tbl_data_pegawai a
 				
@@ -40,18 +39,12 @@ class kenaikan_gaji extends CI_Controller {
 			else
 			{
 				$set_lap2['id_satuan_kerja'] = $this->session->userdata('id_satuan_kerja');
-				$d['data_pegawai'] = $this->db->query("SELECT 
-				a.nip, a.nama_pegawai, b.nama_jabatan, c.uraian, c.golongan, d.golongan AS gol,d.uraian AS ura,
-				f.tanggal_sk, SUBSTRING(tanggal_sk,-4), 
-				LEFT(f.tanggal_sk, CHAR_LENGTH(tanggal_sk)-5)
-				
-				FROM tbl_data_pegawai a
-				
+				$d['data_pegawai'] = $this->db->query("SELECT a.nip, a.nama_pegawai, b.nama_jabatan, c.uraian, c.golongan, d.golongan AS gol,d.uraian AS ura, f.tanggal_sk FROM tbl_data_pegawai a
 				INNER JOIN tbl_data_gaji_pokok f ON a.id_pegawai	= f.id_pegawai
 				INNER JOIN tbl_master_jabatan  b ON a.id_jabatan    = b.id_jabatan
 				INNER JOIN tbl_master_golongan c ON a.id_golongan   = c.id_golongan
 				INNER JOIN tbl_master_golongan d ON c.next   		= d.id_golongan
-				 where SUBSTRING(tanggal_sk,-4) ='".$set_lap2['id_satuan_kerja']."'");
+				 where f.tanggal_sk LIKE '%".$this->session->userdata('id_satuan_kerja')."%'");
 				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 				$this->load->view('dashboard_admin/laporan/kenaikan_gaji/home',$d);
 			}

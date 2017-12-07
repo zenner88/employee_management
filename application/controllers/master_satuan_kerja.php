@@ -63,7 +63,11 @@ class Master_Satuan_Kerja extends CI_Controller {
 				$d['parent_unit'] = $dt->parent_unit; 
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_satuan_kerja/input',$d);
 		}
 		else
@@ -86,7 +90,11 @@ class Master_Satuan_Kerja extends CI_Controller {
 				$d['parent_unit'] = $dt->parent_unit; 
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_satuan_kerja/detail',$d);
 		}
 		else
@@ -103,6 +111,11 @@ class Master_Satuan_Kerja extends CI_Controller {
 			$d['nama_unit_kerja'] = ""; 
 			$d['parent_unit'] = ""; 
 			$d['st'] = "tambah";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master_satuan_kerja/input',$d);
 		}
 		else
@@ -171,7 +184,7 @@ class Master_Satuan_Kerja extends CI_Controller {
 		}
 		else
 		{
-			header('location:'.base_url().'');
+			header('location:'.base_url().'master_satuan_kerja');
 		}
 	}
 
@@ -217,7 +230,7 @@ class Master_Satuan_Kerja extends CI_Controller {
 					$upd['parent_unit'] = $this->input->post("parent_unit");
 					$this->db->update("tbl_master_satuan_kerja",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'master_satuan_kerja');
 }
 				}
 				else if($st=="tambah")
@@ -226,7 +239,7 @@ header('location:'.base_url().' ');
 					$in['parent_unit'] = $this->input->post("parent_unit");
 					$this->db->insert("tbl_master_satuan_kerja",$in);
 					{
-header('location:'.base_url().' ');
+header('location:'.base_url().'master_satuan_kerja');
 }
 				}
 			
@@ -234,7 +247,7 @@ header('location:'.base_url().' ');
 		}
 		else
 		{
-			header('location:'.base_url().'');
+			header('location:'.base_url().'master_satuan_kerja');
 		}
 	}
 }

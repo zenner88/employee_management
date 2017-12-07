@@ -169,6 +169,11 @@ class Pegawai extends CI_Controller {
 			$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 			$d['mst_eselon'] = $this->db->get('tbl_master_eselon');
 			$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/pegawai/input',$d);
 		}
 		else
@@ -228,12 +233,12 @@ class Pegawai extends CI_Controller {
 				$d['no_kartu_pegawai'] = $data->no_kartu_pegawai;
 				$d['nama_pegawai'] = $data->nama_pegawai;
 				$d['tempat_lahir'] =  $data->tempat_lahir;
-				$d['tanggal_lahir'] = $data->tanggal_lahir;
+				$d['tanggal_lahir'] = date("d/m/Y", strtotime($data->tanggal_lahir));
 				$d['jenis_kelamin'] = $data->jenis_kelamin;
 				$d['agama'] = $data->agama;
 				$d['usia'] =  $data->usia;
 				$d['status_pegawai'] = $data->status_pegawai;
-				$d['tanggal_pengangkatan_cpns'] = $data->tanggal_pengangkatan_cpns;
+				$d['tanggal_pengangkatan_cpns'] = date("d/m/Y", strtotime($data->tanggal_pengangkatan_cpns));
 				$d['alamat_pegawai'] =  $data->alamat;
 				$d['no_npwp'] = $data->no_npwp;
 				$d['no_KTP'] = $data->no_KTP;
@@ -242,9 +247,9 @@ class Pegawai extends CI_Controller {
 				$d['status_pegawai_pangkat'] = $data->status_pegawai_pangkat;
 				$d['id_golongan'] = $data->id_golongan;
 				$d['nomor_sk_pangkat'] = $data->nomor_sk_pangkat;
-				$d['tanggal_sk_pangkat'] = $data->tanggal_sk_pangkat;
-				$d['tanggal_mulai_pangkat'] = $data->tanggal_mulai_pangkat;
-				$d['tanggal_selesai_pangkat'] = $data->tanggal_selesai_pangkat;
+				$d['tanggal_sk_pangkat'] = date("d/m/Y", strtotime($data->tanggal_sk_pangkat));
+				$d['tanggal_mulai_pangkat'] = date("d/m/Y", strtotime($data->tanggal_mulai_pangkat));
+				$d['tanggal_selesai_pangkat'] = date("d/m/Y", strtotime($data->tanggal_selesai_pangkat));
 				$d['id_status_jabatan'] = $data->id_status_jabatan;
 				$d['id_kelompok_pegawai'] = $data->id_kelompok_pegawai;											
 				$d['id_jabatan'] = $data->id_jabatan;
@@ -252,9 +257,9 @@ class Pegawai extends CI_Controller {
 				$d['id_satuan_kerja'] = $data->id_satuan_kerja;
 				$d['lokasi_kerja'] = $data->lokasi_kerja;
 				$d['nomor_sk_jabatan'] = $data->nomor_sk_jabatan;
-				$d['tanggal_sk_jabatan'] = $data->tanggal_sk_jabatan;
-				$d['tanggal_mulai_jabatan'] = $data->tanggal_mulai_jabatan;
-				$d['tanggal_selesai_jabatan'] = $data->tanggal_selesai_jabatan;
+				$d['tanggal_sk_jabatan'] = date("d/m/Y", strtotime($data->tanggal_sk_jabatan));
+				$d['tanggal_mulai_jabatan'] = date("d/m/Y", strtotime($data->tanggal_mulai_jabatan));
+				$d['tanggal_selesai_jabatan'] = date("d/m/Y", strtotime($data->tanggal_selesai_jabatan));
 				$d['foto'] = $data->foto;
 				$d['id_eselon'] = $data->id_eselon;
 				$d['tmt_eselon'] = $data->tmt_eselon;
@@ -270,8 +275,12 @@ class Pegawai extends CI_Controller {
 			$d['mst_unit_kerja'] = $this->db->get('tbl_master_unit_kerja');
 			$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 			$d['mst_eselon'] = $this->db->get('tbl_master_eselon');
-			$this->load->view('dashboard_admin/master/header',$d);
-			$this->load->view('dashboard_admin/master/bg_pegawai');
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
+			$this->load->view('dashboard_admin/pegawai/input', $d);
 		}
 		else
 		{
@@ -446,12 +455,12 @@ class Pegawai extends CI_Controller {
 					$upd['no_kartu_pegawai'] = $this->input->post('no_kartu_pegawai');
 					$upd['nama_pegawai'] = $this->input->post('nama_pegawai');
 					$upd['tempat_lahir'] = $this->input->post('tempat_lahir');
-					$upd['tanggal_lahir'] = $this->input->post('tanggal_lahir');
+					$upd['tanggal_lahir'] = date("Y-m-d", strtotime($this->input->post('tanggal_lahir')));
 					$upd['jenis_kelamin'] = $this->input->post('jenis_kelamin');
 					$upd['agama'] = $this->input->post('agama');
 					$upd['usia'] = $this->input->post('usia');
 					$upd['status_pegawai'] = $this->input->post('status_pegawai');
-					$upd['tanggal_pengangkatan_cpns'] = $this->input->post('tanggal_pengangkatan_cpns');
+					$upd['tanggal_pengangkatan_cpns'] = date("Y-m-d", strtotime($this->input->post('tanggal_pengangkatan_cpns')));
 					$upd['alamat'] = $this->input->post('alamat');
 					$upd['no_npwp'] = $this->input->post('no_npwp');
 					$upd['no_KTP'] = $this->input->post('no_KTP');
@@ -460,9 +469,9 @@ class Pegawai extends CI_Controller {
 					$upd['status_pegawai_pangkat'] = $this->input->post('status_pegawai_pangkat');
 					$upd['id_golongan'] = $this->input->post('id_golongan');
 					$upd['nomor_sk_pangkat'] = $this->input->post('nomor_sk_pangkat');
-					$upd['tanggal_sk_pangkat'] = $this->input->post('tanggal_sk_pangkat');
-					$upd['tanggal_mulai_pangkat'] = $this->input->post('tanggal_mulai_pangkat');
-					$upd['tanggal_selesai_pangkat'] = $this->input->post('tanggal_selesai_pangkat');
+					$upd['tanggal_sk_pangkat'] = date("Y-m-d", strtotime($this->input->post('tanggal_sk_pangkat')));
+					$upd['tanggal_mulai_pangkat'] = date("Y-m-d", strtotime($this->input->post('tanggal_mulai_pangkat')));
+					$upd['tanggal_selesai_pangkat'] = date("Y-m-d", strtotime($this->input->post('tanggal_selesai_pangkat')));
 					$upd['id_status_jabatan'] = $this->input->post('id_status_jabatan');
 					$upd['id_kelompok_pegawai'] = $this->input->post('id_kelompok_pegawai');					
 					$upd['id_jabatan'] = $this->input->post('id_jabatan');
@@ -470,9 +479,9 @@ class Pegawai extends CI_Controller {
 					$upd['id_satuan_kerja'] = $this->input->post('id_satuan_kerja');
 					$upd['lokasi_kerja'] = $this->input->post('lokasi_kerja');
 					$upd['nomor_sk_jabatan'] = $this->input->post('nomor_sk_jabatan');
-					$upd['tanggal_sk_jabatan'] = $this->input->post('tanggal_sk_jabatan');
-					$upd['tanggal_mulai_jabatan'] = $this->input->post('tanggal_mulai_jabatan');
-					$upd['tanggal_selesai_jabatan'] = $this->input->post('tanggal_selesai_jabatan');
+					$upd['tanggal_sk_jabatan'] = date("Y-m-d", strtotime($this->input->post('tanggal_sk_jabatan')));
+					$upd['tanggal_mulai_jabatan'] = date("Y-m-d", strtotime($this->input->post('tanggal_mulai_jabatan')));
+					$upd['tanggal_selesai_jabatan'] = date("Y-m-d", strtotime($this->input->post('tanggal_selesai_jabatan')));
 					$upd['id_eselon'] = $this->input->post('id_eselon');
 					$upd['tmt_eselon'] = $this->input->post('tmt_eselon');
 					
@@ -569,7 +578,7 @@ class Pegawai extends CI_Controller {
 					$this->db->update("tbl_data_pegawai",$upd,$id);
 					
 				
-						header("location:".base_url()."pegawai/edit/".$this->session->userdata("kode_pegawai")."");
+						header("location:".base_url()."");
 				}
 				else if($st=="tambah")
 				{
@@ -578,12 +587,12 @@ class Pegawai extends CI_Controller {
 					$in['no_kartu_pegawai'] = $this->input->post('no_kartu_pegawai');
 					$in['nama_pegawai'] = $this->input->post('nama_pegawai');
 					$in['tempat_lahir'] = $this->input->post('tempat_lahir');
-					$in['tanggal_lahir'] = $this->input->post('tanggal_lahir');
+					$in['tanggal_lahir'] = date("Y-m-d", strtotime($this->input->post('tanggal_lahir')));
 					$in['jenis_kelamin'] = $this->input->post('jenis_kelamin');
 					$in['agama'] = $this->input->post('agama');
 					$in['usia'] = $this->input->post('usia');
 					$in['status_pegawai'] = $this->input->post('status_pegawai');
-					$in['tanggal_pengangkatan_cpns'] = $this->input->post('tanggal_pengangkatan_cpns');
+					$in['tanggal_pengangkatan_cpns'] = date("Y-m-d", strtotime($this->input->post('tanggal_pengangkatan_cpns')));
 					$in['alamat'] = $this->input->post('alamat');
 					$in['no_npwp'] = $this->input->post('no_npwp');
 					$in['no_KTP'] = $this->input->post('no_KTP');
@@ -592,9 +601,9 @@ class Pegawai extends CI_Controller {
 					$in['status_pegawai_pangkat'] = $this->input->post('status_pegawai_pangkat');
 					$in['id_golongan'] = $this->input->post('id_golongan');
 					$in['nomor_sk_pangkat'] = $this->input->post('nomor_sk_pangkat');
-					$in['tanggal_sk_pangkat'] = $this->input->post('tanggal_sk_pangkat');
-					$in['tanggal_mulai_pangkat'] = $this->input->post('tanggal_mulai_pangkat');
-					$in['tanggal_selesai_pangkat'] = $this->input->post('tanggal_selesai_pangkat');
+					$in['tanggal_sk_pangkat'] = date("Y-m-d", strtotime($this->input->post('tanggal_sk_pangkat')));
+					$in['tanggal_mulai_pangkat'] = date("Y-m-d", strtotime($this->input->post('tanggal_mulai_pangkat')));
+					$in['tanggal_selesai_pangkat'] = date("Y-m-d", strtotime($this->input->post('tanggal_selesai_pangkat')));
 					$in['id_status_jabatan'] = $this->input->post('id_status_jabatan');
 					$upd['id_kelompok_pegawai'] = $this->input->post('id_kelompok_pegawai');										
 					$in['id_jabatan'] = $this->input->post('id_jabatan');
@@ -602,9 +611,9 @@ class Pegawai extends CI_Controller {
 					$in['id_satuan_kerja'] = $this->input->post('id_satuan_kerja');
 					$in['lokasi_kerja'] = $this->input->post('lokasi_kerja');
 					$in['nomor_sk_jabatan'] = $this->input->post('nomor_sk_jabatan');
-					$in['tanggal_sk_jabatan'] = $this->input->post('tanggal_sk_jabatan');
-					$in['tanggal_mulai_jabatan'] = $this->input->post('tanggal_mulai_jabatan');
-					$in['tanggal_selesai_jabatan'] = $this->input->post('tanggal_selesai_jabatan');
+					$in['tanggal_sk_jabatan'] = date("Y-m-d", strtotime($this->input->post('tanggal_sk_jabatan')));
+					$in['tanggal_mulai_jabatan'] = date("Y-m-d", strtotime($this->input->post('tanggal_mulai_jabatan')));
+					$in['tanggal_selesai_jabatan'] = date("Y-m-d", strtotime($this->input->post('tanggal_selesai_jabatan')));
 					$in['id_eselon'] = $this->input->post('id_eselon');
 					$in['tmt_eselon'] = $this->input->post('tmt_eselon');
 					

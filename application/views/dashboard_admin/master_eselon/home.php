@@ -1,14 +1,7 @@
 <?php include "application/views/dashboard_admin/home/header.php" ?>
 
-<div class="page-wrapper">
-	<div class="container-fluid">
-	  <div class="row">
-		<div class="span">
-		  <h3><?php echo $judul_lengkap.' '.$instansi; ?></h3>
-		  <p><?php echo $alamat; ?></p>
-		</div>
-	  </div>
-	</div>
+<div class="container">
+	
 
   <div class="well">
 	<div class="navbar navbar-inverse">
@@ -79,13 +72,9 @@
 
 </section>
   </div>
-
-
-      <footer class="well">
-        <p><?php echo $credit; ?></p>
-      </footer>
-
-    </div> <!-- /container -->
-
-    <?php include "application/views/dashboard_admin/home/footer.php" ?>	
+</div>
+<div class="container">
+	<?php include "application/views/dashboard_admin/home/footer.php" ?>
+</div>
+    	
     
