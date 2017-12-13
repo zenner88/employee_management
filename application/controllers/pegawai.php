@@ -7,6 +7,10 @@ class Pegawai extends CI_Controller {
 		***	by Gede Lumbung
 		***	http://gedelumbung.com
 	*/
+	function __construct() {
+        parent::__construct();
+        $this->load->library('m_pdf');
+    }
 
 	public function index()
 	{
@@ -42,9 +46,9 @@ class Pegawai extends CI_Controller {
 					$d['no_kartu_pegawai'] = $data->no_kartu_pegawai;
 					$d['nama_pegawai'] = $data->nama_pegawai;
 					$d['tempat_lahir'] =  $data->tempat_lahir;
-					$d['tanggal_lahir'] = $data->tanggal_lahir;
+					$d['tanggal_lahir'] = date("d/m/Y", strtotime($data->tanggal_lahir));
 					$d['jenis_kelamin'] = $data->jenis_kelamin;
-					$d['agama'] = $data->agama;
+					$d['agama'] = 'Islam';
 					$d['usia'] =  $data->usia;
 					$d['status_pegawai'] = $data->status_pegawai;
 					$d['tanggal_pengangkatan_cpns'] = $data->tanggal_pengangkatan_cpns;
@@ -105,7 +109,26 @@ class Pegawai extends CI_Controller {
 			, a.tanggal_selesai, a.masa_berlaku from tbl_data_hukuman a left join tbl_master_hukuman b on a.id_master_hukuman=b.id_hukuman where
 				a.id_pegawai='".$id['id_pegawai']."'");
 				$d['data_dp3'] = $this->db->get_where("tbl_data_dp3",$id);
-				
+				$d['departemen'] = 'BAAK';
+				$d['email_pegawai'] = 'pegawai@gmail.com';
+				$d['sim'] = 'A';
+        $this->load->view('dashboard_admin/pegawai/detail_pegawai',$d);
+       	$sumber = $this->load->view('dashboard_admin/pegawai/detail_pegawai', $d, TRUE);
+        $html = $sumber;
+
+
+        $pdfFilePath = "data-pegawai-".$d['nip'].".pdf";
+        
+
+        $pdf = $this->m_pdf->load();
+
+        $pdf->AddPage('L');
+        $pdf->mirrorMargins = true;
+        $pdf->WriteHTML(file_get_contents(''.base_url().'asset/theme-new/css/print.css'), 1);
+        $pdf->WriteHTML($html);
+        $pdf->SetDisplayMode('fullpage');
+        $pdf->Output($pdfFilePath, "D");
+        exit();
 				$this->load->view('dashboard_admin/pegawai/detail_pegawai',$d);
 			}
 			else
