@@ -2,7 +2,7 @@ RewriteEngine On
 RewriteBase /simpeg
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /employee_management/index.php/$1 [L]
+RewriteRule ^(.*)$ /simpeg/index.php/$1 [L]
 
 
-ErrorDocument 404 /employee_management/index.php
+ErrorDocument 404 /simpeg/index.php

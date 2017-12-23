@@ -1,37 +1,5 @@
+<?php include "application/views/dashboard_admin/home/header.php" ?>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="<?php echo base_url(); ?>asset/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>asset/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>asset/css/docs.css" rel="stylesheet">
-	<style>
-		body{
-			margin:20px;
-			}
-	</style>
-	
-    <script src="<?php echo base_url(); ?>asset/js/jquery-latest.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/application.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/bootstrap-tooltip.js"></script>
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/sunny/jquery-ui.css" type="text/css" rel="stylesheet"/>	
-	<script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery-ui-1.7.2.custom.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.ui.i18n.all.min.js"></script>
-	<script type="text/javascript">
-	$(function(){
-		$.datepicker.setDefaults($.datepicker.regional['id']);
-		$('#tanggal').datepicker({dateFormat: 'dd MM yy'});
-	});
-	</script>
-  </head>
-
-  <body>
 	<div class="well">
 	<?php if(validation_errors()) { ?>
 	<div class="alert alert-block">
@@ -93,5 +61,5 @@
 		<?php echo form_close(); ?>
 	</div>    
 	
-  </body>
-</html>
+	<?php include "application/views/dashboard_admin/home/footer.php" ?>	
+	

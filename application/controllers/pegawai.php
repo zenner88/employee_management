@@ -18,6 +18,111 @@ class Pegawai extends CI_Controller {
 		
 	}
 
+	public function detail_pegawai()
+	{
+		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
+		{
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
+			
+			$id['id_pegawai'] = $this->uri->segment(3);
+			$this->session->set_userdata($id);
+			$data_pegawai = $this->db->get_where("tbl_data_pegawai",$id);
+			
+			if($data_pegawai->num_rows()>0)
+			{
+				$q = $this->db->get_where("tbl_data_pegawai",$id);
+				$set_detail = $q->row();
+				$this->session->set_userdata("nama_pegawai",$set_detail->nama_pegawai);
+				
+				foreach($q->result() as $data)
+				{
+					$d['id_param'] = $data->id_pegawai;
+					$d['nip'] = $data->nip;
+					$d['nip_lama'] = $data->nip_lama;
+					$d['no_kartu_pegawai'] = $data->no_kartu_pegawai;
+					$d['nama_pegawai'] = $data->nama_pegawai;
+					$d['tempat_lahir'] =  $data->tempat_lahir;
+					$d['tanggal_lahir'] = $data->tanggal_lahir;
+					$d['jenis_kelamin'] = $data->jenis_kelamin;
+					$d['agama'] = $data->agama;
+					$d['usia'] =  $data->usia;
+					$d['status_pegawai'] = $data->status_pegawai;
+					$d['tanggal_pengangkatan_cpns'] = $data->tanggal_pengangkatan_cpns;
+					$d['alamat_pegawai'] =  $data->alamat;
+					$d['no_npwp'] = $data->no_npwp;
+					$d['no_KTP'] = $data->no_KTP;
+					$d['no_KK'] = $data->no_KK;
+					$d['kartu_askes_pegawai'] = $data->kartu_askes_pegawai;
+					$d['status_pegawai_pangkat'] = $data->status_pegawai_pangkat;
+					$d['id_golongan'] = $data->id_golongan;
+					$d['nomor_sk_pangkat'] = $data->nomor_sk_pangkat;
+					$d['tanggal_sk_pangkat'] = $data->tanggal_sk_pangkat;
+					$d['tanggal_mulai_pangkat'] = $data->tanggal_mulai_pangkat;
+					$d['tanggal_selesai_pangkat'] = $data->tanggal_selesai_pangkat;
+					$d['id_status_jabatan'] = $data->id_status_jabatan;
+					$d['id_kelompok_pegawai'] = $data->id_kelompok_pegawai;					
+					$d['id_jabatan'] = $data->id_jabatan;
+					$d['id_unit_kerja'] = $data->id_unit_kerja;
+					$d['id_satuan_kerja'] = $data->id_satuan_kerja;
+					$d['lokasi_kerja'] = $data->lokasi_kerja;
+					$d['nomor_sk_jabatan'] = $data->nomor_sk_jabatan;
+					$d['tanggal_sk_jabatan'] = $data->tanggal_sk_jabatan;
+					$d['tanggal_mulai_jabatan'] = $data->tanggal_mulai_jabatan;
+					$d['tanggal_selesai_jabatan'] = $data->tanggal_selesai_jabatan;
+					$d['id_eselon'] = $data->id_eselon;
+					$d['tmt_eselon'] = $data->tmt_eselon;
+					$d['foto'] = $data->foto;
+				}
+				
+				$d['st'] = "edit";
+				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
+				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
+				$d['mst_stts_jabatan'] = $this->db->get('tbl_master_status_jabatan');
+				$d['mst_kelompok_pegawai'] = $this->db->get('tbl_master_kelompok_pegawai');				
+				$d['mst_jabatan'] = $this->db->get('tbl_master_jabatan');
+				$d['mst_unit_kerja'] = $this->db->get('tbl_master_unit_kerja');
+				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
+				$d['mst_eselon'] = $this->db->get('tbl_master_eselon');
+				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
+				
+				$d['data_keluarga'] = $this->db->get_where("tbl_data_keluarga",$id);
+				$d['data_riwayat_pangkat'] = $this->db->query("select * from tbl_data_riwayat_pangkat a left join tbl_master_golongan b on a.id_golongan=b.id_golongan where 
+				a.id_pegawai='".$id['id_pegawai']."'");
+				$d['data_riwayat_jabatan'] = $this->db->query("select * from tbl_data_riwayat_jabatan a left join tbl_master_jabatan b on a.id_jabatan=b.id_jabatan left join
+				tbl_master_unit_kerja c on a.id_unit_kerja=c.id_unit_kerja left join tbl_master_eselon d on a.id_eselon=d.id_eselon where 
+				a.id_pegawai='".$id['id_pegawai']."'");
+				$d['data_pendidikan'] = $this->db->get_where("tbl_data_pendidikan",$id);
+				$d['data_pelatihan'] = $this->db->query("select b.nama_pelatihan, a.lokasi, a.tanggal_sertifikat, a.jam_pelatihan,
+				a.negara, a.id_pelatihan from tbl_data_pelatihan a left join tbl_master_pelatihan b on a.id_master_pelatihan=b.id_pelatihan where 
+				a.id_pegawai='".$id['id_pegawai']."'");
+				$d['data_penghargaan'] = $this->db->query("select b.nama_penghargaan, a.nomor_sk, a.tanggal_sk, a.id_penghargaan from tbl_data_penghargaan a left join tbl_master_penghargaan b on a.id_master_penghargaan=b.id_penghargaan where
+				a.id_pegawai='".$id['id_pegawai']."'");
+				$d['data_seminar'] = $this->db->get_where("tbl_data_seminar",$id);
+				$d['data_organisasi'] = $this->db->get_where("tbl_data_organisasi",$id);
+				$d['data_gaji_pokok'] = $this->db->query("select * from tbl_data_gaji_pokok a left join tbl_master_golongan b on a.id_golongan=b.id_golongan where
+				a.id_pegawai='".$id['id_pegawai']."'");
+				$d['data_hukuman'] =  $this->db->query("select a.id_hukuman, b.nama_hukuman, a.nomor_sk, a.tanggal_sk, a.tanggal_mulai
+			, a.tanggal_selesai, a.masa_berlaku from tbl_data_hukuman a left join tbl_master_hukuman b on a.id_master_hukuman=b.id_hukuman where
+				a.id_pegawai='".$id['id_pegawai']."'");
+				$d['data_dp3'] = $this->db->get_where("tbl_data_dp3",$id);
+				
+				$this->load->view('dashboard_admin/pegawai/detail_pegawai',$d);
+			}
+			else
+			{
+				header('location:'.base_url().'');
+			}
+		}
+		else
+		{
+			header('location:'.base_url().'');
+		}
+	}
+
 	public function detail()
 	{
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
@@ -112,8 +217,8 @@ class Pegawai extends CI_Controller {
 				$d['departemen'] = 'BAAK';
 				$d['email_pegawai'] = 'pegawai@gmail.com';
 				$d['sim'] = 'A';
-        $this->load->view('dashboard_admin/pegawai/detail_pegawai',$d);
-       	$sumber = $this->load->view('dashboard_admin/pegawai/detail_pegawai', $d, TRUE);
+        $this->load->view('dashboard_admin/pegawai/detail',$d);
+       	$sumber = $this->load->view('dashboard_admin/pegawai/detail', $d, TRUE);
         $html = $sumber;
 
 
@@ -129,7 +234,7 @@ class Pegawai extends CI_Controller {
         $pdf->SetDisplayMode('fullpage');
         $pdf->Output($pdfFilePath, "D");
         exit();
-				$this->load->view('dashboard_admin/pegawai/detail_pegawai',$d);
+				$this->load->view('dashboard_admin/pegawai/detail',$d);
 			}
 			else
 			{

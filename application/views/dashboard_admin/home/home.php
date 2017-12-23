@@ -55,7 +55,7 @@
         <td><?php echo $dp['nama_status']; ?></td>
 		<td>
 	        <div class="btn-group">
-	          <a class="btn btn-small" href="<?php echo base_url(); ?>pegawai/detail/<?php echo $dp['id_pegawai']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
+	          <a class="btn btn-small" href="<?php echo base_url(); ?>pegawai/detail_pegawai/<?php echo $dp['id_pegawai']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
 	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="<?php echo base_url(); ?>pegawai/edit/<?php echo $dp['id_pegawai']; ?>"><i class="icon-pencil"></i> Edit Data</a></li>

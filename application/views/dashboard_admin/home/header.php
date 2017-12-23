@@ -1,4 +1,7 @@
-
+<?php 
+$judul_pendek=""; 
+$credit=""; 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
