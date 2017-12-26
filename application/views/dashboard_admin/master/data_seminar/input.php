@@ -1,4 +1,6 @@
 <?php include "application/views/dashboard_admin/home/header.php" ?>
+<div class="container">
+	
 
 	<div class="well">
 	<?php if(validation_errors()) { ?>
@@ -29,8 +31,12 @@
 		  <div class="control-group">
 			<label class="control-label" for="tanggal">Tanggal</label>
 			<div class="controls">
-			  <input type="text" class="span6" name="tanggal" id="tanggal" value="<?php echo $tanggal; ?>" 
-			  placeholder="Tanggal">
+			  <div class="input-group date" data-provide="datepicker">
+	                <input type="text" class="form-control datepicker" name="tanggal" id="tanggal" value="<?php echo $tanggal; ?>" placeholder="Tanggal">
+	                <div class="input-group-addon">
+	                    <span class="glyphicon glyphicon-th"></span>
+	                </div>
+	            </div>
 			</div>
 		  </div>
 			
@@ -60,6 +66,8 @@
 		  </div>
 		<?php echo form_close(); ?>
 	</div>    
-	
-	<?php include "application/views/dashboard_admin/home/footer.php" ?>	
+</div>
+<div class="container">
+<?php include "application/views/dashboard_admin/home/footer.php" ?>	
+</div>
 	

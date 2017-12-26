@@ -80,7 +80,11 @@ class Data_Dp3 extends CI_Controller {
 				$d['mengetahui'] = $dt->mengetahui; 
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master/data_dp3/input',$d);
 		}
 		else
@@ -115,7 +119,11 @@ class Data_Dp3 extends CI_Controller {
 				$d['mengetahui'] = $dt->mengetahui; 
 			}
 			$d['st'] = "edit";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master/data_dp3/detail',$d);
 		}
 		else
@@ -129,7 +137,7 @@ class Data_Dp3 extends CI_Controller {
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
 			$d['id_param'] = "";
-			$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+			$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 			$d['tahun'] = "";
 			$d['kesetiaan'] = "";
 			$d['prestasi'] = "";
@@ -145,7 +153,11 @@ class Data_Dp3 extends CI_Controller {
 			$d['mengetahui'] = "";
 			
 			$d['st'] = "tambah";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master/data_dp3/input',$d);
 		}
 		else
@@ -160,7 +172,7 @@ class Data_Dp3 extends CI_Controller {
 		{
 			$id['id_dp3'] = $this->uri->segment(3);
 			$this->db->delete("tbl_data_dp3",$id);
-			header('location:'.base_url().'data_dp3/index/'.$this->session->userdata("kode_pegawai").'');
+			header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 		}
 		else
 		{
@@ -264,7 +276,7 @@ class Data_Dp3 extends CI_Controller {
 					
 					$this->db->update("tbl_data_dp3",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 				else if($st=="tambah")
@@ -288,7 +300,7 @@ header('location:'.base_url().' ');
 					
 					$this->db->insert("tbl_data_dp3",$in);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 			

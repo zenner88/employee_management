@@ -8,7 +8,7 @@
 		<tbody>
 			<tr>
 				<td class="col-md-3"><label class="font-10">Departemen <br> <i>Bagian</i></label></td>
-				<td class="col-md-9"><?php //echo //$departemen ?></td>
+				<td class="col-md-9"><?php echo $departemen ?></td>
 			</tr>
 		</tbody>
 	</table>
@@ -40,7 +40,7 @@
 			</tr>
 			<tr>
 				<td>SIM</td>
-				<td><?php //echo //$sim; ?></td>
+				<td><?php echo $sim; ?></td>
 			</tr>
 			<tr>
 				<td>NPWP</td>
@@ -48,14 +48,54 @@
 			</tr>
 			<tr>
 				<td>Alamat Email</td>
-				<td><?php //echo $email_pegawai; ?></td>
+				<td><?php echo $email_pegawai; ?></td>
 			</tr>
 			<tr>
 				<td>Agama</td>
 				<td><?php echo $agama; ?></td>
 			</tr>
+			<tr>
+				<td>Suku Bangsa</td>
+				<td>Sunda</td>
+			</tr>
+			<tr>
+				<td>Status Pernikahan</td>
+				<td>Menikah</td>
+			</tr>
+			
 		</tbody>
-	</table>	
+	</table>
+	<table class="table-alamat">
+		<tbody>
+			<tr>
+				<td class="col-md-6">Alamat Tempat Tinggal Saat Ini</td>
+				<td>Alamat Asal</td>
+			</tr>
+			<tr>
+				<td class="no-border">
+					<p>Alamat</p>
+					<div class="col-md-6">Telepon Rumah</div>
+					<div class="col-md-6">022123456</div>
+					<div class="clearfix"></div>
+					<div class="col-md-6">Telepon Selular</div>
+					<div class="col-md-6">081234567890</div>
+				</td>
+				<td class="no-border">
+					<p>Alamat</p>
+					<div class="col-md-6">Telepon Rumah</div>
+					<div class="col-md-6">022123456</div>
+					<div class="clearfix"></div>
+					<div class="col-md-6">Telepon Selular</div>
+					<div class="col-md-6">081234567890</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Status: Milik Sendiri</td>
+				<td>Status: Kontrak</td>
+			</tr>
+		</tbody>
+	</table>
+	
 </div>
 <div class="col-md-12">
 	<div class="col-md-6">
@@ -63,52 +103,78 @@
 	</div>
 </div>
 <div class="col-md-12">
-	<?php if ($data_keluarga->num_rows() == 0) { ?>
-		<table class="table table-bordered">
-		    <thead>
-		      <tr>
-		        <th>No.</th>
-		        <th>Nama Keluarga</th>
-				<th>Tanggal Lahir</th>
-				<th>Pekerjaan</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		    	<tr>
-		    		<td></td>
-			        <td></td>
-					<td></td>
-			        <td></td>
-		    	</tr>
-		    </tbody>
-		</table>
-	<?php } else { ?>
-		<table class="table table-bordered">
-			<thead>
-		      <tr>
-		        <th>No.</th>
-		        <th>Nama Keluarga</th>
-				<th>Tanggal Lahir</th>
-				<th>Pekerjaan</th>
-		      </tr>
-		    </thead>
-			<tbody>
-			<?php
-				$no=1;
-				foreach($data_keluarga->result_array() as $dk) {
-			?>
-      			<tr>
-        			<td><?php echo $no; ?></td>
-       	 			<td><?php echo $dk['nama_anggota_keluarga']; ?></td>
-        			<td><?php echo $dk['tanggal_lahir']; ?></td>
-        			<td><?php echo $dk['pekerjaan']; ?></td>
-      			</tr>
-      		<?php $no++; } ?>
-    		</tbody>
-  		</table>
-	<?php } ?>
-	
-    
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<td>Hubungan</td>
+				<td class="text-center">Nama</td>
+				<td class="text-center">Tgl Lahir</td>
+				<td class="text-center">Pendidikan Terakhir</td>
+				<td class="text-center">Pekerjaan</td>
+			</tr>
+			<tr>
+				<td>Pasangan</td>
+				<td>Mutiara</td>
+				<td>28-12-1980</td>
+				<td>S1</td>
+				<td>Wiraswasta</td>
+			</tr>
+			<tr>
+				<td>Anak 1</td>
+				<td>Muhammad</td>
+				<td>5-09-2003</td>
+				<td>SMA</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>Anak 2</td>
+				<td>Aisyah</td>
+				<td>7-7-2007</td>
+				<td>SD</td>
+				<td>-</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td colspan="5">Susunan Keluarga Termasuk Anda</td>
+			</tr>
+			<tr>
+				<td>Hubungan</td>
+				<td class="text-center">Nama</td>
+				<td class="text-center">Tgl Lahir</td>
+				<td class="text-center">Pendidikan Terakhir</td>
+				<td class="text-center">Pekerjaan</td>
+			</tr>
+			<tr>
+				<td>Ayah</td>
+				<td>Bambang</td>
+				<td>03-06-1960</td>
+				<td>SD</td>
+				<td>Wiraswasta</td>
+			</tr>
+			<tr>
+				<td>Ibu</td>
+				<td>Chyntia</td>
+				<td>4-08-1962</td>
+				<td>SD</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>Saudara 1</td>
+				<td>Bram</td>
+				<td>05-09-1980</td>
+				<td>S1</td>
+				<td>Wiraswasta</td>
+			</tr>
+			<tr>
+				<td>Saudara 2</td>
+				<td>Nina</td>
+				<td>10-10-1990</td>
+				<td>S1</td>
+				<td>-</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <div class="col-md-12">
 	<div class="col-md-6">
@@ -121,59 +187,34 @@
 	</div>
 </div>
 <div class="col-md-12">
-	<?php if ($data_pendidikan->num_rows() == 0) { ?>
-		<table class="table table-bordered">
-		    <thead>
-		      <tr>
-		        <th>No.</th>
-		        <th>Tingkat Pendidikan</th>
-				<th>Jurusan</th>
-		        <th>Teknik/Non Teknik</th>
-		        <th>Sekolah</th>
-				<th>Tanggal Lulus</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-		    </tbody>
-		</table>
-	<?php } else { ?> 
-		<table class="table table-bordered">
-		    <thead>
-		      <tr>
-		        <th>No.</th>
-		        <th>Tingkat Pendidikan</th>
-				<th>Jurusan</th>
-		        <th>Teknik/Non Teknik</th>
-		        <th>Sekolah</th>
-				<th>Tanggal Lulus</th>
-		      </tr>
-		    </thead>
-    		<tbody>
-			<?php
-				$no=1;
-				foreach($data_pendidikan->result_array() as $dpn) {
-			?>
-		      <tr>
-		        <td><?php echo $no; ?></td>
-		        <td><?php echo $dpn['tingkat_pendidikan']; ?></td>
-		        <td><?php echo $dpn['jurusan']; ?></td>
-		        <td><?php echo $dpn['teknik_non_teknik']; ?></td>
-		        <td><?php echo $dpn['sekolah']; ?></td>
-		        <td><?php echo $dpn['tanggal_lulus']; ?></td>
-		      </tr>
-	 		<?php $no++; } ?>
-    		</tbody>
-    	</table>
-	<?php } ?>
-
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<td class="text-center">Tingkat</td>
+				<td class="text-center">Sekolah / Perguruan Tinggi</td>
+				<td class="text-center">Jurusan</td>
+				<td class="text-center">Dari Bulan / Tahun</td>
+				<td class="text-center">Samapi Bulan / Tahun</td>
+				<td class="text-center">IPK</td>
+			</tr>
+			<tr>
+				<td>SLTA</td>
+				<td>SMA Budi Karya</td>
+				<td>IPA</td>
+				<td>1994</td>
+				<td>1997</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>S1</td>
+				<td>Universitas Budi Karya</td>
+				<td>Teknik Sipil</td>
+				<td>1997</td>
+				<td>2001</td>
+				<td>3.5</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <div class="col-md-12">
 	<div class="col-md-12">
@@ -181,50 +222,106 @@
 	</div>
 </div>
 <div class="col-md-12">
-	<?php if ($data_seminar->num_rows() == 0) { ?>
 	<table class="table table-bordered">
-	    <thead>
-	      <tr>
-	        <th>No.</th>
-	        <th>Uraian</th>
-			<th>Lokasi</th>
-	        <th>Tanggal</th>
-	      </tr>
-	    </thead>
-    	<tbody>
-		  <tr>
-	        <td></td>
-	        <td></td>
-			<td></td>
-	        <td></td>
-	      </tr>
-    	</tbody>
-  	</table>
-	<?php } else {  ?> 
+		<tbody>
+			<tr>
+				<td class="text-center">Nama Kursus Atau Pelatihan</td>
+				<td class="text-center">Pelatihan</td>
+				<td class="text-center">tgl / bln / thn</td>
+				<td class="text-center">Keterangan</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="col-md-12">
+	<div class="col-md-12">
+		<p>3. Mohon Berikan tanda checklist sesuai dengan kemampuan bahasa anda</p>
+	</div>
+</div>
+<div class="col-md-12">
 	<table class="table table-bordered">
-	    <thead>
-	      <tr>
-	        <th>No.</th>
-	        <th>Uraian</th>
-			<th>Lokasi</th>
-	        <th>Tanggal</th>
-	      </tr>
-	    </thead>
-    	<tbody>
-		<?php
-			$no=1;
-			foreach($data_seminar->result_array() as $ds) {
-		?>
-	      <tr>
-	        <td><?php echo $no; ?></td>
-	        <td><?php echo $ds['uraian']; ?></td>
-	        <td><?php echo $ds['lokasi']; ?></td>
-	        <td><?php echo $ds['tanggal']; ?></td>
-	      </tr>
-	 	<?php $no++; } ?>
-    	</tbody>
-  	</table>
-  	<?php } ?>
+		<tbody>
+			<tr>
+				<td class="text-center">Bahasa Asing yang dikuasai</td>
+				<td class="text-center">Lisan</td>
+				<td class="text-center">Tulisan</td>
+			</tr>
+			<tr>
+				<td>Bahasa Inggris</td>
+				<td>
+					<div class="col-md-1">
+						<input type="checkbox" name="" checked>
+					</div>
+					<div class="col-md-4">
+						<label>Active</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" name="">
+					</div>
+					<div class="col-md-4">
+						<label>Passive</label>
+					</div>
+				</td>
+				<td>
+					<div class="col-md-1">
+						<input type="checkbox" name="" checked>
+					</div>
+					<div class="col-md-4">
+						<label>Active</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" name="">
+					</div>
+					<div class="col-md-4">
+						<label>Passive</label>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Bahasa</td>
+				<td>
+					<div class="col-md-1">
+						<input type="checkbox" name="">
+					</div>
+					<div class="col-md-4">
+						<label>Active</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" name="">
+					</div>
+					<div class="col-md-4">
+						<label>Passive</label>
+					</div>
+				</td>
+				<td>
+					<div class="col-md-1">
+						<input type="checkbox" name="" checked>
+					</div>
+					<div class="col-md-4">
+						<label>Active</label>
+					</div>
+					<div class="col-md-1">
+						<input type="checkbox" name="">
+					</div>
+					<div class="col-md-4">
+						<label>Passive</label>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <div class="col-md-12">
 	<div class="col-md-12">
@@ -237,59 +334,28 @@
 	</div>
 </div>
 <div class="col-md-12">
-	<?php if ($data_pelatihan->num_rows() == 0) { ?>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-			    	<th>No.</th>
-			        <th>Nama Pelatihan</th>
-					<th>Lokasi</th>
-			        <th>Tanggal Sertifikat</th>
-			        <th>Jam Pelatihan</th>
-					<th>Negara</th>
-			    </tr>
-			</thead>
-			<tbody>
-				<tr>
-			    	<td></td>
-			        <td></td>
-					<td></td>
-			        <td></td>
-			        <td></td>
-					<td></td>
-			    </tr>
-			</tbody>
-		</table>
-	<?php } else {  ?> 
-		<table class="table table-bordered">
-		    <thead>
-		      <tr>
-		        <th>No.</th>
-		        <th>Nama Pelatihan</th>
-				<th>Lokasi</th>
-		        <th>Tanggal Sertifikat</th>
-		        <th>Jam Pelatihan</th>
-				<th>Negara</th>
-		      </tr>
-		    </thead>
-    		<tbody>
-			<?php
-				$no=1;
-				foreach($data_pelatihan->result_array() as $dpl) {
-			?>
-		      <tr>
-		        <td><?php echo $no; ?></td>
-		        <td><?php echo $dpl['nama_pelatihan']; ?></td>
-		        <td><?php echo $dpl['lokasi']; ?></td>
-		        <td><?php echo $dpl['tanggal_sertifikat']; ?></td>
-		        <td><?php echo $dpl['jam_pelatihan']; ?></td>
-		        <td><?php echo $dpl['negara']; ?></td>
-		      </tr>
-	 		<?php $no++; } ?>
-    		</tbody>
-  		</table>
-	<?php } ?>
-	
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<td class="text-center">Nama Organisasi</td>
+				<td class="text-center">Bidang</td>
+				<td class="text-center">Periode Kepesertaan</td>
+				<td class="text-center">Keterangan</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <div class="col-md-12">
 	<div class="col-md-12">
@@ -297,43 +363,25 @@
 	</div>
 </div>
 <div class="col-md-12">
-	<?php if ($data_penghargaan->num_rows() == 0) { ?>
-		<table class="table table-bordered">
-		    <thead>
-		      <tr>
-		        <th>No.</th>
-		        <th>Nama Penghargaan</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		    	<tr>
-		    		<td></td>
-		    		<td></td>
-		    	</tr>
-		    </tbody>
-		</table>
-	<?php } else { ?> 
-		<table class="table table-bordered">
-			<thead>
-		      <tr>
-		        <th>No.</th>
-		        <th>Nama Penghargaan</th>
-		      </tr>
-    		</thead>
-    		<tbody>
-			<?php
-				$no=1;
-				foreach($data_penghargaan->result_array() as $drj) {
-			?>
-		      <tr>
-		        <td><?php echo $no; ?></td>
-		        <td><?php echo $drj['nama_penghargaan']; ?></td>
-		      </tr>
-	 		<?php $no++; } ?>
-    		</tbody>
-  		</table>
-	<?php } ?>
-	
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<td class="text-center">Prestasi</td>
+				<td class="text-center">Tahun</td>
+				<td class="text-center">Keterangan</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <div class="col-md-12">
 	<div class="col-md-12">
@@ -347,7 +395,7 @@
 </div>
 <div class="col-md-12">
 	
-	<table class="table table-bordered">
+	<table class="table-data-diri">
 		<tbody>
 			<tr>
 				<td class="col-md-3">1. Nama Perusahaan</td>
@@ -369,6 +417,11 @@
 				<td>Gambaran Pekerjaan</td>
 				<td></td>
 			</tr>
+			
+		</tbody>
+	</table>
+	<table class="table-alamat">
+		<tbody>
 			<tr>
 				<td colspan="2">Mohon gambarkan posisi anda saat ini dalam struktur organisasi</td>
 			</tr>
@@ -377,6 +430,14 @@
 					
 				</td>
 			</tr>
+		</tbody>
+	</table>
+	
+</div>
+<div class="col-md-12">
+	
+	<table class="table-data-diri">
+		<tbody>
 			<tr>
 				<td class="col-md-3">2. Nama Perusahaan</td>
 				<td></td>
@@ -397,6 +458,16 @@
 				<td>Alasan Berhenti</td>
 				<td></td>
 			</tr>
+			
+		</tbody>
+	</table>
+
+	
+</div>
+<div class="col-md-12">
+	
+	<table class="table-data-diri">
+		<tbody>
 			<tr>
 				<td class="col-md-3">3. Nama Perusahaan</td>
 				<td></td>
@@ -417,8 +488,11 @@
 				<td>Alasan Berhenti</td>
 				<td></td>
 			</tr>
+			
 		</tbody>
-	</table>	
+	</table>
+
+	
 </div>
 <div class="col-md-12">
 	<div class="col-md-12">
@@ -480,61 +554,61 @@
 	<table class="table table-bordered">
 		<tbody>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td class="text-center">Penyakit</td>
 				<td class="text-center">Pernah dirawat pada (tgl / bln/ thn)</td>
 				<td class="text-center">Keterangan</td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>Jantung</td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>Hipertensi</td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>Diabetes</td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>Hepatitis</td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>Kanker</td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>TBC</td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>Asma</td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>AIDS</td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>Penyakit Lainnya</td>
 				<td></td>
 				<td></td>
@@ -616,12 +690,12 @@
 	<table class="table-data-diri">
 		<tbody>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>Ketersediaan Anda perihal</td>
 				<td>Keterangan</td>
 			</tr>
 			<tr>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 				<td>melakukan perjalanan dinas</td>
 				<td></td>
 			</tr>		
@@ -631,23 +705,23 @@
 		<tbody>
 			<tr>
 				<td>Apakah anda memiliki keluarga, kerabat, atau teman yang bekerja di YBPI? sebutkan?</td>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 			</tr>
 			<tr>
 				<td>Apakah anda pernah melamar ke YBPI sebelumnya?, jika ya, kapan dan untuk posisi apa?</td>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 			</tr>		
 			<tr>
 				<td>Apakah Anda pernah terlibat dengan pihak Kepolisian berkaitan dengan isu pelanggaran kriminal, persidangan atau pelanggaran perdata?</td>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 			</tr>
 			<tr>
 				<td>Apakah Anda memiliki kepemilikan atau keterikatan dengan perusahaan lain?</td>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 			</tr>	
 			<tr>
 				<td>Jika Anda diterima, kapan Anda dapat mulai bekerja?</td>
-				<td></td>
+				<td><input type="checkbox" name=""></td>
 			</tr>
 		</tbody>
 	</table>

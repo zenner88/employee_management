@@ -21,7 +21,7 @@ class kenaikan_pangkat extends CI_Controller {
 			
 			if($this->session->userdata('id_satuan_kerja')=="Semua")
 			{
-				$d['data_pegawai'] = $this->db->query("SELECT a.nip, a.nama_pegawai, b.nama_jabatan, c.uraian, c.golongan, d.golongan AS gol,d.uraian AS ura,a.tanggal_sk_pangkat
+				$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, b.nama_jabatan, c.uraian, c.golongan, d.golongan AS gol,d.uraian AS ura,a.tanggal_sk_pangkat
 				FROM tbl_data_pegawai a
 				INNER JOIN tbl_master_jabatan  b ON a.id_jabatan    = b.id_jabatan
 				INNER JOIN tbl_master_golongan c ON a.id_golongan   = c.id_golongan
@@ -30,7 +30,7 @@ class kenaikan_pangkat extends CI_Controller {
 				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 				$this->load->view('dashboard_admin/laporan/kenaikan_pangkat/home',$d);
 			} else {
-				$d['data_pegawai'] = $this->db->query("SELECT a.nip, a.nama_pegawai, b.nama_jabatan, c.uraian, c.golongan, d.golongan AS gol,d.uraian AS ura, a.tanggal_sk_pangkat FROM tbl_data_pegawai a
+				$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, b.nama_jabatan, c.uraian, c.golongan, d.golongan AS gol,d.uraian AS ura, a.tanggal_sk_pangkat FROM tbl_data_pegawai a
 				INNER JOIN tbl_master_jabatan  b ON a.id_jabatan    = b.id_jabatan
 				INNER JOIN tbl_master_golongan c ON a.id_golongan   = c.id_golongan
 				INNER JOIN tbl_master_golongan d ON c.next   		= d.id_golongan WHERE a.tanggal_sk_pangkat LIKE '%".$this->session->userdata('id_satuan_kerja')."%'

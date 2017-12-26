@@ -66,14 +66,23 @@ class Data_Keluarga extends CI_Controller {
 				$d['id_param'] = $dt->id_data_keluarga;
 				$d['id_pegawai'] = $dt->id_pegawai; 
 				$d['nama_anggota_keluarga'] = $dt->nama_anggota_keluarga; 
-				$d['tanggal_lahir'] = $dt->tanggal_lahir; 
+				$d['tanggal_lahir'] = date("Y-m-d", strtotime($dt->tanggal_lahir)); 
 				$d['status_kawin'] = $dt->status_kawin; 
-				$d['tanggal_nikah'] = $dt->tanggal_nikah; 
+				$d['tanggal_nikah'] = date("Y-m-d", strtotime($dt->tanggal_nikah)); 
 				$d['uraian'] = $dt->uraian; 
-				$d['tanggal_cerai_meninggal'] = $dt->tanggal_cerai_meninggal; 
+				if ($dt->tanggal_cerai_meninggal == "1970-01-01" ||  $d['tanggal_cerai_meninggal'] == "0000-00-00") {
+				 	$d['tanggal_cerai_meninggal'] = '';
+				} else {
+					$d['tanggal_cerai_meninggal'] = date("Y-m-d", strtotime($dt->tanggal_cerai_meninggal));
+				} 
 				$d['pekerjaan'] = $dt->pekerjaan; 
 			}
 			$d['st'] = "edit";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			
 			$this->load->view('dashboard_admin/master/data_keluarga/input',$d);
 		}
@@ -95,13 +104,23 @@ class Data_Keluarga extends CI_Controller {
 				$d['id_param'] = $dt->id_data_keluarga;
 				$d['id_pegawai'] = $dt->id_pegawai; 
 				$d['nama_anggota_keluarga'] = $dt->nama_anggota_keluarga; 
-				$d['tanggal_lahir'] = $dt->tanggal_lahir; 
+				$d['tanggal_lahir'] = date("Y-m-d", strtotime($dt->tanggal_lahir)); 
 				$d['status_kawin'] = $dt->status_kawin; 
-				$d['tanggal_nikah'] = $dt->tanggal_nikah; 
+				$d['tanggal_nikah'] = date("Y-m-d", strtotime($dt->tanggal_nikah)); 
 				$d['uraian'] = $dt->uraian; 
-				$d['tanggal_cerai_meninggal'] = $dt->tanggal_cerai_meninggal; 
+				//$d['tanggal_cerai_meninggal'] = date("Y-m-d", strtotime($dt->tanggal_cerai_meninggal));
+				if ($dt->tanggal_cerai_meninggal == "1970-01-01" ||  $d['tanggal_cerai_meninggal'] == "0000-00-00") {
+				 	$d['tanggal_cerai_meninggal'] = '';
+				} else {
+					$d['tanggal_cerai_meninggal'] = date("Y-m-d", strtotime($dt->tanggal_cerai_meninggal));
+				} 
 				$d['pekerjaan'] = $dt->pekerjaan; 
 			}
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$d['st'] = "edit";
 			
 			$this->load->view('dashboard_admin/master/data_keluarga/detail',$d);
@@ -116,8 +135,13 @@ class Data_Keluarga extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$d['id_param'] = "";
-			$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+			$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 			$d['nama_anggota_keluarga'] = "";
 			$d['tanggal_lahir'] = "";
 			$d['status_kawin'] = "";
@@ -140,7 +164,7 @@ class Data_Keluarga extends CI_Controller {
 		{
 			$id['id_data_keluarga'] = $this->uri->segment(3);
 			$this->db->delete("tbl_data_keluarga",$id);
-			header('location:'.base_url().'data_keluarga/index/'.$this->session->userdata("kode_pegawai").'');
+			header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 		}
 		else
 		{
@@ -158,7 +182,7 @@ class Data_Keluarga extends CI_Controller {
 			$this->form_validation->set_rules('status_kawin', 'Status Kawin', 'trim|required');
 			$this->form_validation->set_rules('tanggal_nikah', 'Tanggal Nikah', 'trim|required');
 			$this->form_validation->set_rules('uraian', 'Uraian', 'trim|required');
-			$this->form_validation->set_rules('tanggal_cerai_meninggal', 'Tanggal Cerai/Meninggal', 'trim|required');
+			//$this->form_validation->set_rules('tanggal_cerai_meninggal', 'Tanggal Cerai/Meninggal', 'trim|required');
 			$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'trim|required');
 			
 			$id['id_data_keluarga'] = $this->input->post("id_param");
@@ -188,7 +212,7 @@ class Data_Keluarga extends CI_Controller {
 				else if($st=="tambah")
 				{
 					$d['id_param'] = "";
-					$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+					$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 					$d['nama_anggota_keluarga'] = "";
 					$d['tanggal_lahir'] = "";
 					$d['status_kawin'] = "";
@@ -207,32 +231,32 @@ class Data_Keluarga extends CI_Controller {
 				{
 					$upd['id_pegawai'] = $this->input->post("id_pegawai");
 					$upd['nama_anggota_keluarga'] = $this->input->post("nama_anggota_keluarga");
-					$upd['tanggal_lahir'] = $this->input->post("tanggal_lahir");
+					$upd['tanggal_lahir'] = date("Y-m-d", strtotime($this->input->post("tanggal_lahir")));
 					$upd['status_kawin'] = $this->input->post("status_kawin");
-					$upd['tanggal_nikah'] = $this->input->post("tanggal_nikah");
+					$upd['tanggal_nikah'] = date("Y-m-d", strtotime($this->input->post("tanggal_nikah")));
 					$upd['uraian'] = $this->input->post("uraian");
-					$upd['tanggal_cerai_meninggal'] = $this->input->post("tanggal_cerai_meninggal");
+					$upd['tanggal_cerai_meninggal'] = date("Y-m-d", strtotime($this->input->post("tanggal_cerai_meninggal")));
 					$upd['pekerjaan'] = $this->input->post("pekerjaan");
 					
 					$this->db->update("tbl_data_keluarga",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 				else if($st=="tambah")
 				{
 					$in['id_pegawai'] = $this->input->post("id_pegawai");
 					$in['nama_anggota_keluarga'] = $this->input->post("nama_anggota_keluarga");
-					$in['tanggal_lahir'] = $this->input->post("tanggal_lahir");
+					$in['tanggal_lahir'] = date("Y-m-d", strtotime($this->input->post("tanggal_lahir")));
 					$in['status_kawin'] = $this->input->post("status_kawin");
-					$in['tanggal_nikah'] = $this->input->post("tanggal_nikah");
+					$in['tanggal_nikah'] = date("Y-m-d", strtotime($this->input->post("tanggal_nikah")));
 					$in['uraian'] = $this->input->post("uraian");
-					$in['tanggal_cerai_meninggal'] = $this->input->post("tanggal_cerai_meninggal");
+					$in['tanggal_cerai_meninggal'] = date("Y-m-d", strtotime($this->input->post("tanggal_cerai_meninggal")));
 					$in['pekerjaan'] = $this->input->post("pekerjaan");
 					
 					$this->db->insert("tbl_data_keluarga",$in);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 			

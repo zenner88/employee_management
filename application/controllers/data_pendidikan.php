@@ -20,7 +20,7 @@ class Data_Pendidikan extends CI_Controller {
 			
 			$id['kode_pegawai'] = $this->uri->segment(3);
 			$this->session->set_userdata($id);
-			$kode['id_pegawai'] = $this->session->userdata('kode_pegawai');
+			$kode['id_pegawai'] = $this->session->userdata('id_pegawai');
 			
 			$page=$this->uri->segment(4);
 			$limit=$this->config->item('limit_data');
@@ -72,12 +72,17 @@ class Data_Pendidikan extends CI_Controller {
 				$d['sekolah'] = $dt->sekolah; 
 				$d['tempat_sekolah'] = $dt->tempat_sekolah; 
 				$d['nomor_sttb'] = $dt->nomor_sttb; 
-				$d['tanggal_sttb'] = $dt->tanggal_sttb; 
-				$d['tanggal_lulus'] = $dt->tanggal_lulus; 
+				$d['tanggal_sttb'] = date("Y-m-d", strtotime($dt->tanggal_sttb)); 
+				$d['tanggal_lulus'] = date("Y-m-d", strtotime($dt->tanggal_lulus)); 
 				$d['foto'] = $dt->foto; 
 				
 			}
 			$d['st'] = "edit";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			
 			$this->load->view('dashboard_admin/master/data_pendidikan/input',$d);
 		}
@@ -105,12 +110,17 @@ class Data_Pendidikan extends CI_Controller {
 				$d['sekolah'] = $dt->sekolah; 
 				$d['tempat_sekolah'] = $dt->tempat_sekolah; 
 				$d['nomor_sttb'] = $dt->nomor_sttb; 
-				$d['tanggal_sttb'] = $dt->tanggal_sttb; 
-				$d['tanggal_lulus'] = $dt->tanggal_lulus; 
+				$d['tanggal_sttb'] = date("Y-m-d", strtotime($dt->tanggal_sttb)); 
+				$d['tanggal_lulus'] = date("Y-m-d", strtotime($dt->tanggal_lulus)); 
 				$d['foto'] = $dt->foto; 
 				
 			}
 			$d['st'] = "edit";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			
 			$this->load->view('dashboard_admin/master/data_pendidikan/detail',$d);
 		}
@@ -125,7 +135,7 @@ class Data_Pendidikan extends CI_Controller {
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
 			$d['id_param'] = "";
-			$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+			$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 			$d['tingkat_pendidikan'] = ""; 
 			$d['jurusan'] = "";
 			$d['uraian'] = "";
@@ -137,7 +147,11 @@ class Data_Pendidikan extends CI_Controller {
 			$d['tanggal_lulus'] = "";
 			$d['foto'] = "";			
 			$d['st'] = "tambah";
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master/data_pendidikan/input',$d);
 		}
 		else
@@ -152,7 +166,7 @@ class Data_Pendidikan extends CI_Controller {
 		{
 			$id['id_pendidikan'] = $this->uri->segment(3);
 			$this->db->delete("tbl_data_pendidikan",$id);
-			header('location:'.base_url().'data_pendidikan/index/'.$this->session->userdata("kode_pegawai").'');
+			header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 		}
 		else
 		{
@@ -235,8 +249,8 @@ class Data_Pendidikan extends CI_Controller {
 					$upd['sekolah'] =  $this->input->post("sekolah");
 					$upd['tempat_sekolah'] =  $this->input->post("tempat_sekolah");
 					$upd['nomor_sttb'] = $this->input->post("nomor_sttb");
-					$upd['tanggal_sttb'] =  $this->input->post("tanggal_sttb");
-					$upd['tanggal_lulus'] = $this->input->post("tanggal_lulus");
+					$upd['tanggal_sttb'] =  date("Y-m-d", strtotime($this->input->post("tanggal_sttb")));
+					$upd['tanggal_lulus'] = date("Y-m-d", strtotime($this->input->post("tanggal_lulus")));
 					$upd['foto'] = $_FILES['userfile']['name'];
 					
 					
@@ -331,7 +345,7 @@ class Data_Pendidikan extends CI_Controller {
 					}
 					$this->db->update("tbl_data_pendidikan",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 				else if($st=="tambah")
@@ -344,8 +358,8 @@ header('location:'.base_url().' ');
 					$in['sekolah'] =  $this->input->post("sekolah");
 					$in['tempat_sekolah'] =  $this->input->post("tempat_sekolah");
 					$in['nomor_sttb'] = $this->input->post("nomor_sttb");
-					$in['tanggal_sttb'] =  $this->input->post("tanggal_sttb");
-					$in['tanggal_lulus'] = $this->input->post("tanggal_lulus");
+					$in['tanggal_sttb'] =  date("Y-m-d", strtotime($this->input->post("tanggal_sttb")));
+					$in['tanggal_lulus'] = date("Y-m-d", strtotime($this->input->post("tanggal_lulus")));
 					
 					if(!empty($_FILES['userfile']['name']))
 					{
@@ -438,7 +452,7 @@ header('location:'.base_url().' ');
 					}
 					$this->db->insert("tbl_data_pendidikan",$in);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 			

@@ -79,7 +79,11 @@ class Data_Gaji_Pokok extends CI_Controller {
 			}
 			$d['st'] = "edit";
 			$d['golongan'] = $this->db->get("tbl_master_golongan");
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master/data_gaji_pokok/input',$d);
 		}
 		else
@@ -111,7 +115,11 @@ class Data_Gaji_Pokok extends CI_Controller {
 			}
 			$d['st'] = "edit";
 			$d['golongan'] = $this->db->get("tbl_master_golongan");
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master/data_gaji_pokok/detail',$d);
 		}
 		else
@@ -125,7 +133,7 @@ class Data_Gaji_Pokok extends CI_Controller {
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
 			$d['id_param'] = "";
-			$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+			$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 			$d['id_golongan'] = "";
 			$d['nomor_sk'] = "";
 			$d['tanggal_sk'] = "";
@@ -138,7 +146,11 @@ class Data_Gaji_Pokok extends CI_Controller {
 			
 			$d['st'] = "tambah";
 			$d['golongan'] = $this->db->get("tbl_master_golongan");
-			
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$this->load->view('dashboard_admin/master/data_gaji_pokok/input',$d);
 		}
 		else
@@ -153,7 +165,7 @@ class Data_Gaji_Pokok extends CI_Controller {
 		{
 			$id['id_gaji_pokok'] = $this->uri->segment(3);
 			$this->db->delete("tbl_data_gaji_pokok",$id);
-			header('location:'.base_url().'data_gaji_pokok/index/'.$this->session->userdata("kode_pegawai").'');
+			header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 		}
 		else
 		{
@@ -206,7 +218,7 @@ class Data_Gaji_Pokok extends CI_Controller {
 				else if($st=="tambah")
 				{
 					$d['id_param'] = "";
-					$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+					$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 					$d['id_golongan'] = "";
 					$d['nomor_sk'] = "";
 					$d['tanggal_sk'] = "";
@@ -229,18 +241,18 @@ class Data_Gaji_Pokok extends CI_Controller {
 					$upd['id_pegawai'] = $this->input->post("id_pegawai");
 					$upd['id_golongan'] = $this->input->post("id_golongan");
 					$upd['nomor_sk'] = $this->input->post("nomor_sk");
-					$upd['tanggal_sk'] = $this->input->post("tanggal_sk");
+					$upd['tanggal_sk'] = date("Y-m-d", strtotime($this->input->post("tanggal_sk")));
 					$upd['dasar_perubahan'] = $this->input->post("dasar_perubahan");
 					$upd['gaji_pokok'] = $this->input->post("gaji_pokok");
-					$upd['tanggal_mulai'] = $this->input->post("tanggal_mulai");
-					$upd['tanggal_selesai'] = $this->input->post("tanggal_selesai");
+					$upd['tanggal_mulai'] = date("Y-m-d", strtotime($this->input->post("tanggal_mulai")));
+					$upd['tanggal_selesai'] = date("Y-m-d", strtotime($this->input->post("tanggal_selesai")));
 					$upd['masa_kerja'] = $this->input->post("masa_kerja");
 					$upd['pejabat_menetapkan'] = $this->input->post("pejabat_menetapkan");
 					
 					
 					$this->db->update("tbl_data_gaji_pokok",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 				else if($st=="tambah")
@@ -248,17 +260,17 @@ header('location:'.base_url().' ');
 					$in['id_pegawai'] = $this->input->post("id_pegawai");
 					$in['id_golongan'] = $this->input->post("id_golongan");
 					$in['nomor_sk'] = $this->input->post("nomor_sk");
-					$in['tanggal_sk'] = $this->input->post("tanggal_sk");
+					$in['tanggal_sk'] = date("Y-m-d", strtotime($this->input->post("tanggal_sk")));
 					$in['dasar_perubahan'] = $this->input->post("dasar_perubahan");
 					$in['gaji_pokok'] = $this->input->post("gaji_pokok");
-					$in['tanggal_mulai'] = $this->input->post("tanggal_mulai");
-					$in['tanggal_selesai'] = $this->input->post("tanggal_selesai");
+					$in['tanggal_mulai'] = date("Y-m-d", strtotime($this->input->post("tanggal_mulai")));
+					$in['tanggal_selesai'] = date("Y-m-d", strtotime($this->input->post("tanggal_selesai")));
 					$in['masa_kerja'] = $this->input->post("masa_kerja");
 					$in['pejabat_menetapkan'] = $this->input->post("pejabat_menetapkan");
 					
 					$this->db->insert("tbl_data_gaji_pokok",$in);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 			

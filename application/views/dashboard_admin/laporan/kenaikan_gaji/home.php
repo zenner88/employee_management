@@ -52,11 +52,7 @@
         <td><?php echo $dp['nama_pegawai']; ?></td>
         <td><?php echo $dp['nama_jabatan']; ?></td>
         <td><?php echo $dp['uraian']; ?> <?php echo $dp['golongan']; ?></td>
-        <td><?php 
-    $awal = $dp['SUBSTRING(tanggal_sk,-4)'];
-  $tambah = 2;
-  $next = $awal+$tambah;
-    echo $dp['LEFT(f.tanggal_sk, CHAR_LENGTH(tanggal_sk)-5)']; ?>&nbsp;<?php echo $next; ?>
+        <td>
         </td>
       </tr>
    <?php

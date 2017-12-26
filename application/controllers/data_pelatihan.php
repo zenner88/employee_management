@@ -72,12 +72,17 @@ class Data_Pelatihan extends CI_Controller {
 				$d['id_master_pelatihan'] = $dt->id_master_pelatihan; 
 				$d['uraian'] = $dt->uraian; 
 				$d['lokasi'] = $dt->lokasi; 
-				$d['tanggal_sertifikat'] = $dt->tanggal_sertifikat; 
+				$d['tanggal_sertifikat'] = date("Y-m-d", strtotime($dt->tanggal_sertifikat)); 
 				$d['jam_pelatihan'] = $dt->jam_pelatihan; 
 				$d['negara'] = $dt->negara; 
 				$d['foto'] = $dt->foto; 				
 			}
 			$d['st'] = "edit";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$d['mst_lokasi'] = $this->db->get("tbl_master_lokasi_pelatihan");
 			$d['mst_pelatihan'] = $this->db->get("tbl_master_pelatihan");
 			
@@ -103,7 +108,7 @@ class Data_Pelatihan extends CI_Controller {
 				$d['id_master_pelatihan'] = $dt->id_master_pelatihan; 
 				$d['uraian'] = $dt->uraian; 
 				$d['lokasi'] = $dt->lokasi; 
-				$d['tanggal_sertifikat'] = $dt->tanggal_sertifikat; 
+				$d['tanggal_sertifikat'] = date("Y-m-d", strtotime($dt->tanggal_sertifikat)); 
 				$d['jam_pelatihan'] = $dt->jam_pelatihan; 
 				$d['negara'] = $dt->negara; 
 				$d['foto'] = $dt->foto; 				
@@ -112,6 +117,11 @@ class Data_Pelatihan extends CI_Controller {
 			$d['mst_lokasi'] = $this->db->get("tbl_master_lokasi_pelatihan");
 			$d['mst_lokasi'] = $this->db->get("tbl_master_lokasi_pelatihan");
 			$d['mst_pelatihan'] = $this->db->get("tbl_master_pelatihan");
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			
 			$this->load->view('dashboard_admin/master/data_pelatihan/detail',$d);
 		}
@@ -126,7 +136,7 @@ class Data_Pelatihan extends CI_Controller {
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
 			$d['id_param'] = "";
-			$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+			$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 			$d['id_master_pelatihan'] = "";
 			$d['uraian'] = "";
 			$d['lokasi'] = "";
@@ -138,6 +148,11 @@ class Data_Pelatihan extends CI_Controller {
 			$d['st'] = "tambah";
 			$d['mst_pelatihan'] = $this->db->get("tbl_master_pelatihan");
 			$d['mst_lokasi'] = $this->db->get("tbl_master_lokasi_pelatihan");
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			
 			$this->load->view('dashboard_admin/master/data_pelatihan/input',$d);
 		}
@@ -153,7 +168,7 @@ class Data_Pelatihan extends CI_Controller {
 		{
 			$id['id_pelatihan'] = $this->uri->segment(3);
 			$this->db->delete("tbl_data_pelatihan",$id);
-			header('location:'.base_url().'data_pelatihan/index/'.$this->session->userdata("kode_pegawai").'');
+			header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 		}
 		else
 		{
@@ -202,7 +217,7 @@ class Data_Pelatihan extends CI_Controller {
 				else if($st=="tambah")
 				{
 					$d['id_param'] = "";
-					$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+					$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 					$d['id_master_pelatihan'] = "";
 					$d['uraian'] = "";
 					$d['lokasi'] = "";
@@ -227,7 +242,7 @@ class Data_Pelatihan extends CI_Controller {
 					$upd['id_master_pelatihan'] = $this->input->post("id_master_pelatihan");
 					$upd['uraian'] = $this->input->post("uraian");
 					$upd['lokasi'] = $this->input->post("lokasi");
-					$upd['tanggal_sertifikat'] = $this->input->post("tanggal_sertifikat");
+					$upd['tanggal_sertifikat'] = date("Y-m-d", strtotime($this->input->post("tanggal_sertifikat")));
 					$upd['jam_pelatihan'] = $this->input->post("jam_pelatihan");
 					$upd['negara'] = $this->input->post("negara");
 					if(!empty($_FILES['userfile']['name']))
@@ -321,7 +336,7 @@ class Data_Pelatihan extends CI_Controller {
 					}
 					$this->db->update("tbl_data_pelatihan",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 				else if($st=="tambah")
@@ -330,7 +345,7 @@ header('location:'.base_url().' ');
 					$in['id_master_pelatihan'] = $this->input->post("id_master_pelatihan");
 					$in['uraian'] = $this->input->post("uraian");
 					$in['lokasi'] = $this->input->post("lokasi");
-					$in['tanggal_sertifikat'] = $this->input->post("tanggal_sertifikat");
+					$in['tanggal_sertifikat'] = date("Y-m-d", strtotime($this->input->post("tanggal_sertifikat")));
 					$in['jam_pelatihan'] = $this->input->post("jam_pelatihan");
 					$in['negara'] = $this->input->post("negara");
 
@@ -425,7 +440,7 @@ header('location:'.base_url().' ');
 					}
 					$this->db->insert("tbl_data_pelatihan",$in);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 			

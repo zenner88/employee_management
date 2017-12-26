@@ -68,12 +68,17 @@ class Data_Riwayat_Pangkat extends CI_Controller {
 				$d['id_golongan'] = $dt->id_golongan; 
 				$d['status'] = $dt->status; 
 				$d['nomor_sk'] = $dt->nomor_sk; 
-				$d['tanggal_sk'] = $dt->tanggal_sk; 
-				$d['tanggal_mulai'] = $dt->tanggal_mulai; 
-				$d['tanggal_selesai'] = $dt->tanggal_selesai; 
+				$d['tanggal_sk'] = date("Y-m-d", strtotime($dt->tanggal_sk)); 
+				$d['tanggal_mulai'] = date("Y-m-d", strtotime($dt->tanggal_mulai)); 
+				$d['tanggal_selesai'] = date("Y-m-d", strtotime($dt->tanggal_selesai)); 
 				$d['masa_kerja'] = $dt->masa_kerja; 
 			}
 			$d['st'] = "edit";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$d['golongan'] = $this->db->get("tbl_master_golongan");
 			
 			$this->load->view('dashboard_admin/master/data_riwayat_pangkat/input',$d);
@@ -98,12 +103,17 @@ class Data_Riwayat_Pangkat extends CI_Controller {
 				$d['id_golongan'] = $dt->id_golongan; 
 				$d['status'] = $dt->status; 
 				$d['nomor_sk'] = $dt->nomor_sk; 
-				$d['tanggal_sk'] = $dt->tanggal_sk; 
-				$d['tanggal_mulai'] = $dt->tanggal_mulai; 
-				$d['tanggal_selesai'] = $dt->tanggal_selesai; 
+				$d['tanggal_sk'] = date("Y-m-d", strtotime($dt->tanggal_sk)); 
+				$d['tanggal_mulai'] = date("Y-m-d", strtotime($dt->tanggal_mulai)); 
+				$d['tanggal_selesai'] = date("Y-m-d", strtotime($dt->tanggal_selesai)); 
 				$d['masa_kerja'] = $dt->masa_kerja; 
 			}
 			$d['st'] = "edit";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$d['golongan'] = $this->db->get("tbl_master_golongan");
 			
 			$this->load->view('dashboard_admin/master/data_riwayat_pangkat/detail',$d);
@@ -119,7 +129,7 @@ class Data_Riwayat_Pangkat extends CI_Controller {
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
 			$d['id_param'] = "";
-			$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+			$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 			$d['id_golongan'] = "";
 			$d['status'] = "";
 			$d['nomor_sk'] = "";
@@ -128,6 +138,11 @@ class Data_Riwayat_Pangkat extends CI_Controller {
 			$d['tanggal_selesai'] = "";
 			$d['masa_kerja'] = "";
 			$d['st'] = "tambah";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			$d['golongan'] = $this->db->get("tbl_master_golongan");
 			
 			$this->load->view('dashboard_admin/master/data_riwayat_pangkat/input',$d);
@@ -144,7 +159,7 @@ class Data_Riwayat_Pangkat extends CI_Controller {
 		{
 			$id['id_riwayat_pangkat'] = $this->uri->segment(3);
 			$this->db->delete("tbl_data_riwayat_pangkat",$id);
-			header('location:'.base_url().'data_riwayat_pangkat/index/'.$this->session->userdata("kode_pegawai").'');
+			header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 		}
 		else
 		{
@@ -193,7 +208,7 @@ class Data_Riwayat_Pangkat extends CI_Controller {
 				else if($st=="tambah")
 				{
 					$d['id_param'] = "";
-					$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+					$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 					$d['id_golongan'] = "";
 					$d['status'] = "";
 					$d['nomor_sk'] = "";
@@ -215,14 +230,14 @@ class Data_Riwayat_Pangkat extends CI_Controller {
 					$upd['id_golongan'] = $this->input->post("id_golongan");
 					$upd['status'] = $this->input->post("status");
 					$upd['nomor_sk'] = $this->input->post("nomor_sk");
-					$upd['tanggal_sk'] = $this->input->post("tanggal_sk");
-					$upd['tanggal_mulai'] = $this->input->post("tanggal_mulai");
-					$upd['tanggal_selesai'] = $this->input->post("tanggal_selesai");
+					$upd['tanggal_sk'] = date("Y-m-d", strtotime($this->input->post("tanggal_sk")));
+					$upd['tanggal_mulai'] = date("Y-m-d", strtotime($this->input->post("tanggal_mulai")));
+					$upd['tanggal_selesai'] = date("Y-m-d", strtotime($this->input->post("tanggal_selesai")));
 					$upd['masa_kerja'] = $this->input->post("masa_kerja");
 					
 					$this->db->update("tbl_data_riwayat_pangkat",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 				else if($st=="tambah")
@@ -231,14 +246,14 @@ header('location:'.base_url().' ');
 					$in['id_golongan'] = $this->input->post("id_golongan");
 					$in['status'] = $this->input->post("status");
 					$in['nomor_sk'] = $this->input->post("nomor_sk");
-					$in['tanggal_sk'] = $this->input->post("tanggal_sk");
-					$in['tanggal_mulai'] = $this->input->post("tanggal_mulai");
-					$in['tanggal_selesai'] = $this->input->post("tanggal_selesai");
+					$in['tanggal_sk'] = date("Y-m-d", strtotime($this->input->post("tanggal_sk")));
+					$in['tanggal_mulai'] = date("Y-m-d", strtotime($this->input->post("tanggal_mulai")));
+					$in['tanggal_selesai'] = date("Y-m-d",strtotime($this->input->post("tanggal_selesai")));
 					$in['masa_kerja'] = $this->input->post("masa_kerja");
 					
 					$this->db->insert("tbl_data_riwayat_pangkat",$in);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 			

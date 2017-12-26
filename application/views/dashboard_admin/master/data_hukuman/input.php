@@ -1,40 +1,7 @@
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="<?php echo base_url(); ?>asset/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>asset/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>asset/css/docs.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>asset/css/chosen.css" rel="stylesheet" type="text/css">
-	<style>
-		body{
-			margin:20px;
-			}
-	</style>
+<?php include "application/views/dashboard_admin/home/header.php" ?>
+<div class="container">
 	
-    <script src="<?php echo base_url(); ?>asset/js/jquery-latest.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/application.js"></script>
-    <script src="<?php echo base_url(); ?>asset/js/bootstrap-tooltip.js"></script>
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/sunny/jquery-ui.css" type="text/css" rel="stylesheet"/>	
-	<script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery-ui-1.7.2.custom.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>asset/js/jquery.ui.i18n.all.min.js"></script>
-	<script type="text/javascript">
-	$(function(){
-		$.datepicker.setDefaults($.datepicker.regional['id']);
-		$('#tanggal_sk').datepicker({dateFormat: 'dd MM yy'});
-		$('#tanggal_mulai').datepicker({dateFormat: 'dd MM yy'});
-		$('#tanggal_selesai').datepicker({dateFormat: 'dd MM yy'});
-	});
-	</script>
-  </head>
 
-  <body>
 	<div class="well">
 	<?php if(validation_errors()) { ?>
 	<div class="alert alert-block">
@@ -90,24 +57,36 @@
 		  <div class="control-group">
 			<label class="control-label" for="tanggal_sk">Tanggal SK</label>
 			<div class="controls">
-			  <input type="text" class="span6" name="tanggal_sk" id="tanggal_sk" value="<?php echo $tanggal_sk; ?>" 
-			  placeholder="Tanggal SK">
+				<div class="input-group date" data-provide="datepicker">
+	                <input type="text" class="form-control datepicker" name="tanggal_sk" id="tanggal_sk" value="<?php echo $tanggal_sk; ?>" placeholder="Tanggal SK">
+	                <div class="input-group-addon">
+	                    <span class="glyphicon glyphicon-th"></span>
+	                </div>
+	            </div>
 			</div>
 		  </div>
 		  
 		  <div class="control-group">
 			<label class="control-label" for="tanggal_mulai">Tanggal Mulai</label>
 			<div class="controls">
-			  <input type="text" class="span6" name="tanggal_mulai" id="tanggal_mulai" value="<?php echo $tanggal_mulai; ?>" 
-			  placeholder="Tanggal Mulai">
+				<div class="input-group date" data-provide="datepicker">
+	                <input type="text" class="form-control datepicker" name="tanggal_mulai" id="tanggal_mulai" value="<?php echo $tanggal_mulai; ?>" placeholder="Tanggal Mulai">
+	                <div class="input-group-addon">
+	                    <span class="glyphicon glyphicon-th"></span>
+	                </div>
+	            </div>
 			</div>
 		  </div>
 		  
 		  <div class="control-group">
 			<label class="control-label" for="tanggal_selesai">Tanggal Selesai</label>
 			<div class="controls">
-			  <input type="text" class="span6" name="tanggal_selesai" id="tanggal_selesai" value="<?php echo $tanggal_selesai; ?>" 
-			  placeholder="Tanggal Selesai">
+				<div class="input-group date" data-provide="datepicker">
+	                <input type="text" class="form-control datepicker" name="tanggal_selesai" id="tanggal_selesai" value="<?php echo $tanggal_selesai; ?>" placeholder="Tanggal Selesai">
+	                <div class="input-group-addon">
+	                    <span class="glyphicon glyphicon-th"></span>
+	                </div>
+	            </div>
 			</div>
 		  </div>
 		  
@@ -142,6 +121,7 @@
 			</script>
 		<?php echo form_close(); ?>
 	</div>    
-	
-  </body>
-</html>
+</div>	
+<div class="container">
+<?php include "application/views/dashboard_admin/home/footer.php" ?>	
+</div>

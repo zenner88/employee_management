@@ -79,6 +79,11 @@ class Data_Hukuman extends CI_Controller {
 			}
 			$d['st'] = "edit";
 			$d['mst_hukuman'] = $this->db->get("tbl_master_hukuman");
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			
 			$this->load->view('dashboard_admin/master/data_hukuman/input',$d);
 		}
@@ -110,6 +115,11 @@ class Data_Hukuman extends CI_Controller {
 			}
 			$d['st'] = "edit";
 			$d['mst_hukuman'] = $this->db->get("tbl_master_hukuman");
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			
 			$this->load->view('dashboard_admin/master/data_hukuman/detail',$d);
 		}
@@ -124,7 +134,7 @@ class Data_Hukuman extends CI_Controller {
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
 			$d['id_param'] = "";
-			$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+			$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 			$d['id_master_hukuman'] = "";
 			$d['nomor_sk'] = "";
 			$d['tanggal_sk'] = "";
@@ -136,6 +146,11 @@ class Data_Hukuman extends CI_Controller {
 			
 			$d['st'] = "tambah";
 			$d['mst_hukuman'] = $this->db->get("tbl_master_hukuman");
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
 			
 			$this->load->view('dashboard_admin/master/data_hukuman/input',$d);
 		}
@@ -151,7 +166,7 @@ class Data_Hukuman extends CI_Controller {
 		{
 			$id['id_hukuman'] = $this->uri->segment(3);
 			$this->db->delete("tbl_data_hukuman",$id);
-			header('location:'.base_url().'data_hukuman/index/'.$this->session->userdata("kode_pegawai").'');
+			header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 		}
 		else
 		{
@@ -203,7 +218,7 @@ class Data_Hukuman extends CI_Controller {
 				else if($st=="tambah")
 				{
 					$d['id_param'] = "";
-					$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+					$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 					$d['id_master_hukuman'] = "";
 					$d['nomor_sk'] = "";
 					$d['tanggal_sk'] = "";
@@ -227,16 +242,16 @@ class Data_Hukuman extends CI_Controller {
 					$upd['id_pegawai'] = $this->input->post("id_pegawai");
 					$upd['id_master_hukuman'] = $this->input->post("id_master_hukuman");
 					$upd['nomor_sk'] = $this->input->post("nomor_sk");
-					$upd['tanggal_sk'] = $this->input->post("tanggal_sk");
+					$upd['tanggal_sk'] = date("Y-m-d", strtotime($this->input->post("tanggal_sk")));
 					$upd['uraian'] = $this->input->post("uraian");
-					$upd['tanggal_mulai'] = $this->input->post("tanggal_mulai");
-					$upd['tanggal_selesai'] = $this->input->post("tanggal_selesai");
+					$upd['tanggal_mulai'] = date("Y-m-d", strtotime($this->input->post("tanggal_mulai")));
+					$upd['tanggal_selesai'] = date("Y-m-d", strtotime($this->input->post("tanggal_selesai")));
 					$upd['masa_berlaku'] = $this->input->post("masa_berlaku");
 					$upd['pejabat_menetapkan'] = $this->input->post("pejabat_menetapkan");
 					
 					$this->db->update("tbl_data_hukuman",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 				else if($st=="tambah")
@@ -244,16 +259,16 @@ header('location:'.base_url().' ');
 					$in['id_pegawai'] = $this->input->post("id_pegawai");
 					$in['id_master_hukuman'] = $this->input->post("id_master_hukuman");
 					$in['nomor_sk'] = $this->input->post("nomor_sk");
-					$in['tanggal_sk'] = $this->input->post("tanggal_sk");
+					$in['tanggal_sk'] = date("Y-m-d", strtotime($this->input->post("tanggal_sk")));
 					$in['uraian'] = $this->input->post("uraian");
-					$in['tanggal_mulai'] = $this->input->post("tanggal_mulai");
-					$in['tanggal_selesai'] = $this->input->post("tanggal_selesai");
+					$in['tanggal_mulai'] = date("Y-m-d", strtotime($this->input->post("tanggal_mulai")));
+					$in['tanggal_selesai'] = date("Y-m-d", strtotime($this->input->post("tanggal_selesai")));
 					$in['masa_berlaku'] = $this->input->post("masa_berlaku");
 					$in['pejabat_menetapkan'] = $this->input->post("pejabat_menetapkan");
 					
 					$this->db->insert("tbl_data_hukuman",$in);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 			

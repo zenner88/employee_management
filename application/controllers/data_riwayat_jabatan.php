@@ -79,9 +79,9 @@ class Data_Riwayat_Jabatan extends CI_Controller {
 				$d['id_eselon'] = $dt->id_eselon; 
 				$d['tmt_eselon'] = $dt->tmt_eselon; 
 				$d['nomor_sk'] = $dt->nomor_sk; 
-				$d['tanggal_sk'] = $dt->tanggal_sk; 
-				$d['tanggal_mulai'] = $dt->tanggal_mulai; 
-				$d['tanggal_selesai'] = $dt->tanggal_selesai; 
+				$d['tanggal_sk'] = date("Y-m-d", strtotime($dt->tanggal_sk)); 
+				$d['tanggal_mulai'] = date("Y-m-d", strtotime($dt->tanggal_mulai)); 
+				$d['tanggal_selesai'] = date("Y-m-d", strtotime($dt->tanggal_selesai)); 
 				$d['lokasi'] = $dt->lokasi; 
 			}
 			$d['st'] = "edit";
@@ -89,6 +89,12 @@ class Data_Riwayat_Jabatan extends CI_Controller {
 			$d['mst_unit_kerja'] = $this->db->get("tbl_master_unit_kerja");
 			$d['mst_eselon'] = $this->db->get("tbl_master_eselon");
 			$d['mst_stts_jabatan'] = $this->db->get('tbl_master_status_jabatan');
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
+			$d['golongan'] = $this->db->get("tbl_master_golongan");
 			
 			$this->load->view('dashboard_admin/master/data_riwayat_jabatan/input',$d);
 		}
@@ -117,15 +123,21 @@ class Data_Riwayat_Jabatan extends CI_Controller {
 				$d['id_eselon'] = $dt->id_eselon; 
 				$d['tmt_eselon'] = $dt->tmt_eselon; 
 				$d['nomor_sk'] = $dt->nomor_sk; 
-				$d['tanggal_sk'] = $dt->tanggal_sk; 
-				$d['tanggal_mulai'] = $dt->tanggal_mulai; 
-				$d['tanggal_selesai'] = $dt->tanggal_selesai; 
+				$d['tanggal_sk'] = date("Y-m-d", strtotime($dt->tanggal_sk)); 
+				$d['tanggal_mulai'] = date("Y-m-d", strtotime($dt->tanggal_mulai)); 
+				$d['tanggal_selesai'] = date("Y-m-d", strtotime($dt->tanggal_selesai)); 
 				$d['lokasi'] = $dt->lokasi; 
 			}
 			$d['st'] = "edit";
 			$d['mst_jabatan'] = $this->db->get("tbl_master_jabatan");
 			$d['mst_unit_kerja'] = $this->db->get("tbl_master_unit_kerja");
 			$d['mst_eselon'] = $this->db->get("tbl_master_eselon");
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
+			$d['golongan'] = $this->db->get("tbl_master_golongan");
 			
 			$this->load->view('dashboard_admin/master/data_riwayat_jabatan/detail',$d);
 		}
@@ -140,7 +152,7 @@ class Data_Riwayat_Jabatan extends CI_Controller {
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
 			$d['id_param'] = "";
-			$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+			$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 			$d['status'] = "";
 			$d['penempatan'] = "";
 			$d['id_jabatan'] = "";
@@ -159,6 +171,12 @@ class Data_Riwayat_Jabatan extends CI_Controller {
 			$d['mst_unit_kerja'] = $this->db->get("tbl_master_unit_kerja");
 			$d['mst_eselon'] = $this->db->get("tbl_master_eselon");
 			$d['mst_stts_jabatan'] = $this->db->get('tbl_master_status_jabatan');
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
+			$d['alamat'] = $this->config->item('alamat_instansi');
+			$d['golongan'] = $this->db->get("tbl_master_golongan");
 			
 			$this->load->view('dashboard_admin/master/data_riwayat_jabatan/input',$d);
 		}
@@ -174,7 +192,7 @@ class Data_Riwayat_Jabatan extends CI_Controller {
 		{
 			$id['id_riwayat_jabatan'] = $this->uri->segment(3);
 			$this->db->delete("tbl_data_riwayat_jabatan",$id);
-			header('location:'.base_url().'data_riwayat_jabatan/index/'.$this->session->userdata("kode_pegawai").'');
+			header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 		}
 		else
 		{
@@ -237,7 +255,7 @@ class Data_Riwayat_Jabatan extends CI_Controller {
 				else if($st=="tambah")
 				{
 					$d['id_param'] = "";
-					$d['id_pegawai'] = $this->session->userdata("kode_pegawai");
+					$d['id_pegawai'] = $this->session->userdata("id_pegawai");
 					$d['status'] = "";
 					$d['penempatan'] = "";
 					$d['id_jabatan'] = "";
@@ -273,14 +291,14 @@ class Data_Riwayat_Jabatan extends CI_Controller {
 					$upd['id_eselon'] = $this->input->post("id_eselon");
 					$upd['tmt_eselon'] = $this->input->post("tmt_eselon");
 					$upd['nomor_sk'] = $this->input->post("nomor_sk");
-					$upd['tanggal_sk'] = $this->input->post("tanggal_sk");
-					$upd['tanggal_mulai'] = $this->input->post("tanggal_mulai");
-					$upd['tanggal_selesai'] = $this->input->post("tanggal_selesai");
+					$upd['tanggal_sk'] = date("Y-m-d", strtotime($this->input->post("tanggal_sk")));
+					$upd['tanggal_mulai'] = date("Y-m-d", strtotime($this->input->post("tanggal_mulai")));
+					$upd['tanggal_selesai'] = date("Y-m-d", strtotime($this->input->post("tanggal_selesai")));
 					$upd['lokasi'] = $this->input->post("lokasi");
 					
 					$this->db->update("tbl_data_riwayat_jabatan",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 				else if($st=="tambah")
@@ -294,14 +312,14 @@ header('location:'.base_url().' ');
 					$in['id_eselon'] = $this->input->post("id_eselon");
 					$in['tmt_eselon'] = $this->input->post("tmt_eselon");
 					$in['nomor_sk'] = $this->input->post("nomor_sk");
-					$in['tanggal_sk'] = $this->input->post("tanggal_sk");
-					$in['tanggal_mulai'] = $this->input->post("tanggal_mulai");
-					$in['tanggal_selesai'] = $this->input->post("tanggal_selesai");
+					$in['tanggal_sk'] = date("Y-m-d", strtotime($this->input->post("tanggal_sk")));
+					$in['tanggal_mulai'] = date("Y-m-d", strtotime($this->input->post("tanggal_mulai")));
+					$in['tanggal_selesai'] = date("Y-m-d", strtotime($this->input->post("tanggal_selesai")));
 					$in['lokasi'] = $this->input->post("lokasi");
 					
 					$this->db->insert("tbl_data_riwayat_jabatan",$in);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 			

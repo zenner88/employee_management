@@ -20,7 +20,7 @@ class Data_Penghargaan extends CI_Controller {
 			
 			$id['kode_pegawai'] = $this->uri->segment(3);
 			$this->session->set_userdata($id);
-			$kode['id_pegawai'] = $this->session->userdata('kode_pegawai');
+			$kode['id_pegawai'] = $this->session->userdata('id_pegawai');
 			
 			$page=$this->uri->segment(4);
 			$limit=$this->config->item('limit_data');
@@ -72,10 +72,14 @@ class Data_Penghargaan extends CI_Controller {
 				$d['id_master_penghargaan'] = $dt->id_master_penghargaan; 
 				$d['uraian'] = $dt->uraian; 
 				$d['nomor_sk'] = $dt->nomor_sk; 
-				$d['tanggal_sk'] = $dt->tanggal_sk; 
+				$d['tanggal_sk'] = date("Y-m-d", strtotime($dt->tanggal_sk)); 
 				$d['foto'] = $dt->foto; 								
 			}
 			$d['st'] = "edit";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
 			$d['mst_penghargaan'] = $this->db->get("tbl_master_penghargaan");
 			
 			$this->load->view('dashboard_admin/master/data_penghargaan/input',$d);
@@ -100,10 +104,14 @@ class Data_Penghargaan extends CI_Controller {
 				$d['id_master_penghargaan'] = $dt->id_master_penghargaan; 
 				$d['uraian'] = $dt->uraian; 
 				$d['nomor_sk'] = $dt->nomor_sk; 
-				$d['tanggal_sk'] = $dt->tanggal_sk; 
+				$d['tanggal_sk'] = date("Y-m-d", strtotime($dt->tanggal_sk)); 
 				$d['foto'] = $dt->foto; 								
 			}
 			$d['st'] = "edit";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
 			$d['mst_penghargaan'] = $this->db->get("tbl_master_penghargaan");
 			
 			$this->load->view('dashboard_admin/master/data_penghargaan/detail',$d);
@@ -119,7 +127,7 @@ class Data_Penghargaan extends CI_Controller {
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
 			$d['id_param'] = "";
-			$d['id_pegawai'] =  $this->session->userdata("kode_pegawai");
+			$d['id_pegawai'] =  $this->session->userdata("id_pegawai");
 			$d['id_master_penghargaan'] = "";
 			$d['uraian'] = "";
 			$d['nomor_sk'] = "";
@@ -127,6 +135,10 @@ class Data_Penghargaan extends CI_Controller {
 			$d['foto'] = ""; 							
 			
 			$d['st'] = "tambah";
+			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
+			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
+			$d['instansi'] = $this->config->item('nama_instansi');
+			$d['credit'] = $this->config->item('credit_aplikasi');
 			$d['mst_penghargaan'] = $this->db->get("tbl_master_penghargaan");
 			
 			$this->load->view('dashboard_admin/master/data_penghargaan/input',$d);
@@ -143,7 +155,7 @@ class Data_Penghargaan extends CI_Controller {
 		{
 			$id['id_penghargaan'] = $this->uri->segment(3);
 			$this->db->delete("tbl_data_penghargaan",$id);
-			header('location:'.base_url().'data_penghargaan/index/'.$this->session->userdata("kode_pegawai").'');
+			header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 		}
 		else
 		{
@@ -187,7 +199,7 @@ class Data_Penghargaan extends CI_Controller {
 				else if($st=="tambah")
 				{
 					$d['id_param'] = "";
-					$d['id_pegawai'] =  $this->session->userdata("kode_pegawai");
+					$d['id_pegawai'] =  $this->session->userdata("id_pegawai");
 					$d['id_master_penghargaan'] = "";
 					$d['uraian'] = "";
 					$d['nomor_sk'] = "";
@@ -209,7 +221,7 @@ class Data_Penghargaan extends CI_Controller {
 					$upd['id_master_penghargaan'] = $this->input->post("id_master_penghargaan");
 					$upd['uraian'] = $this->input->post("uraian");
 					$upd['nomor_sk'] = $this->input->post("nomor_sk");
-					$upd['tanggal_sk'] = $this->input->post("tanggal_sk");
+					$upd['tanggal_sk'] = date("Y-m-d", strtotime($this->input->post("tanggal_sk")));
 					if(!empty($_FILES['userfile']['name']))
 					{
 						$acak=rand(00000000000,99999999999);
@@ -301,7 +313,7 @@ class Data_Penghargaan extends CI_Controller {
 					}
 					$this->db->update("tbl_data_penghargaan",$upd,$id);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 				else if($st=="tambah")
@@ -310,7 +322,7 @@ header('location:'.base_url().' ');
 					$in['id_master_penghargaan'] = $this->input->post("id_master_penghargaan");
 					$in['uraian'] = $this->input->post("uraian");
 					$in['nomor_sk'] = $this->input->post("nomor_sk");
-					$in['tanggal_sk'] = $this->input->post("tanggal_sk");
+					$in['tanggal_sk'] = date("Y-m-d", strtotime($this->input->post("tanggal_sk")));
 					
 					if(!empty($_FILES['userfile']['name']))
 					{
@@ -403,7 +415,7 @@ header('location:'.base_url().' ');
 					}
 					$this->db->insert("tbl_data_penghargaan",$in);
 					{
-header('location:'.base_url().' ');
+header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 }
 				}
 			

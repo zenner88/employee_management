@@ -522,7 +522,6 @@
         <th>Status Kawin</th>
         <th>Tanggal Nikah</th>
 		<th>Pekerjaan</th>
-		<th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -538,16 +537,6 @@
         <td><?php echo $dk['status_kawin']; ?></td>
         <td><?php echo $dk['tanggal_nikah']; ?></td>
         <td><?php echo $dk['pekerjaan']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_keluarga/detail/<?php echo $dk['id_data_keluarga']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_keluarga/edit/<?php echo $dk['id_data_keluarga']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_keluarga/hapus/<?php echo $dk['id_data_keluarga']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
       </tr>
 	 <?php
 	 		$no++;
@@ -575,7 +564,6 @@
 		<th>Tanggal Mulai</th>
 		<th>Tanggal Selesai</th>
 		<th>Masa Kerja</th>
-		<th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -593,16 +581,6 @@
         <td><?php echo $drp['tanggal_mulai']; ?></td>
         <td><?php echo $drp['tanggal_selesai']; ?></td>
         <td><?php echo $drp['masa_kerja']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_riwayat_pangkat/detail/<?php echo $drp['id_riwayat_pangkat']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_riwayat_pangkat/edit/<?php echo $drp['id_riwayat_pangkat']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_riwayat_pangkat/hapus/<?php echo $drp['id_riwayat_pangkat']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
       </tr>
 	 <?php
 	 		$no++;
@@ -628,7 +606,6 @@
         <th>Jabatan</th>
         <th>Unit Kerja</th>
 		<th>Pangkat</th>
-		<th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -644,16 +621,7 @@
         <td><?php echo $drj['nama_jabatan']; ?></td>
         <td><?php echo $drj['nama_unit_kerja']; ?></td>
         <td><?php echo $drj['nama_eselon']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_riwayat_jabatan/detail/<?php echo $drj['id_riwayat_jabatan']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_riwayat_jabatan/edit/<?php echo $drj['id_riwayat_jabatan']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_riwayat_jabatan/hapus/<?php echo $drj['id_riwayat_jabatan']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
+		
       </tr>
 	 <?php
 	 		$no++;
@@ -679,9 +647,6 @@
         <th>Teknik/Non Teknik</th>
         <th>Sekolah</th>
 		<th>Tanggal Lulus</th>
-		<th>Aksi</th>
-		<th>Bukti Scan</th>
-
       </tr>
     </thead>
     <tbody>
@@ -697,16 +662,6 @@
         <td><?php echo $dpn['teknik_non_teknik']; ?></td>
         <td><?php echo $dpn['sekolah']; ?></td>
         <td><?php echo $dpn['tanggal_lulus']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_pendidikan/detail/<?php echo $dpn['id_pendidikan']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_pendidikan/edit/<?php echo $dpn['id_pendidikan']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_pendidikan/hapus/<?php echo $dpn['id_pendidikan']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
       </tr>
 	 <?php
 	 		$no++;
@@ -733,7 +688,6 @@
         <th>Tanggal Sertifikat</th>
         <th>Jam Pelatihan</th>
 		<th>Negara</th>
-		<th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -749,16 +703,6 @@
         <td><?php echo $dpl['tanggal_sertifikat']; ?></td>
         <td><?php echo $dpl['jam_pelatihan']; ?></td>
         <td><?php echo $dpl['negara']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_pelatihan/detail/<?php echo $dpl['id_pelatihan']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_pelatihan/edit/<?php echo $dpl['id_pelatihan']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_pelatihan/hapus/<?php echo $dpl['id_pelatihan']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
       </tr>
 	 <?php
 	 		$no++;
@@ -782,7 +726,6 @@
         <th>Nama Penghargaan</th>
 		<th>Nomor SK</th>
         <th>Tanggal SK</th>
-		<th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -796,16 +739,6 @@
         <td><?php echo $drj['nama_penghargaan']; ?></td>
         <td><?php echo $drj['nomor_sk']; ?></td>
         <td><?php echo $drj['tanggal_sk']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_penghargaan/detail/<?php echo $drj['id_penghargaan']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_penghargaan/edit/<?php echo $drj['id_penghargaan']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_penghargaan/hapus/<?php echo $drj['id_penghargaan']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
       </tr>
 	 <?php
 	 		$no++;
@@ -829,7 +762,6 @@
         <th>Uraian</th>
 		<th>Lokasi</th>
         <th>Tanggal</th>
-		<th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -843,16 +775,6 @@
         <td><?php echo $ds['uraian']; ?></td>
         <td><?php echo $ds['lokasi']; ?></td>
         <td><?php echo $ds['tanggal']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_seminar/detail/<?php echo $ds['id_seminar']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_seminar/edit/<?php echo $ds['id_seminar']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_seminar/hapus/<?php echo $ds['id_seminar']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
       </tr>
 	 <?php
 	 		$no++;
@@ -876,8 +798,6 @@
         <th>Uraian</th>
 		<th>Lokasi</th>
         <th>Tanggal</th>
-		<th>Aksi</th>
-
       </tr>
     </thead>
     <tbody>
@@ -891,16 +811,6 @@
         <td><?php echo $do['uraian']; ?></td>
         <td><?php echo $do['lokasi']; ?></td>
         <td><?php echo $do['tanggal']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_organisasi/detail/<?php echo $do['id_organisasi']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_riwayat_pangkat/edit/<?php echo $do['id_organisasi']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_riwayat_pangkat/hapus/<?php echo $do['id_organisasi']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
       </tr>
 	 <?php
 	 		$no++;
@@ -927,7 +837,6 @@
         <th>Gaji Pokok</th>
 		<th>Tanggal Mulai</th>
 		<th>Tanggal Selesai</th>
-		<th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -944,16 +853,6 @@
         <td><?php echo "Rp. ".number_format($dgp['gaji_pokok'],2,',','.'); ?></td>
         <td><?php echo $dgp['tanggal_mulai']; ?></td>
         <td><?php echo $dgp['tanggal_selesai']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_gaji_pokok/detail/<?php echo $dgp['id_gaji_pokok']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_gaji_pokok/edit/<?php echo $dgp['id_gaji_pokok']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_gaji_pokok/hapus/<?php echo $dgp['id_gaji_pokok']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
       </tr>
 	 <?php
 	 		$no++;
@@ -980,7 +879,6 @@
         <th>Tanggal Mulai</th>
 		<th>Tanggal Selesai</th>
 		<th>Masa Berlaku</th>
-		<th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -997,16 +895,6 @@
         <td><?php echo $dh['tanggal_mulai']; ?></td>
         <td><?php echo $dh['tanggal_selesai']; ?></td>
         <td><?php echo $dh['masa_berlaku']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_hukuman/detail/<?php echo $dh['id_hukuman']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_hukuman/edit/<?php echo $dh['id_hukuman']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_hukuman/hapus/<?php echo $dh['id_hukuman']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
       </tr>
 	 <?php
 	 		$no++;
@@ -1032,7 +920,6 @@
 		<th>Atasan</th>
         <th>Penilai</th>
         <th>Mengetahui</th>
-		<th>Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -1048,16 +935,6 @@
         <td><?php echo $dp3['atasan']; ?></td>
         <td><?php echo $dp3['penilai']; ?></td>
         <td><?php echo $dp3['mengetahui']; ?></td>
-		<td>
-	        <div class="btn-group">
-	          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_dp3/detail/<?php echo $dp3['id_dp3']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
-	          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="<?php echo base_url(); ?>data_dp3/edit/<?php echo $dp3['id_dp3']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
-	            <li><a href="<?php echo base_url(); ?>data_dp3/hapus/<?php echo $dp3['id_dp3']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
-	          </ul>
-	        </div><!-- /btn-group -->
-		</td>
       </tr>
 	 <?php
 	 		$no++;
