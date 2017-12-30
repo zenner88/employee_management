@@ -58,7 +58,7 @@
 			<label class="control-label" for="tanggal_sk">Tanggal SK</label>
 			<div class="controls">
 			  	<div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal_sk" id="tanggal_sk" value="<?php echo $tanggal_sk; ?>" placeholder="Tanggal SK">
+	                <input type="text" class="form-control datepicker" name="tanggal_sk" id="tanggal_sk" value="<?php echo $tanggal_sk; ?>" placeholder="Tanggal SK" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>
@@ -70,7 +70,7 @@
 			<label class="control-label" for="tanggal_mulai">Tanggal Mulai</label>
 			<div class="controls">
 			  	<div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal_mulai" id="tanggal_mulai" value="<?php echo $tanggal_mulai; ?>"  placeholder="Tanggal Mulai">
+	                <input type="text" class="form-control datepicker" name="tanggal_mulai" id="tanggal_mulai" value="<?php echo $tanggal_mulai; ?>"  placeholder="Tanggal Mulai" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>
@@ -82,7 +82,7 @@
 			<label class="control-label" for="tanggal_selesai">Tanggal Selesai</label>
 			<div class="controls">
 				<div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal_selesai" id="tanggal_selesai" value="<?php echo $tanggal_selesai; ?>"  placeholder="Tanggal Selesai">
+	                <input type="text" class="form-control datepicker" name="tanggal_selesai" id="tanggal_selesai" value="<?php echo $tanggal_selesai; ?>"  placeholder="Tanggal Selesai" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>

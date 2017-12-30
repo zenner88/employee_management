@@ -24,7 +24,7 @@
 			<label class="control-label" for="tanggal_lahir">Tanggal Lahir</label>
 			<div class="controls">
 				<div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>" placeholder="Tanggal Lahir">
+	                <input type="text" class="form-control datepicker" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>" placeholder="Tanggal Lahir" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>
@@ -44,7 +44,7 @@
 			<label class="control-label" for="tanggal_nikah">Tanggal Menikah</label>
 			<div class="controls">
 				<div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal_nikah" id="tanggal_nikah" value="<?php echo $tanggal_nikah; ?>" placeholder="Tanggal Menikah">
+	                <input type="text" class="form-control datepicker" name="tanggal_nikah" id="tanggal_nikah" value="<?php echo $tanggal_nikah; ?>" placeholder="Tanggal Menikah" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>
@@ -63,7 +63,7 @@
 			<label class="control-label" for="tanggal_cerai_meninggal">Tanggal Cerai/Meninggal</label>
 			<div class="controls">
 				<div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal_cerai_meninggal" id="tanggal_cerai_meninggal" value="<?php echo $tanggal_cerai_meninggal; ?>" placeholder="Tanggal Cerai / Meninggal">
+	                <input type="text" class="form-control datepicker" name="tanggal_cerai_meninggal" id="tanggal_cerai_meninggal" value="<?php echo $tanggal_cerai_meninggal; ?>" placeholder="Tanggal Cerai / Meninggal" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>

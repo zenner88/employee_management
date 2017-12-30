@@ -307,7 +307,7 @@
 					{
 					?>
 					 <div class='input-group date' id="datetimepicker2">
-            <input type='text' class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="" placeholder="Tanggal Lahir"/>
+            <input type='text' class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="" placeholder="Tanggal Lahir" style="width: 99%" />
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -324,7 +324,7 @@
 					{
 					?>
 					<div class='input-group date' id="datetimepicker2">
-            <input type='text' class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>" placeholder="Tanggal Lahir"/>
+            <input type='text' class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>" placeholder="Tanggal Lahir" style="width: 99%"/>
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -362,8 +362,9 @@
 					if($st=="tambah")
 					{
 					?>
+
 		                                    <div class="input-group date" data-provide="datepicker">
-		                                        <input type="text" class="form-control" name="tanggal_pengangkatan_cpns" id="tanggal_pengangkatan_cpns" value="<?php echo set_value('tanggal_pengangkatan_cpns'); ?>" placeholder="Tanggal Pengangkatan Capeg">
+		                                        <input type="text" class="form-control" name="tanggal_pengangkatan_cpns" id="tanggal_pengangkatan_cpns" value="<?php echo set_value('tanggal_pengangkatan_cpns'); ?>" placeholder="Tanggal Pengangkatan Capeg" style="width: 99%">
 		                                        <div class="input-group-addon">
 		                                            <span class="glyphicon glyphicon-th"></span>
 		                                        </div>
@@ -374,7 +375,7 @@
 					{
 					?>
 		                                    <div class="input-group date" data-provide="datepicker">
-		                                        <input type="text" class="form-control" name="tanggal_pengangkatan_cpns" id="tanggal_pengangkatan_cpns" value="<?php echo $tanggal_pengangkatan_cpns; ?>" placeholder="Tanggal Pengangkatan PEGAWAI">
+		                                        <input type="text" class="form-control" name="tanggal_pengangkatan_cpns" id="tanggal_pengangkatan_cpns" value="<?php echo $tanggal_pengangkatan_cpns; ?>" placeholder="Tanggal Pengangkatan PEGAWAI" style="width: 99%">
 		                                        <div class="input-group-addon">
 		                                            <span class="glyphicon glyphicon-th"></span>
 		                                        </div>
@@ -499,7 +500,7 @@
 					{
 					?>
 		                                    <div class="input-group date" data-provide="datepicker">
-		                                        <input type="text" class="span6" name="tanggal_sk_pangkat" id="tanggal_sk_pangkat" value="<?php echo set_value('tanggal_sk_pangkat'); ?>" placeholder="Tanggal SK Pangkat">
+		                                        <input type="text" class="form-control" name="tanggal_sk_pangkat" id="tanggal_sk_pangkat" value="<?php echo set_value('tanggal_sk_pangkat'); ?>" placeholder="Tanggal SK Pangkat" style="width: 99%">
 		                                        <div class="input-group-addon">
 		                                            <span class="glyphicon glyphicon-th"></span>
 		                                        </div>
@@ -510,7 +511,7 @@
 					{
 					?>
 		                                    <div class="input-group date" data-provide="datepicker">
-		                                        <input type="text" class="span6" name="tanggal_sk_pangkat" id="tanggal_sk_pangkat" value="<?php echo $tanggal_sk_pangkat; ?>" placeholder="Tanggal SK Pangkat">
+		                                        <input type="text" class="form-control" name="tanggal_sk_pangkat" id="tanggal_sk_pangkat" value="<?php echo $tanggal_sk_pangkat; ?>" placeholder="Tanggal SK Pangkat" style="width: 99%">
 		                                        <div class="input-group-addon">
 		                                            <span class="glyphicon glyphicon-th"></span>
 		                                        </div>
@@ -528,7 +529,7 @@
 					{
 					?>
 		                                    <div class="input-group date" data-provide="datepicker">
-		                                        <input type="text" class="span6" name="tanggal_mulai_pangkat" id="tanggal_mulai_pangkat" value="<?php echo set_value('tanggal_mulai_pangkat'); ?>" placeholder="Tanggal Mulai Pangkat">
+		                                        <input type="text" class="form-control" name="tanggal_mulai_pangkat" id="tanggal_mulai_pangkat" value="<?php echo set_value('tanggal_mulai_pangkat'); ?>" placeholder="Tanggal Mulai Pangkat" style="width: 99%">
 		                                        <div class="input-group-addon">
 		                                            <span class="glyphicon glyphicon-th"></span>
 		                                        </div>
@@ -539,7 +540,7 @@
 					{
 					?>
 		                                    <div class="input-group date" data-provide="datepicker">
-		                                        <input type="text" class="span6" name="tanggal_mulai_pangkat" id="tanggal_mulai_pangkat" value="<?php echo $tanggal_mulai_pangkat; ?>" placeholder="Tanggal Mulai Pangkat">
+		                                        <input type="text" class="form-control" name="tanggal_mulai_pangkat" id="tanggal_mulai_pangkat" value="<?php echo $tanggal_mulai_pangkat; ?>" placeholder="Tanggal Mulai Pangkat" style="width: 99%">
 		                                        <div class="input-group-addon">
 		                                            <span class="glyphicon glyphicon-th"></span>
 		                                        </div>
@@ -557,7 +558,7 @@
 					{
 					?>
 		                                    <div class="input-group date" data-provide="datepicker">
-		                                        <input type="text" class="span6" name="tanggal_selesai_pangkat" id="tanggal_selesai_pangkat" value="<?php echo set_value('tanggal_selesai_pangkat'); ?>" placeholder="Tanggal Selesai Pangkat">
+		                                        <input type="text" class="form-control" name="tanggal_selesai_pangkat" id="tanggal_selesai_pangkat" value="<?php echo set_value('tanggal_selesai_pangkat'); ?>" placeholder="Tanggal Selesai Pangkat" style="width: 99%">
 		                                        <div class="input-group-addon">
 		                                            <span class="glyphicon glyphicon-th"></span>
 		                                        </div>
@@ -568,7 +569,7 @@
 					{
 					?>
 		                                    <div class="input-group date" data-provide="datepicker">
-		                                        <input type="text" class="span6" name="tanggal_selesai_pangkat" id="tanggal_selesai_pangkat" value="<?php echo $tanggal_selesai_pangkat; ?>" placeholder="Tanggal Selesai Pangkat">
+		                                        <input type="text" class="span6" name="tanggal_selesai_pangkat" id="tanggal_selesai_pangkat" value="<?php echo $tanggal_selesai_pangkat; ?>" placeholder="Tanggal Selesai Pangkat" style="width: 99%">
 		                                        <div class="input-group-addon">
 		                                            <span class="glyphicon glyphicon-th"></span>
 		                                        </div>
@@ -802,7 +803,7 @@
 				{
 				?>
 	                                    <div class="input-group date" data-provide="datepicker">
-	                                        <input type="text" class="span6" name="tanggal_sk_jabatan" id="tanggal_sk_jabatan" value="<?php echo set_value('tanggal_sk_jabatan'); ?>" placeholder="Tanggal SK Jabatan">
+	                                        <input type="text" class="form-control" name="tanggal_sk_jabatan" id="tanggal_sk_jabatan" value="<?php echo set_value('tanggal_sk_jabatan'); ?>" placeholder="Tanggal SK Jabatan" style="width: 99%">
 	                                        <div class="input-group-addon">
 	                                            <span class="glyphicon glyphicon-th"></span>
 	                                        </div>
@@ -813,7 +814,7 @@
 				{
 				?>
 	                                    <div class="input-group date" data-provide="datepicker">
-	                                        <input type="text" class="span6" name="tanggal_sk_jabatan" id="tanggal_sk_jabatan" value="<?php echo $tanggal_sk_jabatan; ?>" placeholder="Tanggal SK Jabatan">
+	                                        <input type="text" class="form-control" name="tanggal_sk_jabatan" id="tanggal_sk_jabatan" value="<?php echo $tanggal_sk_jabatan; ?>" placeholder="Tanggal SK Jabatan" style="width: 99%">
 	                                        <div class="input-group-addon">
 	                                            <span class="glyphicon glyphicon-th"></span>
 	                                        </div>
@@ -831,7 +832,7 @@
 				{
 				?>
 	                                    <div class="input-group date" data-provide="datepicker">
-	                                        <input type="text" class="span6" name="tanggal_mulai_jabatan" id="tanggal_mulai_jabatan" value="<?php echo set_value('tanggal_mulai_jabatan'); ?>" placeholder="Tanggal Mulai Jabatan">
+	                                        <input type="text" class="form-control" name="tanggal_mulai_jabatan" id="tanggal_mulai_jabatan" value="<?php echo set_value('tanggal_mulai_jabatan'); ?>" placeholder="Tanggal Mulai Jabatan" style="width: 99%">
 	                                        <div class="input-group-addon">
 	                                            <span class="glyphicon glyphicon-th"></span>
 	                                        </div>
@@ -842,7 +843,7 @@
 				{
 				?>
 	                                    <div class="input-group date" data-provide="datepicker">
-	                                        <input type="text" class="span6" name="tanggal_mulai_jabatan" id="tanggal_mulai_jabatan" value="<?php echo $tanggal_mulai_jabatan; ?>" placeholder="Tanggal Mulai Jabatan">
+	                                        <input type="text" class="form-control" name="tanggal_mulai_jabatan" id="tanggal_mulai_jabatan" value="<?php echo $tanggal_mulai_jabatan; ?>" placeholder="Tanggal Mulai Jabatan" style="width: 99%">
 	                                        <div class="input-group-addon">
 	                                            <span class="glyphicon glyphicon-th"></span>
 	                                        </div>
@@ -860,7 +861,7 @@
 				{
 				?>
 	                                    <div class="input-group date" data-provide="datepicker">
-	                                        <input type="text" class="span6" name="tanggal_selesai_jabatan" id="tanggal_selesai_jabatan" value="<?php echo set_value('tanggal_selesai_jabatan'); ?>" placeholder="Tanggal Selesai Jabatan">
+	                                        <input type="text" class="form-control" name="tanggal_selesai_jabatan" id="tanggal_selesai_jabatan" value="<?php echo set_value('tanggal_selesai_jabatan'); ?>" placeholder="Tanggal Selesai Jabatan" style="width: 99%">
 	                                        <div class="input-group-addon">
 	                                            <span class="glyphicon glyphicon-th"></span>
 	                                        </div>
@@ -871,7 +872,7 @@
 				{
 				?>
 	                                    <div class="input-group date" data-provide="datepicker">
-	                                        <input type="text" class="span6" name="tanggal_selesai_jabatan" id="tanggal_selesai_jabatan" value="<?php echo $tanggal_selesai_jabatan; ?>" placeholder="Tanggal Selesai Jabatan">
+	                                        <input type="text" class="form-control" name="tanggal_selesai_jabatan" id="tanggal_selesai_jabatan" value="<?php echo $tanggal_selesai_jabatan; ?>" placeholder="Tanggal Selesai Jabatan" style="width: 99%">
 	                                        <div class="input-group-addon">
 	                                            <span class="glyphicon glyphicon-th"></span>
 	                                        </div>

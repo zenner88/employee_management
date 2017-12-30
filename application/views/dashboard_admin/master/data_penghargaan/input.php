@@ -58,7 +58,7 @@
 			<label class="control-label" for="tanggal_sk">Tanggal SK</label>
 			<div class="controls">
 				<div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal_sk" id="tanggal_sk" value="<?php echo $tanggal_sk; ?>" placeholder="Tanggal SK">
+	                <input type="text" class="form-control datepicker" name="tanggal_sk" id="tanggal_sk" value="<?php echo $tanggal_sk; ?>" placeholder="Tanggal SK" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>

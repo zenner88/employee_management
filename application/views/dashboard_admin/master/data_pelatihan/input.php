@@ -76,7 +76,7 @@
 			<label class="control-label" for="tanggal_sertifikat">Tanggal Sertifikat</label>
 			<div class="controls">
 				<div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal_sertifikat" id="tanggal_sertifikat" value="<?php echo $tanggal_sertifikat; ?>" placeholder="Tanggal Sertifikat">
+	                <input type="text" class="form-control datepicker" name="tanggal_sertifikat" id="tanggal_sertifikat" value="<?php echo $tanggal_sertifikat; ?>" placeholder="Tanggal Sertifikat" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>

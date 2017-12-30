@@ -88,7 +88,7 @@
 			<label class="control-label" for="tanggal_sttb">Tanggal STTB</label>
 			<div class="controls">
 				<div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal_sttb" id="tanggal_sttb" value="<?php echo $tanggal_sttb; ?>" placeholder="Tanggal STTB">
+	                <input type="text" class="form-control datepicker" name="tanggal_sttb" id="tanggal_sttb" value="<?php echo $tanggal_sttb; ?>" placeholder="Tanggal STTB" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>
@@ -100,7 +100,7 @@
 			<label class="control-label" for="tanggal_lulus">Tanggal Lulus</label>
 			<div class="controls">
 				<div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal_lulus" id="tanggal_lulus" value="<?php echo $tanggal_lulus; ?>" placeholder="Tanggal Lulus">
+	                <input type="text" class="form-control datepicker" name="tanggal_lulus" id="tanggal_lulus" value="<?php echo $tanggal_lulus; ?>" placeholder="Tanggal Lulus" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>

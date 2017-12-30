@@ -11,23 +11,42 @@ $credit="";
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="<?php echo base_url(); ?>asset/theme-new/css/bootstrap.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>asset/theme-new/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>asset/theme-new/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>asset/theme-new/css/docs.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>asset/theme-new/css/bootstrap-datepicker3.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>asset/theme-new/css/bootstrap-datetimepicker.min.css" />
+
+<script src="<?php echo base_url(); ?>asset/theme-new/js/moment.min.js"></script> 
+<script type="text/javascript" src="<?php echo base_url(); ?>asset/theme-new/js/moment-with-locales.js"></script> 
 	
-    <script src="<?php echo base_url(); ?>asset/theme-new/js/jquery-latest.js"></script>
+    <script src="<?php echo base_url(); ?>asset/theme-new/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>asset/theme-new/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>asset/theme-new/js/application.js"></script>
-    <script src="<?php echo base_url(); ?>asset/theme-new/js/bootstrap-tooltip.js"></script>
-	<link rel="stylesheet" href="<?php echo base_url(); ?>asset/theme-new/colorbox/colorbox.css" />
-	<script src="<?php echo base_url(); ?>asset/theme-new/colorbox/jquery.colorbox.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>asset/theme-new/js/bootstrap-datepicker.js"></script>
-	<script>
-		  $(document).ready(function(){
-			  //Examples of how to assign the ColorBox event to elements
-			  $(".medium-box").colorbox({rel:'group', iframe:true, width:"90%", height:"90%"});
-		  });
-	</script>
+  <script src="<?php echo base_url(); ?>asset/theme-new/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+        $(function () {
+            $('#datetimepicker2').datetimepicker({
+              locale: 'id',
+              defaultDate: new Date(),
+              format: 'YYYY-MM-DD'
+            }).on('dp.change', function(e) {
+              console.log(e.date);
+              var age = GetAge(e.date._d);
+              console.log(age);
+              $('#usia').val('');
+              $('#usia').val(age);
+
+    });
+            function GetAge(birthDate) {
+    var today = new Date();
+    var age = today.getFullYear() - birthDate.getFullYear();
+    return age;
+}
+            
+        });
+    });
+</script>
   </head>
 
   <body>

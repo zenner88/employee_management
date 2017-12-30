@@ -32,7 +32,7 @@
 			<label class="control-label" for="tanggal">Tanggal</label>
 			<div class="controls">
 			  <div class="input-group date" data-provide="datepicker">
-	                <input type="text" class="form-control datepicker" name="tanggal" id="tanggal" value="<?php echo $tanggal; ?>" placeholder="Tanggal">
+	                <input type="text" class="form-control datepicker" name="tanggal" id="tanggal" value="<?php echo $tanggal; ?>" placeholder="Tanggal" style="width: 99%">
 	                <div class="input-group-addon">
 	                    <span class="glyphicon glyphicon-th"></span>
 	                </div>
