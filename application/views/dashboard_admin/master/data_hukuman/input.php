@@ -10,7 +10,7 @@
 		<?php echo validation_errors(); ?>
 	</div>
 	<?php } ?>
-		<?php echo form_open('data_hukuman/simpan','class="form-horizontal"'); ?>
+		<?php echo form_open_multipart('data_hukuman/simpan','class="form-horizontal"'); ?>
 		  <div class="control-group">
 		  	<legend>Data Hukuman - <?php echo $this->session->userdata("nama_pegawai"); ?></legend>
 			<label class="control-label" for="id_master_hukuman">Hukuman</label>
@@ -105,7 +105,20 @@
 			  placeholder="Pejabat Menetapkan">
 			</div>
 		  </div>
-		  
+		  <?php
+				$ft = $foto;
+				if($ft=="")
+				{
+					$ft="no-img.jpg";
+				}
+			?>
+          <div class="control-group">
+			<label class="control-label" for="nip">Upload Hukuman</label>
+			<div class="controls">
+			<input type="file" class="span6" name="userfile" id="userfile" placeholder="Upload Foto Gaji">
+			<p><img src="<?php echo base_url(); ?>asset/foto_hukuman/medium/<?php echo $ft; ?>" /></p>
+			</div>
+		</div>
 		  <input type="hidden" name="id_param" value="<?php echo $id_param; ?>">
 		  <input type="hidden" name="id_pegawai" value="<?php echo $id_pegawai; ?>">
 		  <input type="hidden" name="st" value="<?php echo $st; ?>">

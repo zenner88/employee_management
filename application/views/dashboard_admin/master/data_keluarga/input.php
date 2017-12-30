@@ -10,7 +10,7 @@
 		<?php echo validation_errors(); ?>
 	</div>
 	<?php } ?>
-		<?php echo form_open('data_keluarga/simpan','class="form-horizontal"'); ?>
+		<?php echo form_open_multipart('data_keluarga/simpan','class="form-horizontal"'); ?>
 		  <div class="control-group">
 		  	<legend>Data Keluarga - <?php echo $this->session->userdata("nama_pegawai"); ?></legend>
 			<label class="control-label" for="nama_anggota_keluarga">Nama Anggota Keluarga</label>
@@ -78,6 +78,20 @@
 			  placeholder="Pekerjaan">
 			</div>
 		  </div>
+		  <?php
+				$ft = $foto;
+				if($ft=="")
+				{
+					$ft="no-img.jpg";
+				}
+			?>
+          <div class="control-group">
+			<label class="control-label" for="nip">Upload KK</label>
+			<div class="controls">
+			<input type="file" class="span6" name="userfile" id="userfile" placeholder="Upload Foto KK">
+			<p><img src="<?php echo base_url(); ?>asset/foto_keluarga/medium/<?php echo $ft; ?>" /></p>
+			</div>
+		</div>
 		  
 		  <input type="hidden" name="id_param" value="<?php echo $id_param; ?>">
 		  <input type="hidden" name="id_pegawai" value="<?php echo $id_pegawai; ?>">

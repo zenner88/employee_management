@@ -31,9 +31,18 @@
 
 <section id="data-pegawai">
   <div class="well">
-	<div class="page-header">
-    	<h1>Data Pegawai</h1>
-  	</div>
+  		<div class="col-md-8">
+  			<div class="page-header">
+    			<h1>Data Pegawai</h1>
+  			</div>
+  		</div>
+  		
+  			<div class="col-md-4 pull-right">
+				<a class="btn" href="<?php echo base_url(); ?>pegawai/detail/<?php echo $this->session->userdata('id_pegawai'); ?>"><i class="icon-ok-circle"></i> Export ke PDF</a>			
+			</div>
+  		
+  	
+	
 	
 	<ul id="myTab" class="nav nav-tabs">
         <li class="active"><a href="#dtpegawai" data-toggle="tab">Data Pegawai</a></li>

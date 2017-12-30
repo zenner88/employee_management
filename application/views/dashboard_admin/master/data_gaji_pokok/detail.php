@@ -10,7 +10,7 @@
 		<?php echo validation_errors(); ?>
 	</div>
 	<?php } ?>
-		<?php echo form_open('data_keluarga/simpan','class="form-horizontal"'); ?>
+		<?php echo form_open('data_gaji_pokok/simpan','class="form-horizontal"'); ?>
 		  <div class="control-group">
 		  	<legend>Data Riwayat Pangkat - <?php echo $this->session->userdata("nama_pegawai"); ?></legend>
 			<label class="control-label" for="golongan">Golongan</label>
@@ -100,6 +100,19 @@
 			  placeholder="Pejabat Menetapkan">
 			</div>
 		  </div>
+		  <?php
+				$ft = $foto;
+				if($ft=="")
+				{
+					$ft="no-img.jpg";
+				}
+			?>
+          <div class="control-group">
+			<label class="control-label" for="nip">Foto Gaji Pokok</label>
+			<div class="controls">
+			<p><img src="<?php echo base_url(); ?>asset/foto_gaji/medium/<?php echo $ft; ?>" /></p>
+			</div>
+		</div>
 		  
 		  <input type="hidden" name="id_param" value="<?php echo $id_param; ?>">
 		  <input type="hidden" name="id_pegawai" value="<?php echo $id_pegawai; ?>">

@@ -298,6 +298,7 @@
 					?>
 		                                </div>
 		                            </div>
+		                            
 		                            <div class="control-group">
 		                                <label class="control-label" for="tanggal_lahir">Tanggal Lahir</label>
 		                                <div class="controls">
@@ -305,28 +306,36 @@
 					if($st=="tambah")
 					{
 					?>
-		                                    <div class="input-group date" data-provide="datepicker">
-		                                        <input type="text" class="form-control datepicker" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo set_value('tanggal_lahir'); ?>" placeholder="Tanggal Lahir">
+					 <div class='input-group date' id="datetimepicker2">
+            <input type='text' class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="" placeholder="Tanggal Lahir"/>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+		                                    <!-- <div class="input-group date" data-provide="datepicker">
+		                                        <input type="text" class="form-control datepicker" name="tanggal_lahir" id="tanggal_lahir" value="<?php //echo set_value('tanggal_lahir'); ?>" placeholder="Tanggal Lahir" onblur="getValue(this)">
 		                                        <div class="input-group-addon">
 		                                            <span class="glyphicon glyphicon-th"></span>
 		                                        </div>
-		                                    </div>
+		                                    </div> -->
 		                                    <?php
 					}
 					else
 					{
 					?>
-		                                    <div class="input-group date" data-provide="datepicker">
-		                                        <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>" placeholder="Tanggal Lahir">
-		                                        <div class="input-group-addon">
-		                                            <span class="glyphicon glyphicon-th"></span>
-		                                        </div>
-		                                    </div>
+					<div class='input-group date' id="datetimepicker2">
+            <input type='text' class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>" placeholder="Tanggal Lahir"/>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+		                                    
 		                                    <?php
 					}
 					?>
 		                                </div>
 		                            </div>
+		 
 		                            <div class="control-group">
 		                                <label class="control-label" for="usia">Usia</label>
 		                                <div class="controls">
@@ -897,10 +906,10 @@
 				  			<input type="hidden" name="id_param" value="<?php echo $id_param; ?>">
 				  			<input type="hidden" name="st" value="<?php echo $st; ?>">
 				  			<input type="hidden" name="frame" value="frame">
-				  			<script src="<?php echo base_url(); ?>asset/js/chosen.jquery.js" type="text/javascript"></script>
+				  			<!-- <script src="<?php //echo base_url(); ?>asset/js/chosen.jquery.js" type="text/javascript"></script>
 							<script type="text/javascript"> 
 								$(".chzn-select").chosen();
-							</script>
+							</script> -->
 						</div> 
 		  			</div>
 		  		</div>
