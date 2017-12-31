@@ -110,13 +110,7 @@
         <td><?php echo $dp['nama_pegawai']; ?></td>
         <td><?php echo $dp['nama_jabatan']; ?></td>
         <td><?php echo $dp['uraian']; ?> <?php echo $dp['golongan']; ?> <BR><?php echo $dp['tanggal_sk_pangkat']; ?></td>
-        <td><?php 
-		$awal = $dp['SUBSTRING(tanggal_sk_pangkat,-4)'];
-	$tambah = 2;
-	$next = $awal+$tambah;
-		echo $dp['ura']; ?>&nbsp;<?php echo $dp['gol'];?><BR>
-        <?php echo $dp['LEFT(tanggal_sk_pangkat, CHAR_LENGTH(tanggal_sk_pangkat)-5)']; ?>&nbsp;<?php echo $next; ?>
-        </td>
+        <td><?php echo $dp['ura']; ?>&nbsp;<?php echo $dp['gol'];?><BR><?php echo $dp['tanggal_sk_pangkat']; ?></td>
       </tr>
 	 <?php
 	 		$no++;

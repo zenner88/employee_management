@@ -734,21 +734,21 @@
 	                                <div class="controls">
 	                                    <select data-placeholder="Eselon" class="chzn-select" style="width:500px;" tabindex="2" name="id_eselon" id="id_eselon">
 	                                        <?php
-				  		foreach($mst_eselon->result_array() as $me)
+				  		foreach($mst_golongan->result_array() as $me)
 				  		{
-				  			if($id_eselon==$me['id_eselon'])
+				  			if($id_eselon==$me['id_golongan'])
 				  			{
 				  	?>
-	                                            <option value="<?php echo $me['id_eselon']; ?>" selected="selected">
-	                                                <?php echo $me['nama_eselon']; ?>
+	                                            <option value="<?php echo $me['id_golongan']; ?>" selected="selected">
+	                                                <?php echo $me['golongan']; ?>
 	                                            </option>
 	                                            <?php
 				  			}
 				  			else
 				  			{
 				  	?>
-	                                                <option value="<?php echo $me['id_eselon']; ?>">
-	                                                    <?php echo $me['nama_eselon']; ?>
+	                                                <option value="<?php echo $me['id_golongan']; ?>">
+	                                                    <?php echo $me['golongan']; ?>
 	                                                </option>
 	                                                <?php
 				  			}
