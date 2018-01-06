@@ -76,6 +76,8 @@ class Pegawai extends CI_Controller {
 					$d['id_eselon'] = $data->id_eselon;
 					$d['tmt_eselon'] = $data->tmt_eselon;
 					$d['foto'] = $data->foto;
+					$d['jenis_pegawai'] = $data->jenis_pegawai;
+					$d['jabatan_fungsional'] = $data->jabatan_fungsional;
 				}
 				
 				$d['st'] = "edit";
@@ -88,6 +90,8 @@ class Pegawai extends CI_Controller {
 				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 				$d['mst_eselon'] = $this->db->get('tbl_master_eselon');
 				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
+				$d['mst_jenis_pegawai'] = $this->db->get('tbl_master_jenis_pegawai');
+				$d['mst_jabatan_fungsional'] = $this->db->get('tbl_master_jabatan_fungsional');
 				
 				$d['data_keluarga'] = $this->db->get_where("tbl_data_keluarga",$id);
 				$d['data_riwayat_pangkat'] = $this->db->query("select * from tbl_data_riwayat_pangkat a left join tbl_master_golongan b on a.id_golongan=b.id_golongan where 
@@ -181,6 +185,7 @@ class Pegawai extends CI_Controller {
 					$d['id_eselon'] = $data->id_eselon;
 					$d['tmt_eselon'] = $data->tmt_eselon;
 					$d['foto'] = $data->foto;
+					$d['jenis_pegawai'] = $data->jenis_pegawai;
 				}
 				
 				$d['st'] = "edit";
@@ -193,7 +198,7 @@ class Pegawai extends CI_Controller {
 				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 				$d['mst_eselon'] = $this->db->get('tbl_master_eselon');
 				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				
+				$d['mst_jabatan_fungsional'] = $this->db->get('tbl_master_jabatan_fungsional');
 				$d['data_keluarga'] = $this->db->get_where("tbl_data_keluarga",$id);
 				$d['data_riwayat_pangkat'] = $this->db->query("select * from tbl_data_riwayat_pangkat a left join tbl_master_golongan b on a.id_golongan=b.id_golongan where 
 				a.id_pegawai='".$id['id_pegawai']."'");
@@ -283,6 +288,8 @@ class Pegawai extends CI_Controller {
 			$d['tanggal_selesai_jabatan'] = "";
 			$d['id_eselon'] = "";
 			$d['tmt_eselon'] = "";
+			$d['jenis_pegawai'] = "";
+			$d['jabatan_fungsional'] = ""; 
 			
 			$d['st'] = "tambah";
 			$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
@@ -294,6 +301,8 @@ class Pegawai extends CI_Controller {
 			$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 			$d['mst_eselon'] = $this->db->get('tbl_master_eselon');
 			$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
+			$d['mst_jenis_pegawai'] = $this->db->get('tbl_master_jenis_pegawai');
+			$d['mst_jabatan_fungsional'] = $this->db->get('tbl_master_jabatan_fungsional');
 			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
 			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
 			$d['instansi'] = $this->config->item('nama_instansi');
@@ -388,6 +397,8 @@ class Pegawai extends CI_Controller {
 				$d['foto'] = $data->foto;
 				$d['id_eselon'] = $data->id_eselon;
 				$d['tmt_eselon'] = $data->tmt_eselon;
+				$d['jenis_pegawai'] = $data->jenis_pegawai;
+				$d['jabatan_fungsional'] = $data->jabatan_fungsional;
 			}
 			
 			$d['st'] = "edit";
@@ -420,6 +431,8 @@ class Pegawai extends CI_Controller {
 			$d['mst_unit_kerja'] = $this->db->get('tbl_master_unit_kerja');
 			$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 			$d['mst_eselon'] = $this->db->get('tbl_master_eselon');
+			$d['mst_jenis_pegawai'] = $this->db->get('tbl_master_jenis_pegawai');
+			$d['mst_jabatan_fungsional'] = $this->db->get('tbl_master_jabatan_fungsional');
 			$d['judul_lengkap'] = $this->config->item('nama_aplikasi_full');
 			$d['judul_pendek'] = $this->config->item('nama_aplikasi_pendek');
 			$d['instansi'] = $this->config->item('nama_instansi');
@@ -445,7 +458,7 @@ class Pegawai extends CI_Controller {
 			
 			$this->form_validation->set_rules('nip', 'NIK', 'trim|required');
 			$this->form_validation->set_rules('nip_lama', 'NIK Lama', 'trim|required');
-			$this->form_validation->set_rules('no_kartu_pegawai', 'Nomor Kartu Pegawai', 'trim|required');
+			//$this->form_validation->set_rules('no_kartu_pegawai', 'Nomor Kartu Pegawai', 'trim|required');
 			$this->form_validation->set_rules('nama_pegawai', 'Nama Pegawai', 'trim|required');
 			$this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'trim|required');
 			$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'trim|required');
@@ -470,12 +483,14 @@ class Pegawai extends CI_Controller {
 			$this->form_validation->set_rules('id_unit_kerja', 'Unit Kerja', 'trim|required');
 			$this->form_validation->set_rules('id_satuan_kerja', 'Satuan Kerja', 'trim|required');
 			$this->form_validation->set_rules('lokasi_kerja', 'Lokasi Kerja', 'trim|required');
+			$this->form_validation->set_rules('jenis_pegawai', 'Jenis Pegawai', 'trim|required');
 			$this->form_validation->set_rules('nomor_sk_jabatan', 'Nomor SK Jabatan', 'trim|required');
 			$this->form_validation->set_rules('tanggal_sk_jabatan', 'Tanggal SK Jabatan', 'trim|required');
 			$this->form_validation->set_rules('tanggal_mulai_jabatan', 'Tanggal Mulai Jabatan', 'trim|required');
 			$this->form_validation->set_rules('tanggal_selesai_jabatan', 'Tanggal Selesai Jabatan', 'trim|required');
-			$this->form_validation->set_rules('id_eselon', 'Eselon', 'trim|required');
-			$this->form_validation->set_rules('tmt_eselon', 'TMT Eselon', 'trim|required');
+			//$this->form_validation->set_rules('jabatan_fungsional', 'Jabatan Fungsional', 'trim|required');
+			//$this->form_validation->set_rules('id_eselon', 'Eselon', 'trim|required');
+			//$this->form_validation->set_rules('tmt_eselon', 'TMT Eselon', 'trim|required');
 			
 			$id['id_pegawai'] = $this->input->post("id_param");
 			$st_frame = $this->input->post("frame");
@@ -521,8 +536,10 @@ class Pegawai extends CI_Controller {
 						$d['tanggal_mulai_jabatan'] = $dt->tanggal_mulai_jabatan;
 						$d['tanggal_selesai_jabatan'] = $dt->tanggal_selesai_jabatan;
 						$d['foto'] = $dt->foto;
+						$d['jenis_pegawai'] = $dt->jenis_pegawai;
 						$d['id_eselon'] = $dt->id_eselon;
 						$d['tmt_eselon'] = $dt->tmt_eselon;
+						$d['jabatan_fungsional'] = $dt->jabatan_fungsional;
 						$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
 						$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
 						$d['mst_stts_jabatan'] = $this->db->get('tbl_master_status_jabatan');
@@ -531,6 +548,8 @@ class Pegawai extends CI_Controller {
 						$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 						$d['mst_eselon'] = $this->db->get('tbl_master_eselon');
 						$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
+						$d['mst_jenis_pegawai'] = $this->db->get('tbl_master_jenis_pegawai');
+						$d['mst_jabatan_fungsional'] = $this->db->get('tbl_master_jabatan_fungsional');
 					}
 					$d['st'] = $st;
 					$this->load->view('dashboard_admin/master/header',$d);
@@ -572,6 +591,8 @@ class Pegawai extends CI_Controller {
 					$d['tanggal_selesai_jabatan'] = "";
 					$d['id_eselon'] = "";
 					$d['tmt_eselon'] = "";
+					$d['jenis_pegawai']= "";
+					$d['jabatan_fungsional']= "";
 					
 					$d['st'] = $st;
 					$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
@@ -582,6 +603,8 @@ class Pegawai extends CI_Controller {
 					$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 					$d['mst_eselon'] = $this->db->get('tbl_master_eselon');
 					$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
+					$d['mst_jenis_pegawai'] = $this->db->get('tbl_master_jenis_pegawai');
+					$d['mst_jabatan_fungsional'] = $this->db->get('tbl_master_jabatan_fungsional');
 					$this->load->view('dashboard_admin/pegawai/input',$d);
 				}
 			}
@@ -623,6 +646,8 @@ class Pegawai extends CI_Controller {
 					$upd['tanggal_selesai_jabatan'] = $this->input->post('tanggal_selesai_jabatan');
 					$upd['id_eselon'] = $this->input->post('id_eselon');
 					$upd['tmt_eselon'] = $this->input->post('tmt_eselon');
+					$upd['jenis_pegawai'] = $this->input->post('jenis_pegawai');
+					$upd['jabatan_fungsional'] = $this->input->post('jabatan_fungsional');
 					
 					if(!empty($_FILES['userfile']['name']))
 					{
@@ -717,7 +742,7 @@ class Pegawai extends CI_Controller {
 					$this->db->update("tbl_data_pegawai",$upd,$id);
 					
 				
-						header("location:".base_url()."pegawai/edit/".$this->session->userdata("kode_pegawai")."");
+						header("location:".base_url()."pegawai/edit/".$this->session->userdata("id_pegawai")."");
 				}
 				else if($st=="tambah")
 				{
@@ -754,6 +779,8 @@ class Pegawai extends CI_Controller {
 					$in['tanggal_selesai_jabatan'] = $this->input->post('tanggal_selesai_jabatan');
 					$in['id_eselon'] = $this->input->post('id_eselon');
 					$in['tmt_eselon'] = $this->input->post('tmt_eselon');
+					$in['jenis_pegawai'] = $this->input->post('jenis_pegawai');
+					$upd['jabatan_fungsional'] = $this->input->post('jabatan_fungsional');
 					
 					if(!empty($_FILES['userfile']['name']))
 					{

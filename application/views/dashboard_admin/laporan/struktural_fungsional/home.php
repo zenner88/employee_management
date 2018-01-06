@@ -11,12 +11,24 @@
 		<?php
 			echo form_open("laporan_pegawai_struktural_fungsional/set",'class="navbar-form pull-right"')
 		?>
-			<div class="span2"><strong>Status Jabatan</strong></div>
+		<div class="span2"><strong>Status Jabatan</strong></div>
 			<div class="span">:</div>
 			<div class="span3">
 			<select class="span3" name="id_status_jabatan">
-			<option value="">- Status Jabatan Pegawai -</option>
-			  	<?php
+			<option value="">- Status Jabatan -</option>
+			<?php
+			if($this->session->userdata('id_status_jabatan')=="Semua")
+			{
+			?>
+				<option value="Semua" selected="selected">Semua Jabatan Pegawai</option>
+			<?php
+			}
+			else
+			{
+			?>
+				<option value="Semua">Semua Jabatan Pegawai</option>
+			<?php
+			}
 			  		foreach($mst_status_jabatan->result_array() as $msk)
 			  		{
 			  			if($this->session->userdata('id_status_jabatan')==$msk['id_status_jabatan'])
@@ -34,34 +46,44 @@
 			  		}
 			  	?>
 			</select>
-			</div>
-			
-			<div class="span2"><strong>Eselon</strong></div>
+		</div>
+		<div class="span2"><strong>Eselon</strong></div>
 			<div class="span">:</div>
 			<div class="span3">
 			<select class="span3" name="id_eselon">
 			<option value="">- Eselon -</option>
-			  	<?php
+			<?php
+			if($this->session->userdata('id_eselon')=="Semua")
+			{
+			?>
+				<option value="Semua" selected="selected">Semua Eselon</option>
+			<?php
+			}
+			else
+			{
+			?>
+				<option value="Semua">Semua Jabatan Pegawai</option>
+			<?php
+			}
 			  		foreach($mst_eselon->result_array() as $msk)
 			  		{
-			  			if($this->session->userdata('id_eselon')==$msk['id_eselon'])
+			  			if($this->session->userdata('id_eselon')==$msk['id_golongan'])
 			  			{
 			  	?>
-			  		<option value="<?php echo $msk['id_eselon']; ?>" selected="selected"><?php echo $msk['nama_eselon']; ?></option>
+			  		<option value="<?php echo $msk['id_golongan']; ?>" selected="selected"><?php echo $msk['golongan']; ?></option>
 			  	<?php
 			  			}
 			  			else
 			  			{
 			  	?>
-			  		<option value="<?php echo $msk['id_eselon']; ?>"><?php echo $msk['nama_eselon']; ?></option>
+			  		<option value="<?php echo $msk['id_golongan']; ?>"><?php echo $msk['golongan']; ?></option>
 			  	<?php
 			  			}
 			  		}
 			  	?>
 			</select>
-			</div>
-			
-			<div class="span2"><strong>Satuan Kerja</strong></div>
+		</div>
+		<div class="span2"><strong>Satuan Kerja</strong></div>
 			<div class="span">:</div>
 			<div class="span3">
 			<select class="span3" name="id_satuan_kerja">
@@ -97,6 +119,46 @@
 			  	?>
 			</select>
 		</div>
+		<div class="span2"><strong>Lokasi Kerja</strong></div>
+			<div class="span">:</div>
+			<div class="span3">
+			<select class="span3" name="id_lokasi_kerja">
+			<option value="">- Lokasi Kerja -</option>
+			<?php
+			if($this->session->userdata('id_lokasi_kerja')=="Semua")
+			{
+			?>
+				<option value="Semua" selected="selected">Semua Lokasi Kerja</option>
+			<?php
+			}
+			else
+			{
+			?>
+				<option value="Semua">Semua Lokasi Kerja</option>
+			<?php
+			}
+			  		foreach($mst_satuan_kerja->result_array() as $msk)
+			  		{
+			  			if($this->session->userdata('id_lokasi_kerja')==$msk['id_lokasi_kerja'])
+			  			{
+			  	?>
+			  		<option value="<?php echo $msk['id_lokasi_kerja']; ?>" selected="selected"><?php echo $msk['lokasi_kerja']; ?></option>
+			  	<?php
+			  			}
+			  			else
+			  			{
+			  	?>
+			  		<option value="<?php echo $msk['id_lokasi_kerja']; ?>"><?php echo $msk['lokasi_kerja']; ?></option>
+			  	<?php
+			  			}
+			  		}
+			  	?>
+			</select>
+		</div>
+			
+			
+			
+			
 		<div class="span4 pull-right">
   		<a class="btn" href="<?php echo base_url(); ?>laporan_pegawai_struktural_fungsional/export"><i class="icon-ok-circle"></i> Export ke Excell</a>
 		  <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Cari Data Laporan</button>
@@ -116,7 +178,7 @@
         <th>NIK</th>
         <th>Nama Pegawai</th>
         <th>Tempat/Tanggal Lahir</th>
-		<th>Gender</th>
+		<th>JenisKelamin</th>
 		<th>Agama</th>
 		<th>Usia</th>
       </tr>

@@ -27,6 +27,7 @@ class laporan_pegawai_unit_satuan extends CI_Controller {
 				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');				
 				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
 				
+				
 				$this->load->view('dashboard_admin/laporan/unit_satuan/home',$d);
 			}
 			else if($this->session->userdata('id_satuan_kerja')=="Semua")

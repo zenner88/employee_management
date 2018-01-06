@@ -54,6 +54,82 @@
 		                <div class="col-sm-12">
 		                    <div class="card">
 		                        <div class="card-block">
+		                        <div class="control-group">
+		                                <label class="control-label" for="no_npwp">Nomor NPWP</label>
+		                                <div class="controls">
+		                                    <?php
+					if($st=="tambah")
+					{
+					?>
+		                                    <input type="text" class="span6" name="no_npwp" id="no_npwp" value="<?php echo set_value('no_npwp'); ?>" placeholder="Nomor NPWP">
+		                                    <?php
+					}
+					else
+					{
+					?>
+		                                    <input type="text" class="span6" name="no_npwp" id="no_npwp" value="<?php echo $no_npwp; ?>" placeholder="Nomor NPWP">
+		                                    <?php
+					}
+					?>
+		                                </div>
+		                            </div>
+		                            <div class="control-group">
+		                                <label class="control-label" for="no_KTP">Nomor KTP</label>
+		                                <div class="controls">
+		                                    <?php
+					if($st=="tambah")
+					{
+					?>
+		                                    <input type="text" class="span6" name="no_KTP" id="no_KTP" value="<?php echo set_value('no_KTP'); ?>" placeholder="Nomor KTP">
+		                                    <?php
+					}
+					else
+					{
+					?>
+		                                    <input type="text" class="span6" name="no_KTP" id="no_KTP" value="<?php echo $no_KTP; ?>" placeholder="Nomor KTP">
+		                                    <?php
+					}
+					?>
+		                                </div>
+		                            </div>
+		                            <div class="control-group">
+		                                <label class="control-label" for="no_KK">Nomor Kartu Keluarga</label>
+		                                <div class="controls">
+		                                    <?php
+					if($st=="tambah")
+					{
+					?>
+		                                    <input type="text" class="span6" name="no_KK" id="no_KK" value="<?php echo set_value('no_KK'); ?>" placeholder="Nomor Kartu Keluarga">
+		                                    <?php
+					}
+					else
+					{
+					?>
+		                                    <input type="text" class="span6" name="no_KK" id="no_KK" value="<?php echo $no_KK; ?>" placeholder="Nomor Kartu Keluarga">
+		                                    <?php
+					}
+					?>
+		                                </div>
+		                            </div>
+		                            <div class="control-group">
+		                                <label class="control-label" for="kartu_askes_pegawai">No BPJS</label>
+		                                <div class="controls">
+		                                    <?php
+					if($st=="tambah")
+					{
+					?>
+		                                    <input type="text" class="span6" name="kartu_askes_pegawai" id="kartu_askes_pegawai" value="<?php echo set_value('kartu_askes_pegawai'); ?>" placeholder="No BPJS Pegawai">
+		                                    <?php
+					}
+					else
+					{
+					?>
+		                                    <input type="text" class="span6" name="kartu_askes_pegawai" id="kartu_askes_pegawai" value="<?php echo $kartu_askes_pegawai; ?>" placeholder="No BPJS Pegawai">
+		                                    <?php
+					}
+					?>
+		                                </div>
+		                            </div>
 		                            <div class="control-group">
 		                                <label class="control-label" for="nip">NIK</label>
 		                                <div class="controls">
@@ -92,25 +168,7 @@
 					?>
 		                                </div>
 		                            </div>
-		                            <div class="control-group">
-		                                <label class="control-label" for="no_kartu_pegawai">Nomor Kartu Pegawai</label>
-		                                <div class="controls">
-		                                    <?php
-					if($st=="tambah")
-					{
-					?>
-		                                    <input type="text" class="span6" name="no_kartu_pegawai" id="no_kartu_pegawai" value="<?php echo set_value('no_kartu_pegawai'); ?>" placeholder="Nomor Kartu Pegawai">
-		                                    <?php
-					}
-					else
-					{
-					?>
-		                                    <input type="text" class="span6" name="no_kartu_pegawai" id="no_kartu_pegawai" value="<?php echo $no_kartu_pegawai; ?>" placeholder="Nomor Kartu Pegawai">
-		                                    <?php
-					}
-					?>
-		                                </div>
-		                            </div>
+		                            
 		                            <div class="control-group">
 		                                <label class="control-label" for="nama_pegawai">Nama Pegawai</label>
 		                                <div class="controls">
@@ -222,82 +280,7 @@
 					?>
 		                                </div>
 		                            </div>
-		                            <div class="control-group">
-		                                <label class="control-label" for="no_npwp">Nomor NPWP</label>
-		                                <div class="controls">
-		                                    <?php
-					if($st=="tambah")
-					{
-					?>
-		                                    <input type="text" class="span6" name="no_npwp" id="no_npwp" value="<?php echo set_value('no_npwp'); ?>" placeholder="Nomor NPWP">
-		                                    <?php
-					}
-					else
-					{
-					?>
-		                                    <input type="text" class="span6" name="no_npwp" id="no_npwp" value="<?php echo $no_npwp; ?>" placeholder="Nomor NPWP">
-		                                    <?php
-					}
-					?>
-		                                </div>
-		                            </div>
-		                            <div class="control-group">
-		                                <label class="control-label" for="no_KTP">Nomor KTP</label>
-		                                <div class="controls">
-		                                    <?php
-					if($st=="tambah")
-					{
-					?>
-		                                    <input type="text" class="span6" name="no_KTP" id="no_KTP" value="<?php echo set_value('no_KTP'); ?>" placeholder="Nomor KTP">
-		                                    <?php
-					}
-					else
-					{
-					?>
-		                                    <input type="text" class="span6" name="no_KTP" id="no_KTP" value="<?php echo $no_KTP; ?>" placeholder="Nomor KTP">
-		                                    <?php
-					}
-					?>
-		                                </div>
-		                            </div>
-		                            <div class="control-group">
-		                                <label class="control-label" for="no_KK">Nomor Kartu Keluarga</label>
-		                                <div class="controls">
-		                                    <?php
-					if($st=="tambah")
-					{
-					?>
-		                                    <input type="text" class="span6" name="no_KK" id="no_KK" value="<?php echo set_value('no_KK'); ?>" placeholder="Nomor Kartu Keluarga">
-		                                    <?php
-					}
-					else
-					{
-					?>
-		                                    <input type="text" class="span6" name="no_KK" id="no_KK" value="<?php echo $no_KK; ?>" placeholder="Nomor Kartu Keluarga">
-		                                    <?php
-					}
-					?>
-		                                </div>
-		                            </div>
-		                            <div class="control-group">
-		                                <label class="control-label" for="kartu_askes_pegawai">No BPJS</label>
-		                                <div class="controls">
-		                                    <?php
-					if($st=="tambah")
-					{
-					?>
-		                                    <input type="text" class="span6" name="kartu_askes_pegawai" id="kartu_askes_pegawai" value="<?php echo set_value('kartu_askes_pegawai'); ?>" placeholder="No BPJS Pegawai">
-		                                    <?php
-					}
-					else
-					{
-					?>
-		                                    <input type="text" class="span6" name="kartu_askes_pegawai" id="kartu_askes_pegawai" value="<?php echo $kartu_askes_pegawai; ?>" placeholder="No BPJS Pegawai">
-		                                    <?php
-					}
-					?>
-		                                </div>
-		                            </div>
+		                            
 		                            
 		                            <div class="control-group">
 		                                <label class="control-label" for="tanggal_lahir">Tanggal Lahir</label>
@@ -589,6 +572,100 @@
 		            	<div class="col-sm-12">
 		            		<div class="card">
 		            			<div class="card-block">
+		            			<div class="control-group">
+	                                <label class="control-label" for="nip">Lokasi Kerja</label>
+	                                <div class="controls">
+	                                    <select data-placeholder="Lokasi Kerja" class="chzn-select" style="width:500px;" tabindex="2" name="lokasi_kerja" id="lokasi_kerja">
+	                                        <option value=""></option>
+	                                        <?php
+				  		foreach($mst_lokasi_kerja->result_array() as $me)
+				  		{
+				  			if($lokasi_kerja==$me['id_lokasi_kerja'])
+				  			{
+				  	?>
+	                                            <option value="<?php echo $me['id_lokasi_kerja']; ?>" selected="selected">
+	                                                <?php echo $me['lokasi_kerja']; ?>
+	                                            </option>
+	                                            <?php
+				  			}
+				  			else
+				  			{
+				  	?>
+	                                                <option value="<?php echo $me['id_lokasi_kerja']; ?>">
+	                                                    <?php echo $me['lokasi_kerja']; ?>
+	                                                </option>
+	                                                <?php
+				  			}
+				  		}
+				  	?>
+	                                    </select>
+	                                </div>
+	                            </div>
+	                            <div class="control-group">
+	                                <label class="control-label" for="nip">Jenis Pegawai</label>
+	                                <div class="controls">
+	                                    <select data-placeholder="Jenis Pegawai" class="chzn-select" style="width:500px;" tabindex="2" name="jenis_pegawai" id="jenis_pegawai">
+	                                        <option value=""></option>
+	                                        <?php
+				  		foreach($mst_jenis_pegawai->result_array() as $me)
+				  		{
+				  			if($jenis_pegawai==$me['id_jenis_pegawai'])
+				  			{
+				  	?>
+	                                            <option value="<?php echo $me['id_jenis_pegawai']; ?>" selected="selected">
+	                                                <?php echo $me['nama_jenis_pegawai']; ?>
+	                                            </option>
+	                                            <?php
+				  			}
+				  			else
+				  			{
+				  	?>
+	                                                <option value="<?php echo $me['id_jenis_pegawai']; ?>">
+	                                                    <?php echo $me['nama_jenis_pegawai']; ?>
+	                                                </option>
+	                                                <?php
+				  			}
+				  		}
+				  	?>
+	                                    </select>
+	                                </div>
+	                            </div>
+	                            <div class="control-group">
+	                                <label class="control-label" for="nip">Jabatan Fungsional</label>
+	                                <div class="controls">
+	                                	<?php if($jenis_pegawai == "1") {?>
+	                                		<select data-placeholder="Jabatan Fungsional" class="chzn-select" tabindex="2" name="jabatan_fungsional" id="jabatan_fungsional">
+	                                        <option value=""></option>
+	                                        <?php
+				  		foreach($mst_jabatan_fungsional->result_array() as $me)
+				  		{
+				  			if($jabatan_fungsional==$me['id_jabatan_fungsional'])
+				  			{
+				  	?>
+	                                            <option value="<?php echo $me['id_jabatan_fungsional']; ?>" selected="selected">
+	                                                <?php echo $me['nama_jabatan_fungsional']; ?>
+	                                            </option>
+	                                            <?php
+				  			}
+				  			else
+				  			{
+				  	?>
+	                                                <option value="<?php echo $me['id_jabatan_fungsional']; ?>">
+	                                                    <?php echo $me['nama_jabatan_fungsional']; ?>
+	                                                </option>
+	                                                <?php
+				  			}
+				  		}
+				  	?>
+	                                    </select>
+	                                		<?php } else { ?>
+	                                	<select data-placeholder="Jabatan Fungsional" class="chzn-select" tabindex="2" name="jabatan_fungsional" id="jabatan_fungsional" disabled="">
+	                                        <option value=""></option>
+	                                    </select>
+	                                			<?php } ?>
+	                                    
+	                                </div>
+	                            </div>
 		            				<div class="control-group">
 	                                	<label class="control-label" for="nip">Status Jabatan</label>
 	                                <div class="controls">
@@ -700,82 +777,8 @@
 	                                    </select>
 	                                </div>
 	                            </div>
-	                            <div class="control-group">
-	                                <label class="control-label" for="nip">Lokasi Kerja</label>
-	                                <div class="controls">
-	                                    <select data-placeholder="Lokasi Kerja" class="chzn-select" style="width:500px;" tabindex="2" name="lokasi_kerja" id="lokasi_kerja">
-	                                        <option value=""></option>
-	                                        <?php
-				  		foreach($mst_lokasi_kerja->result_array() as $me)
-				  		{
-				  			if($lokasi_kerja==$me['id_lokasi_kerja'])
-				  			{
-				  	?>
-	                                            <option value="<?php echo $me['id_lokasi_kerja']; ?>" selected="selected">
-	                                                <?php echo $me['lokasi_kerja']; ?>
-	                                            </option>
-	                                            <?php
-				  			}
-				  			else
-				  			{
-				  	?>
-	                                                <option value="<?php echo $me['id_lokasi_kerja']; ?>">
-	                                                    <?php echo $me['lokasi_kerja']; ?>
-	                                                </option>
-	                                                <?php
-				  			}
-				  		}
-				  	?>
-	                                    </select>
-	                                </div>
-	                            </div>
-	                            <div class="control-group">
-	                                <label class="control-label" for="nip">Golongan</label>
-	                                <div class="controls">
-	                                    <select data-placeholder="Eselon" class="chzn-select" style="width:500px;" tabindex="2" name="id_eselon" id="id_eselon">
-	                                        <?php
-				  		foreach($mst_golongan->result_array() as $me)
-				  		{
-				  			if($id_eselon==$me['id_golongan'])
-				  			{
-				  	?>
-	                                            <option value="<?php echo $me['id_golongan']; ?>" selected="selected">
-	                                                <?php echo $me['golongan']; ?>
-	                                            </option>
-	                                            <?php
-				  			}
-				  			else
-				  			{
-				  	?>
-	                                                <option value="<?php echo $me['id_golongan']; ?>">
-	                                                    <?php echo $me['golongan']; ?>
-	                                                </option>
-	                                                <?php
-				  			}
-				  		}
-				  	?>
-	                                    </select>
-	                                </div>
-	                            </div>
-	                            <div class="control-group">
-	                                <label class="control-label" for="nip">TMT Golongan</label>
-	                                <div class="controls">
-	                                    <?php
-				if($st=="tambah")
-				{
-				?>
-	                                    <input type="text" class="span6" name="tmt_eselon" id="tmt_eselon" value="<?php echo set_value('tmt_eselon'); ?>" placeholder="TMT Golongan">
-	                                    <?php
-				}
-				else
-				{
-				?>
-	                                    <input type="text" class="span6" name="tmt_eselon" id="tmt_eselon" value="<?php echo $tmt_eselon; ?>" placeholder="TMT Eselon">
-	                                    <?php
-				}
-				?>
-	                                </div>
-	                            </div>
+	                            
+	         
 	                            <div class="control-group">
 	                                <label class="control-label" for="nip">Nomor SK</label>
 	                                <div class="controls">

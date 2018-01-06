@@ -44,7 +44,9 @@
 			  		}
 			  	?>
 			</select>
-		</div>
+
+			</div>
+			
 		<div class="span4 pull-right">
   		<a class="btn" href="<?php echo base_url(); ?>laporan_pegawai_ikut_pelatihan/export"><i class="icon-ok-circle"></i> Export ke Excell</a>
 		  <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Cari Data Laporan</button>
@@ -79,7 +81,7 @@
         <td><?php echo $dp['nip']; ?></td>
         <td><?php echo $dp['nama_pegawai']; ?></td>
         <td><?php echo $dp['nama_pelatihan']; ?></td>
-        <td><?php echo $dp['nama_lokasi']; ?></td>
+        <td><?php echo $dp['lokasi_pelatihan']; ?></td>
         <td><?php echo $dp['tanggal_sertifikat']; ?></td>
         <td><?php echo $dp['jam_pelatihan']; ?></td>
       </tr>

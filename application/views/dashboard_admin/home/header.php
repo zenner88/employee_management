@@ -79,6 +79,8 @@ $(document).ready(function() {
                   <li><a href="<?php echo base_url(); ?>master_hukuman"><i class="icon-briefcase"></i> Hukuman</a></li>
                   <li><a href="<?php echo base_url(); ?>master_lokasi_pelatihan"><i class="icon-fullscreen"></i> Lokasi Pelatihan</a></li>
                   <li><a href="<?php echo base_url(); ?>master_lokasi_kerja"><i class="icon-briefcase"></i> Lokasi Kerja</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_jenis_pegawai"><i class="icon-briefcase"></i> Jenis Pegawai</a></li>
+                  <li><a href="<?php echo base_url(); ?>master_jabatan_fungsional"><i class="icon-briefcase"></i> Jabatan Fungsional</a></li>
                 </ul>
               </li>
 			  <li class="dropdown">

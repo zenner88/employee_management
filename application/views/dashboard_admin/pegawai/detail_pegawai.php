@@ -52,43 +52,7 @@
     </ul>
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade in active" id="dtpegawai">
-                
         <div class="control-group">
-			<div class="span3"><strong>NIK</strong></div>
-			<div class="span">:</div>
-			<div class="span6">
-			  <input type="text" disabled="disabled" class="span6" name="nip" id="nip" value="<?php echo $nip; ?>" placeholder="NIP">
-			</div>
-		  </div>
-		  <div class="control-group">
-			<div class="span3"><strong>NIK Lama</strong></div>
-			<div class="span">:</div>
-			<div class="span6">
-			  <input type="text" disabled="disabled" class="span6" name="nip_lama" id="nip_lama" value="<?php echo $nip_lama; ?>" placeholder="NIP Lama">
-			</div>
-		  </div>
-		  <div class="control-group">
-			<div class="span3"><strong>Nomor Kartu Pegawai</strong></div>
-			<div class="span">:</div>
-			<div class="span6">
-			  <input type="text" disabled="disabled" class="span6" name="no_kartu_pegawai" id="no_kartu_pegawai" value="<?php echo $no_kartu_pegawai; ?>" placeholder="Nomor Kartu Pegawai">
-			</div>
-		  </div>
-		  <div class="control-group">
-			<div class="span3"><strong>Nama Pegawai</strong></div>
-			<div class="span">:</div>
-			<div class="span6">
-			  <input type="text" disabled="disabled" class="span6" name="nama_pegawai" id="nama_pegawai" value="<?php echo $nama_pegawai; ?>" placeholder="Nama Pegawai">
-			</div>
-		  </div>
-		  <div class="control-group">
-			<div class="span3"><strong>Tempat Lahir</strong></div>
-			<div class="span">:</div>
-			<div class="span6">
-			  <input type="text" disabled="disabled" class="span6" name="tempat_lahir" id="tempat_lahir" value="<?php echo $tempat_lahir; ?>" placeholder="Tempat Lahir">
-			</div>
-		  </div>
-		  <div class="control-group">
 			<div class="span3"><strong>Nomor NPWP</strong></div>
 			<div class="span">:</div>
 			<div class="span6">
@@ -110,12 +74,43 @@
 			</div>
 		  </div>
 		  <div class="control-group">
-			<div class="span3"><strong>Kartu BPJS Pegawai</strong></div>
+			<div class="span3"><strong>Nomor BPJS Pegawai</strong></div>
 			<div class="span">:</div>
 			<div class="span6">
 			  <input type="text" disabled="disabled" class="span6" name="kartu_askes_pegawai" id="kartu_askes_pegawai" value="<?php echo $kartu_askes_pegawai; ?>" placeholder="Kartu BPJS Pegawai">
 			</div>
 		  </div>
+        <div class="control-group">
+			<div class="span3"><strong>NIK</strong></div>
+			<div class="span">:</div>
+			<div class="span6">
+			  <input type="text" disabled="disabled" class="span6" name="nip" id="nip" value="<?php echo $nip; ?>" placeholder="NIP">
+			</div>
+		  </div>
+		  <div class="control-group">
+			<div class="span3"><strong>NIK Lama</strong></div>
+			<div class="span">:</div>
+			<div class="span6">
+			  <input type="text" disabled="disabled" class="span6" name="nip_lama" id="nip_lama" value="<?php echo $nip_lama; ?>" placeholder="NIP Lama">
+			</div>
+		  </div>
+		  
+		  <div class="control-group">
+			<div class="span3"><strong>Nama Pegawai</strong></div>
+			<div class="span">:</div>
+			<div class="span6">
+			  <input type="text" disabled="disabled" class="span6" name="nama_pegawai" id="nama_pegawai" value="<?php echo $nama_pegawai; ?>" placeholder="Nama Pegawai">
+			</div>
+		  </div>
+		  <div class="control-group">
+			<div class="span3"><strong>Tempat Lahir</strong></div>
+			<div class="span">:</div>
+			<div class="span6">
+			  <input type="text" disabled="disabled" class="span6" name="tempat_lahir" id="tempat_lahir" value="<?php echo $tempat_lahir; ?>" placeholder="Tempat Lahir">
+			</div>
+		  </div>
+		  
+		  
 		  <div class="control-group">
 			<div class="span3"><strong>Tanggal Lahir</strong></div>
 			<div class="span">:</div>
@@ -304,7 +299,32 @@
 		  </div>
         </div>
         <div class="tab-pane fade" id="dtjabatan">
-        
+        	<div class="control-group">
+			<div class="span3"><strong>Lokasi Kerja</strong></div>
+			<div class="span">:</div>
+			<div class="span6">
+			<select data-placeholder="Lokasi Kerja" disabled="disabled" class="chzn-select" style="width:500px;" tabindex="2" name="lokasi_kerja" id="lokasi_kerja">
+			<option value=""></option>
+			  	<?php
+			  		foreach($mst_lokasi_kerja->result_array() as $me)
+			  		{
+			  			if($lokasi_kerja==$me['id_lokasi_kerja'])
+			  			{
+			  	?>
+			  		<option value="<?php echo $me['id_lokasi_kerja']; ?>" selected="selected"><?php echo $me['lokasi_kerja']; ?></option>
+			  	<?php
+			  			}
+			  			else
+			  			{
+			  	?>
+			  		<option value="<?php echo $me['id_lokasi_kerja']; ?>"><?php echo $me['lokasi_kerja']; ?></option>
+			  	<?php
+			  			}
+			  		}
+			  	?>
+			</select>
+			</div>
+		  </div>
           <div class="control-group">
 			<div class="span3"><strong>Status Jabatan</strong></div>
 			<div class="span">:</div>
@@ -405,32 +425,7 @@
 			</select>
 			</div>
 		  </div>
-          <div class="control-group">
-			<div class="span3"><strong>Lokasi Kerja</strong></div>
-			<div class="span">:</div>
-			<div class="span6">
-			<select data-placeholder="Lokasi Kerja" disabled="disabled" class="chzn-select" style="width:500px;" tabindex="2" name="lokasi_kerja" id="lokasi_kerja">
-			<option value=""></option>
-			  	<?php
-			  		foreach($mst_lokasi_kerja->result_array() as $me)
-			  		{
-			  			if($lokasi_kerja==$me['id_lokasi_kerja'])
-			  			{
-			  	?>
-			  		<option value="<?php echo $me['id_lokasi_kerja']; ?>" selected="selected"><?php echo $me['lokasi_kerja']; ?></option>
-			  	<?php
-			  			}
-			  			else
-			  			{
-			  	?>
-			  		<option value="<?php echo $me['id_lokasi_kerja']; ?>"><?php echo $me['lokasi_kerja']; ?></option>
-			  	<?php
-			  			}
-			  		}
-			  	?>
-			</select>
-			</div>
-		  </div>
+          
           <div class="control-group">
 			<div class="span3"><strong>Nomor SK</strong></div>
 			<div class="span">:</div>
