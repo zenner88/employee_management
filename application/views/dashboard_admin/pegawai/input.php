@@ -604,19 +604,22 @@
 	                            <script type="text/javascript">
 	                            	$(document).ready(function() {
 	                            		$('#jabatan_fungsional1').hide();
-	                            		$('#jabatan_fungsional2').hide();
+	                            		//$('#jabatan_fungsional2').hide();
 	                            		$('#jenis_pegawai').change(function() {
 	                            			var jenispegawai = $(this).val();
 	                            			if (jenispegawai == "1") {
 	                            				$('#jabatan_fungsional1').show();
 	                            				$('#jabatan_fungsional2').hide();
 	                            			}
-	                            			if (jenispegawai == "2") {
+	                            			if (jenispegawai == "2" || jenispegawai == "") {
 	                            				$('#jabatan_fungsional1').hide();
 	                            				$('#jabatan_fungsional2').show();
 	                            			}
 	                            		});
-	                            		var jenis_pegawai = <?php echo $jenis_pegawai; ?>;
+	                            		
+
+	                            		<?php if ($jenis_pegawai != "") { ?>
+	                            			var jenis_pegawai = <?php echo $jenis_pegawai; ?>;
 	                            			if (jenis_pegawai == 2) {
 	                            				$('#jabatan_fungsional1').hide();
 	                            				$('#jabatan_fungsional2').show();
@@ -624,7 +627,9 @@
 	                            			if (jenis_pegawai == 1) {
 	                            				$('#jabatan_fungsional1').show();
 	                            				$('#jabatan_fungsional2').hide();
-	                            			}
+	                            			}	
+	                            		<?php } ?>
+	                            		
 	                            	});
 	                            </script>
 	                            <div class="control-group">
