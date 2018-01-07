@@ -128,7 +128,7 @@
         <th>NIK</th>
         <th>Nama Pegawai</th>
         <th>Tempat/Tanggal Lahir</th>
-		<th>Gender</th>
+		<th>Jenis Kelamin</th>
 		<th>Agama</th>
 		<th>Usia</th>
       </tr>

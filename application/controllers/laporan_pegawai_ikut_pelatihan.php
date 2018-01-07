@@ -18,43 +18,24 @@ class laporan_pegawai_ikut_pelatihan extends CI_Controller {
 			$d['credit'] = $this->config->item('credit_aplikasi');
 			$d['alamat'] = $this->config->item('alamat_instansi');
 			
-			
-			if($this->session->userdata('id_satuan_kerja')=="Semua" && $this->session->userdata('id_lokasi_kerja')=="Semua")
+			$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
+			$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
+
+			if($this->session->userdata('id_satuan_kerja') == "" && $this->session->userdata('id_lokasi_kerja') == "")
 			{
 				$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai");
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
 			}
 			else
 			{
-				$set_lap2['id_satuan_kerja'] = $this->session->userdata('id_satuan_kerja');
-				$set_lap2['id_lokasi_kerja'] = $this->session->userdata('id_lokasi_kerja');
-				if ($set_lap2['id_satuan_kerja'] == "Semua") {
-					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.lokasi_kerja = '".$set_lap2['id_lokasi_kerja']."'");
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				//$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
+				if ($this->session->userdata('id_satuan_kerja') == "Semua" && $this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai");		
+				} else if($this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."'");	
 				} else {
-					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.lokasi_kerja = '".$set_lap2['id_lokasi_kerja']."' AND a.id_satuan_kerja = '".$set_lap2['id_satuan_kerja']."'");
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				//$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
+					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."' AND a.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
 				}
-				if ($set_lap2['id_lokasi_kerja'] == "Semua") {
-					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.id_satuan_kerja = '".$set_lap2['id_satuan_kerja']."'");
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				//$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
-				} else {
-					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.lokasi_kerja = '".$set_lap2['id_lokasi_kerja']."' AND a.id_satuan_kerja = '".$set_lap2['id_satuan_kerja']."'");
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				
-				}
-				
-				$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
 			}
+			$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
 			
 		}
 		else
@@ -68,42 +49,21 @@ class laporan_pegawai_ikut_pelatihan extends CI_Controller {
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
 			
-			if($this->session->userdata('id_satuan_kerja')=="Semua" && $this->session->userdata('id_lokasi_kerja')=="Semua")
+			if($this->session->userdata('id_satuan_kerja') == "" && $this->session->userdata('id_lokasi_kerja') == "")
 			{
 				$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai");
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
 			}
 			else
 			{
-				$set_lap2['id_satuan_kerja'] = $this->session->userdata('id_satuan_kerja');
-				$set_lap2['id_lokasi_kerja'] = $this->session->userdata('id_lokasi_kerja');
-				if ($set_lap2['id_satuan_kerja'] == "Semua") {
-					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.lokasi_kerja = '".$set_lap2['id_lokasi_kerja']."'");
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				//$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
+				if ($this->session->userdata('id_satuan_kerja') == "Semua" && $this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai");		
+				} else if($this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."'");	
 				} else {
-					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.lokasi_kerja = '".$set_lap2['id_lokasi_kerja']."' AND a.id_satuan_kerja = '".$set_lap2['id_satuan_kerja']."'");
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				//$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
+					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."' AND a.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
 				}
-				if ($set_lap2['id_lokasi_kerja'] == "Semua") {
-					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.id_satuan_kerja = '".$set_lap2['id_satuan_kerja']."'");
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				//$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
-				} else {
-					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.lokasi_kerja = '".$set_lap2['id_lokasi_kerja']."' AND a.id_satuan_kerja = '".$set_lap2['id_satuan_kerja']."'");
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				
-				}
-				
-				$this->load->view('dashboard_admin/laporan/ikut_pelatihan/home',$d);
 			}
+			$this->load->view('dashboard_admin/laporan/ikut_pelatihan/export',$d);
 		}
 		else
 		{

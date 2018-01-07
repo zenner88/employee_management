@@ -601,6 +601,32 @@
 	                                    </select>
 	                                </div>
 	                            </div>
+	                            <script type="text/javascript">
+	                            	$(document).ready(function() {
+	                            		$('#jabatan_fungsional1').hide();
+	                            		$('#jabatan_fungsional2').hide();
+	                            		$('#jenis_pegawai').change(function() {
+	                            			var jenispegawai = $(this).val();
+	                            			if (jenispegawai == "1") {
+	                            				$('#jabatan_fungsional1').show();
+	                            				$('#jabatan_fungsional2').hide();
+	                            			}
+	                            			if (jenispegawai == "2") {
+	                            				$('#jabatan_fungsional1').hide();
+	                            				$('#jabatan_fungsional2').show();
+	                            			}
+	                            		});
+	                            		var jenis_pegawai = <?php echo $jenis_pegawai; ?>;
+	                            			if (jenis_pegawai == 2) {
+	                            				$('#jabatan_fungsional1').hide();
+	                            				$('#jabatan_fungsional2').show();
+	                            			}
+	                            			if (jenis_pegawai == 1) {
+	                            				$('#jabatan_fungsional1').show();
+	                            				$('#jabatan_fungsional2').hide();
+	                            			}
+	                            	});
+	                            </script>
 	                            <div class="control-group">
 	                                <label class="control-label" for="nip">Jenis Pegawai</label>
 	                                <div class="controls">
@@ -633,8 +659,10 @@
 	                            <div class="control-group">
 	                                <label class="control-label" for="nip">Jabatan Fungsional</label>
 	                                <div class="controls">
-	                                	<?php if($jenis_pegawai == "1") {?>
-	                                		<select data-placeholder="Jabatan Fungsional" class="chzn-select" tabindex="2" name="jabatan_fungsional" id="jabatan_fungsional">
+	                                	<select data-placeholder="Jabatan Fungsional" class="chzn-select" tabindex="2" name="jabatan_fungsional" id="jabatan_fungsional2" disabled="">
+	                                        <option value=""></option>
+	                                    </select>
+	                                	<select data-placeholder="Jabatan Fungsional" class="chzn-select" tabindex="2" name="jabatan_fungsional" id="jabatan_fungsional1">
 	                                        <option value=""></option>
 	                                        <?php
 				  		foreach($mst_jabatan_fungsional->result_array() as $me)
@@ -658,11 +686,6 @@
 				  		}
 				  	?>
 	                                    </select>
-	                                		<?php } else { ?>
-	                                	<select data-placeholder="Jabatan Fungsional" class="chzn-select" tabindex="2" name="jabatan_fungsional" id="jabatan_fungsional" disabled="">
-	                                        <option value=""></option>
-	                                    </select>
-	                                			<?php } ?>
 	                                    
 	                                </div>
 	                            </div>

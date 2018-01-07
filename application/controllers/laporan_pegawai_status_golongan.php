@@ -17,49 +17,25 @@ class laporan_pegawai_status_golongan extends CI_Controller {
 			$d['instansi'] = $this->config->item('nama_instansi');
 			$d['credit'] = $this->config->item('credit_aplikasi');
 			$d['alamat'] = $this->config->item('alamat_instansi');
+			$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
+			$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
+			$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
+			$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
 			
-			
-			if($this->session->userdata('id_status_pegawai')=="Semua")
-			{		
-				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.id_golongan = '".$this->session->userdata('id_golongan')."' AND pegawai.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."' AND pegawai.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				
-				//$this->load->view('dashboard_admin/laporan/status_golongan/home',$d);
-			} else if($this->session->userdata('id_status_pegawai')=="Semua" && $this->session->userdata('id_golongan')=="Semua") {
-				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."' AND pegawai.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-			} else if($this->session->userdata('id_status_pegawai')=="Semua" && $this->session->userdata('id_golongan')=="Semua" && $this->session->userdata('id_satuan_kerja')=="Semua") {
-				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-			} else if($this->session->userdata('id_status_pegawai')=="Semua" && $this->session->userdata('id_golongan')=="Semua" && $this->session->userdata('id_satuan_kerja')=="Semua" && $this->session->userdata('id_lokasi_kerja')=="Semua") {
+			if($this->session->userdata('id_status_pegawai') == "" && $this->session->userdata('id_golongan') == "" && $this->session->userdata('id_satuan_kerja') == "" && $this->session->userdata('id_lokasi_kerja') == "") {
 				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-			} else if($this->session->userdata('id_status_pegawai') != "Semua" && $this->session->userdata('id_golongan') !="Semua" && $this->session->userdata('id_satuan_kerja') !="Semua" && $this->session->userdata('id_lokasi_kerja') !="Semua") {
-				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.status_pegawai = '".$this->session->userdata('id_status_pegawai')."' AND pegawai.id_golongan = '".$this->session->userdata('id_golongan')."' AND pegawai.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."' AND pegawai.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
 			} else {
-				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				
-				//$this->load->view('dashboard_admin/laporan/status_golongan/home',$d);
+				if ($this->session->userdata('id_status_pegawai') == "Semua" && $this->session->userdata('id_golongan') == "Semua" && $this->session->userdata('id_satuan_kerja') == "Semua" && $this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja");
+				} elseif ($this->session->userdata('id_golongan') == "Semua" && $this->session->userdata('id_satuan_kerja') == "Semua" && $this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.status_pegawai = '".$this->session->userdata('id_status_pegawai')."'");
+				} elseif ($this->session->userdata('id_satuan_kerja') == "Semua" && $this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.status_pegawai = '".$this->session->userdata('id_status_pegawai')."' AND pegawai.id_golongan = '".$this->session->userdata('id_golongan')."'");
+				} elseif ($this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.status_pegawai = '".$this->session->userdata('id_status_pegawai')."' AND pegawai.id_golongan = '".$this->session->userdata('id_golongan')."' AND pegawai.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."'");
+				} else {
+					$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.status_pegawai = '".$this->session->userdata('id_status_pegawai')."' AND pegawai.id_golongan = '".$this->session->userdata('id_golongan')."' AND pegawai.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."' AND pegawai.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
+				}
 			}
 			$this->load->view('dashboard_admin/laporan/status_golongan/home',$d);
 			
@@ -74,47 +50,20 @@ class laporan_pegawai_status_golongan extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('stts')=="administrator")
 		{
-			if($this->session->userdata('id_status_pegawai')=="Semua")
-			{		
-				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.id_golongan = '".$this->session->userdata('id_golongan')."' AND pegawai.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."' AND pegawai.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				
-				//$this->load->view('dashboard_admin/laporan/status_golongan/home',$d);
-			} else if($this->session->userdata('id_status_pegawai')=="Semua" && $this->session->userdata('id_golongan')=="Semua") {
-				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."' AND pegawai.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-			} else if($this->session->userdata('id_status_pegawai')=="Semua" && $this->session->userdata('id_golongan')=="Semua" && $this->session->userdata('id_satuan_kerja')=="Semua") {
-				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-			} else if($this->session->userdata('id_status_pegawai')=="Semua" && $this->session->userdata('id_golongan')=="Semua" && $this->session->userdata('id_satuan_kerja')=="Semua" && $this->session->userdata('id_lokasi_kerja')=="Semua") {
+			if($this->session->userdata('id_status_pegawai') == "" && $this->session->userdata('id_golongan') == "" && $this->session->userdata('id_satuan_kerja') == "" && $this->session->userdata('id_lokasi_kerja') == "") {
 				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-			} else if($this->session->userdata('id_status_pegawai') != "Semua" && $this->session->userdata('id_golongan') !="Semua" && $this->session->userdata('id_satuan_kerja') !="Semua" && $this->session->userdata('id_lokasi_kerja') !="Semua") {
-				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.status_pegawai = '".$this->session->userdata('id_status_pegawai')."' AND pegawai.id_golongan = '".$this->session->userdata('id_golongan')."' AND pegawai.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."' AND pegawai.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
 			} else {
-				$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja");
-				$d['mst_golongan'] = $this->db->get('tbl_master_golongan');
-				$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
-				$d['mst_satuan_kerja'] = $this->db->get('tbl_master_satuan_kerja');
-				$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
-				
-				//$this->load->view('dashboard_admin/laporan/status_golongan/home',$d);
+				if ($this->session->userdata('id_status_pegawai') == "Semua" && $this->session->userdata('id_golongan') == "Semua" && $this->session->userdata('id_satuan_kerja') == "Semua" && $this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja");
+				} elseif ($this->session->userdata('id_golongan') == "Semua" && $this->session->userdata('id_satuan_kerja') == "Semua" && $this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.status_pegawai = '".$this->session->userdata('id_status_pegawai')."'");
+				} elseif ($this->session->userdata('id_satuan_kerja') == "Semua" && $this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.status_pegawai = '".$this->session->userdata('id_status_pegawai')."' AND pegawai.id_golongan = '".$this->session->userdata('id_golongan')."'");
+				} elseif ($this->session->userdata('id_lokasi_kerja') == "Semua") {
+					$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.status_pegawai = '".$this->session->userdata('id_status_pegawai')."' AND pegawai.id_golongan = '".$this->session->userdata('id_golongan')."' AND pegawai.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."'");
+				} else {
+					$d['data_pegawai'] = $this->db->query("SELECT pegawai.nip, pegawai.nama_pegawai, pegawai.tempat_lahir, pegawai.tanggal_lahir, pegawai.jenis_kelamin, pegawai.agama, pegawai.usia FROM tbl_data_pegawai as pegawai LEFT JOIN tbl_master_golongan ON pegawai.id_golongan = tbl_master_golongan.id_golongan LEFT JOIN tbl_master_status_pegawai ON pegawai.status_pegawai = tbl_master_status_pegawai.id_status_pegawai LEFT JOIN tbl_master_satuan_kerja ON pegawai.id_satuan_kerja = tbl_master_satuan_kerja.id_satuan_kerja LEFT JOIN tbl_master_lokasi_kerja ON pegawai.lokasi_kerja = tbl_master_lokasi_kerja.id_lokasi_kerja WHERE pegawai.status_pegawai = '".$this->session->userdata('id_status_pegawai')."' AND pegawai.id_golongan = '".$this->session->userdata('id_golongan')."' AND pegawai.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja')."' AND pegawai.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja')."'");
+				}
 			}
 			$this->load->view('dashboard_admin/laporan/status_golongan/export',$d);
 		}
