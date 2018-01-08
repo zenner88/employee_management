@@ -40,7 +40,18 @@ $(document).ready(function() {
     });
             function GetAge(birthDate) {
     var today = new Date();
-    var age = today.getFullYear() - birthDate.getFullYear();
+    var year = today.getFullYear() - birthDate.getFullYear();
+    //var month = today.getMonth() - birthDate.getMonth();
+    var monthday = today.getMonth();
+    var monthbirthdate = birthDate.getMonth();
+      if (monthday >= monthbirthdate)
+        var month = monthday - monthbirthdate;
+      else {
+        year--;
+        var month = 12 + monthday -monthbirthdate;
+      }
+   
+    var age = year + 'thn' + ' ' + Math.abs(month) + 'bln';
     return age;
 }
             

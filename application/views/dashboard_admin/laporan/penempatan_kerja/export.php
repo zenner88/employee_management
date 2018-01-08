@@ -21,37 +21,11 @@ header("Content-Transfer-Encoding: binary ");
       <tr height="40" style="background-color:#EA7D57;">
         <td>Nomor</td>
         <td>NIK</td>
-        <td>NIK Lama</td>
-        <td>Nomor Kartu Pegawai</td>
         <td>Nama Pegawai</td>
         <td>Tempat/Tanggal Lahir</td>
         <td>Jenis Kelamin</td>
         <td>Agama</td>
         <td>Usia</td>
-        <td>Status Pegawai</td>
-        <td>Tanggal Pengangkatan CPNS</td>
-        <td>Alamat</td>
-        <td>Nomor NPWP</td>
-        <td>Nomor KTP</td>
-        <td>Nomor KK</td>
-        <td>Kartu BPJS Pegawai</td>
-        <td>Status Pangkat Pegawai</td>
-        <td>Golongan</td>
-        <td>Nomor SK Pangkat</td>
-        <td>Tanggal SK Pangkat</td>
-        <td>Tanggal Mulai Pangkat</td>
-        <td>Tanggal Selesai Pangkat</td>
-        <td>Status Jabatan</td>
-        <td>Jabatan</td>
-        <td>Unit Kerja</td>
-        <td>Satuan Kerja</td>
-        <td>Lokasi Kerja</td>
-        <td>Nomor SK Jabatan</td>
-        <td>Tanggal SK Jabatan</td>
-        <td>Tanggal Mulai Jabatan</td>
-        <td>Tanggal Selesai Jabatan</td>
-        <td>Eselon</td>
-        <td>TMT Eselon</td>
       </tr>
 	<?php
 		$no=1;
@@ -61,37 +35,11 @@ header("Content-Transfer-Encoding: binary ");
       <tr height="35">
         <td><?php echo $no; ?></td>
         <td><?php echo $dp['nip'].'<font color="white">_</font>'; ?></td>
-        <td><?php echo $dp['nip_lama'].'<font color="white">_</font>'; ?></td>
-        <td><?php echo $dp['no_kartu_pegawai']; ?></td>
         <td><?php echo $dp['nama_pegawai']; ?></td>
         <td><?php echo $dp['tempat_lahir'].' - '.$dp['tanggal_lahir']; ?></td>
         <td><?php echo $dp['jenis_kelamin']; ?></td>
         <td><?php echo $dp['agama']; ?></td>
         <td><?php echo $dp['usia']; ?></td>
-        <td><?php echo $dp['status_pegawai']; ?></td>
-        <td><?php echo $dp['tanggal_pengangkatan_cpns']; ?></td>
-        <td><?php echo $dp['alamat']; ?></td>
-        <td><?php echo $dp['no_npwp']; ?></td>
-        <td><?php echo $dp['no_KTP']; ?></td>
-        <td><?php echo $dp['no_KK']; ?></td>
-        <td><?php echo $dp['kartu_askes_pegawai']; ?></td>
-        <td><?php echo $dp['status_pegawai_pangkat']; ?></td>
-        <td><?php echo $dp['golongan']; ?></td>
-        <td><?php echo $dp['nomor_sk_pangkat']; ?></td>
-        <td><?php echo $dp['tanggal_sk_pangkat']; ?></td>
-        <td><?php echo $dp['tanggal_mulai_pangkat']; ?></td>
-        <td><?php echo $dp['tanggal_selesai_pangkat']; ?></td>
-        <td><?php echo $dp['nama_status_jabatan']; ?></td>
-        <td><?php echo $dp['nama_jabatan']; ?></td>
-        <td><?php echo $dp['nama_unit_kerja']; ?></td>
-        <td><?php echo $dp['nama_satuan_kerja']; ?></td>
-        <td><?php echo $dp['lokasi_kerja']; ?></td>
-        <td><?php echo $dp['nomor_sk_jabatan']; ?></td>
-        <td><?php echo $dp['tanggal_sk_jabatan']; ?></td>
-        <td><?php echo $dp['tanggal_mulai_jabatan']; ?></td>
-        <td><?php echo $dp['tanggal_selesai_jabatan']; ?></td>
-        <td><?php echo $dp['nama_eselon']; ?></td>
-        <td><?php echo $dp['tmt_eselon']; ?></td>
       </tr>
 	 <?php
 	 		$no++;
