@@ -54,7 +54,65 @@
 		                <div class="col-sm-12">
 		                    <div class="card">
 		                        <div class="card-block">
-		                        <div class="control-group">
+								<div class="control-group">
+		                                <label class="control-label" for="nama_pegawai">Nama Pegawai</label>
+		                                <div class="controls">
+		                                    <?php
+					if($st=="tambah")
+					{
+					?>
+		                                    <input type="text" class="span6" name="nama_pegawai" id="nama_pegawai" value="<?php echo set_value('nama_pegawai'); ?>" placeholder="Nama Pegawai">
+		                                    <?php
+					}
+					else
+					{
+					?>
+		                                    <input type="text" class="span6" name="nama_pegawai" id="nama_pegawai" value="<?php echo $nama_pegawai; ?>" placeholder="Nama Pegawai">
+		                                    <?php
+					}
+					?>
+		                                </div>
+		                            </div>
+		                        
+									<div class="control-group">
+		                                <label class="control-label" for="nip">NIK</label>
+		                                <div class="controls">
+		                                    <?php
+					if($st=="tambah")
+					{
+					?>
+		                                    <input type="text" class="span6" name="nip" id="nip" value="<?php echo set_value('nip'); ?>" placeholder="NIK">
+		                                    <?php
+					}
+					else
+					{
+					?>
+		                                    <input type="text" class="span6" name="nip" id="nip" value="<?php echo $nip; ?>" placeholder="NIK">
+		                                    <?php
+					}
+					?>
+		                                </div>
+		                            </div>
+		                            <div class="control-group">
+		                                <label class="control-label" for="nip_lama">NIK Lama</label>
+		                                <div class="controls">
+		                                    <?php
+					if($st=="tambah")
+					{
+					?>
+		                                    <input type="text" class="span6" name="nip_lama" id="nip_lama" value="<?php echo set_value('nip_lama'); ?>" placeholder="NIK Lama">
+		                                    <?php
+					}
+					else
+					{
+					?>
+		                                    <input type="text" class="span6" name="nip_lama" id="nip_lama" value="<?php echo $nip_lama; ?>" placeholder="NIK Lama">
+		                                    <?php
+					}
+					?>
+		                                </div>
+		                            </div>
+									<div class="control-group">
 		                                <label class="control-label" for="no_npwp">Nomor NPWP</label>
 		                                <div class="controls">
 		                                    <?php
@@ -130,64 +188,9 @@
 					?>
 		                                </div>
 		                            </div>
-		                            <div class="control-group">
-		                                <label class="control-label" for="nip">NIK</label>
-		                                <div class="controls">
-		                                    <?php
-					if($st=="tambah")
-					{
-					?>
-		                                    <input type="text" class="span6" name="nip" id="nip" value="<?php echo set_value('nip'); ?>" placeholder="NIK">
-		                                    <?php
-					}
-					else
-					{
-					?>
-		                                    <input type="text" class="span6" name="nip" id="nip" value="<?php echo $nip; ?>" placeholder="NIK">
-		                                    <?php
-					}
-					?>
-		                                </div>
-		                            </div>
-		                            <div class="control-group">
-		                                <label class="control-label" for="nip_lama">NIK Lama</label>
-		                                <div class="controls">
-		                                    <?php
-					if($st=="tambah")
-					{
-					?>
-		                                    <input type="text" class="span6" name="nip_lama" id="nip_lama" value="<?php echo set_value('nip_lama'); ?>" placeholder="NIK Lama">
-		                                    <?php
-					}
-					else
-					{
-					?>
-		                                    <input type="text" class="span6" name="nip_lama" id="nip_lama" value="<?php echo $nip_lama; ?>" placeholder="NIK Lama">
-		                                    <?php
-					}
-					?>
-		                                </div>
-		                            </div>
 		                            
-		                            <div class="control-group">
-		                                <label class="control-label" for="nama_pegawai">Nama Pegawai</label>
-		                                <div class="controls">
-		                                    <?php
-					if($st=="tambah")
-					{
-					?>
-		                                    <input type="text" class="span6" name="nama_pegawai" id="nama_pegawai" value="<?php echo set_value('nama_pegawai'); ?>" placeholder="Nama Pegawai">
-		                                    <?php
-					}
-					else
-					{
-					?>
-		                                    <input type="text" class="span6" name="nama_pegawai" id="nama_pegawai" value="<?php echo $nama_pegawai; ?>" placeholder="Nama Pegawai">
-		                                    <?php
-					}
-					?>
-		                                </div>
-		                            </div>
+		                            
+		                            
 		                            <div class="control-group">
 		                                <label class="control-label" for="jenis_kelamin">Jenis Kelamin</label>
 		                                <div class="controls">
