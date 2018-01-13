@@ -109,8 +109,8 @@
         <td><?php echo $dp['nip']; ?></td>
         <td><?php echo $dp['nama_pegawai']; ?></td>
         <td><?php echo $dp['nama_jabatan']; ?></td>
-        <td><?php echo $dp['uraian']; ?> <?php echo $dp['golongan']; ?> <BR><?php echo $dp['tanggal_sk_pangkat']; ?></td>
-        <td><?php echo $dp['ura']; ?>&nbsp;<?php echo $dp['gol'];?><BR><?php echo $dp['tanggal_sk_pangkat']; ?></td>
+        <td><?php echo $dp['uraian']; ?> <?php echo $dp['golongan']; ?></td>
+        <td><?php echo $dp['ura']; ?>&nbsp;<?php echo $dp['gol']; ?><BR> <?php $tanggal_sk_pangkat = date_format(date_create($dp['tanggal_sk_pangkat']), 'd F Y'); echo $tanggal_sk_pangkat;?><BR></td>
       </tr>
 	 <?php
 	 		$no++;
