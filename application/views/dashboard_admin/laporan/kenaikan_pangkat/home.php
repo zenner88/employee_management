@@ -53,10 +53,10 @@
         <td><?php echo $dp['nip']; ?></td>
         <td><a href="<?php echo base_url(); ?>pegawai/edit/<?php echo $dp['id_pegawai']; ?>"><?php echo $dp['nama_pegawai']; ?></a></td>
         <td><?php echo $dp['nama_jabatan']; ?></td>
-        <td><?php echo $dp['uraian']; ?> <?php echo $dp['golongan']; ?> <BR><?php echo $dp['tanggal_sk_pangkat']; ?></td>
+        <td><?php echo $dp['uraian']; ?> <?php echo $dp['golongan']; ?> <BR><?php $tanggal_sk_pangkat = date_format(date_create($dp['tanggal_sk_pangkat']), 'd F Y'); echo $tanggal_sk_pangkat;?></td>
         <td><?php 
     echo $dp['ura']; ?>&nbsp;<?php echo $dp['gol'];?><BR>
-        <?php echo $dp['tanggal_selesai_jabatan']; ?>
+        <?php $tanggal_sk = date('d F Y', strtotime('+2 years', strtotime($dp['tanggal_sk_pangkat']))); echo $tanggal_sk;?>
         </td>
       </tr>
    <?php
