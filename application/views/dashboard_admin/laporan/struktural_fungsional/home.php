@@ -14,10 +14,10 @@
 		<div class="span2"><strong>Status Jabatan</strong></div>
 			<div class="span">:</div>
 			<div class="span3">
-			<select class="span3" name="id_status_jabatan">
+			<select class="span3" name="id_status_jabatan_fungsional">
 			<option value="">- Status Jabatan -</option>
 			<?php
-			if($this->session->userdata('id_status_jabatan')=="Semua")
+			if($this->session->userdata('id_status_jabatan_fungsional')=="Semua")
 			{
 			?>
 				<option value="Semua" selected="selected">Semua Jabatan Pegawai</option>
@@ -31,7 +31,7 @@
 			}
 			  		foreach($mst_status_jabatan->result_array() as $msk)
 			  		{
-			  			if($this->session->userdata('id_status_jabatan')==$msk['id_status_jabatan'])
+			  			if($this->session->userdata('id_status_jabatan_fungsional')==$msk['id_status_jabatan'])
 			  			{
 			  	?>
 			  		<option value="<?php echo $msk['id_status_jabatan']; ?>" selected="selected"><?php echo $msk['nama_jabatan']; ?></option>
@@ -50,10 +50,10 @@
 		<div class="span2"><strong>Eselon</strong></div>
 			<div class="span">:</div>
 			<div class="span3">
-			<select class="span3" name="id_eselon">
+			<select class="span3" name="id_eselon_fungsional">
 			<option value="">- Eselon -</option>
 			<?php
-			if($this->session->userdata('id_eselon')=="Semua")
+			if($this->session->userdata('id_eselon_fungsional')=="Semua")
 			{
 			?>
 				<option value="Semua" selected="selected">Semua Eselon</option>
@@ -67,7 +67,7 @@
 			}
 			  		foreach($mst_eselon->result_array() as $msk)
 			  		{
-			  			if($this->session->userdata('id_eselon')==$msk['id_golongan'])
+			  			if($this->session->userdata('id_eselon_fungsional')==$msk['id_golongan'])
 			  			{
 			  	?>
 			  		<option value="<?php echo $msk['id_golongan']; ?>" selected="selected"><?php echo $msk['golongan']; ?></option>
@@ -86,10 +86,10 @@
 		<div class="span2"><strong>Satuan Kerja</strong></div>
 			<div class="span">:</div>
 			<div class="span3">
-			<select class="span3" name="id_satuan_kerja">
+			<select class="span3" name="id_satuan_kerja_fungsional">
 			<option value="">- Satuan Kerja -</option>
 			<?php
-			if($this->session->userdata('id_satuan_kerja')=="Semua")
+			if($this->session->userdata('id_satuan_kerja_fungsional')=="Semua")
 			{
 			?>
 				<option value="Semua" selected="selected">Semua Satuan Kerja</option>
@@ -103,7 +103,7 @@
 			}
 			  		foreach($mst_satuan_kerja->result_array() as $msk)
 			  		{
-			  			if($this->session->userdata('id_satuan_kerja')==$msk['id_satuan_kerja'])
+			  			if($this->session->userdata('id_satuan_kerja_fungsional')==$msk['id_satuan_kerja'])
 			  			{
 			  	?>
 			  		<option value="<?php echo $msk['id_satuan_kerja']; ?>" selected="selected"><?php echo $msk['nama_satuan_kerja']; ?></option>
@@ -122,10 +122,10 @@
 		<div class="span2"><strong>Lokasi Kerja</strong></div>
 			<div class="span">:</div>
 			<div class="span3">
-			<select class="span3" name="id_lokasi_kerja">
+			<select class="span3" name="id_lokasi_kerja_fungsional">
 			<option value="">- Lokasi Kerja -</option>
 			<?php
-			if($this->session->userdata('id_lokasi_kerja')=="Semua")
+			if($this->session->userdata('id_lokasi_kerja_fungsional')=="Semua")
 			{
 			?>
 				<option value="Semua" selected="selected">Semua Lokasi Kerja</option>
@@ -137,9 +137,9 @@
 				<option value="Semua">Semua Lokasi Kerja</option>
 			<?php
 			}
-			  		foreach($mst_satuan_kerja->result_array() as $msk)
+			  		foreach($mst_lokasi_kerja->result_array() as $msk)
 			  		{
-			  			if($this->session->userdata('id_lokasi_kerja')==$msk['id_lokasi_kerja'])
+			  			if($this->session->userdata('id_lokasi_kerja_fungsional')==$msk['id_lokasi_kerja'])
 			  			{
 			  	?>
 			  		<option value="<?php echo $msk['id_lokasi_kerja']; ?>" selected="selected"><?php echo $msk['lokasi_kerja']; ?></option>
