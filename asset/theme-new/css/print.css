@@ -195,6 +195,9 @@ th {
   padding-right: 15px;
   padding-left: 15px;
 }
+img {
+  width: 100px;
+}
 h2 {
   font-size: 14px;
 }

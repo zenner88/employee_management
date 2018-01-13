@@ -1600,6 +1600,114 @@
 	  </table>
 	  </div>
 	</section>
+	<section id="data-pekerjaan">
+	  <div class="well">
+		<div class="page-header">
+	    	<h1>Data Riwayat Pekerjaan</h1>
+	  	</div>
+	  	<div class="navbar navbar-inverse">
+		  		<div class="navbar-inner">
+      				<div class="nav-collapse">
+      					<ul class="nav">
+        					<li><a href="<?php echo base_url(); ?>data_riwayat_pekerjaan/tambah" class="small-box"><i class="icon-plus-sign icon-white"></i> Tambah Data Riwayat Jabatan</a></li>
+      					</ul>
+      				</div>
+      			</div>
+      		</div>
+	  	<table class="table table-hover table-condensed">
+	    <thead>
+	      <tr>
+	        <th>No.</th>
+	        <th>Nama Perusahaan</th>
+			<th>Jabatan</th>
+			<th>Dari Tanggal</th>
+	        <th>Sampai Tanggal</th>
+			<th>Aksi</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+		<?php
+			$no=1;
+			foreach($data_riwayat_pekerjaan->result_array() as $dp3)
+			{
+		?>
+	      <tr>
+	        <td><?php echo $no; ?></td>
+	        <td><?php echo $dp3['nama_perusahaan'] ?></td>
+	        <td><?php echo $dp3['bidang_perusahaan'] ?></td>
+	        <td><?php echo $dp3['tanggal_awal_pekerjaan'] ?></td>
+	        <td><?php echo $dp3['tanggal_akhir_pekerjaan'] ?></td>
+			<td>
+		        <div class="btn-group">
+		          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_riwayat_pekerjaan/detail/<?php echo $dp3['id_riwayat_pekerjaan']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
+		          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="<?php echo base_url(); ?>data_riwayat_pekerjaan/edit/<?php echo $dp3['id_riwayat_pekerjaan']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
+		            <li><a href="<?php echo base_url(); ?>data_riwayat_pekerjaan/hapus/<?php echo $dp3['id_riwayat_pekerjaan']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
+		          </ul>
+		        </div><!-- /btn-group -->
+			</td>
+	      </tr>
+		 <?php
+		 		$no++;
+		 	}
+		 ?>
+	    </tbody>
+	  </table>
+	  </div>
+	</section>
+	<section id="data-kesehatan">
+	  <div class="well">
+		<div class="page-header">
+	    	<h1>Data Riwayat Kesehatan</h1>
+	  	</div>
+	  	<div class="navbar navbar-inverse">
+		  		<div class="navbar-inner">
+      				<div class="nav-collapse">
+      					<ul class="nav">
+        					<li><a href="<?php echo base_url(); ?>data_riwayat_kesehatan/tambah" class="small-box"><i class="icon-plus-sign icon-white"></i> Tambah Data Riwayat Kesehatan</a></li>
+      					</ul>
+      				</div>
+      			</div>
+      		</div>
+	  	<table class="table table-hover table-condensed">
+	    <thead>
+	      <tr>
+	        <th>No.</th>
+	        <th>Nama Penyakit</th>
+			<th>Tanggal Dirawat</th>
+			<th>Aksi</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+		<?php
+			$no=1;
+			foreach($data_riwayat_kesehatan->result_array() as $dp3)
+			{
+		?>
+	      <tr>
+	        <td><?php echo $no; ?></td>
+	        <td><?php echo $dp3['nama_penyakit'] ?></td>
+	        <td><?php echo $dp3['tanggal_riwayat'] ?></td>
+			<td>
+		        <div class="btn-group">
+		          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_riwayat_kesehatan/detail/<?php echo $dp3['id_riwayat_kesehatan']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
+		          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="<?php echo base_url(); ?>data_riwayat_kesehatan/edit/<?php echo $dp3['id_riwayat_kesehatan']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
+		            <li><a href="<?php echo base_url(); ?>data_riwayat_kesehatan/hapus/<?php echo $dp3['id_riwayat_kesehatan']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
+		          </ul>
+		        </div><!-- /btn-group -->
+			</td>
+	      </tr>
+		 <?php
+		 		$no++;
+		 	}
+		 ?>
+	    </tbody>
+	  </table>
+	  </div>
+	</section>
 	<?php }?>
 </div>
 <div class="container">

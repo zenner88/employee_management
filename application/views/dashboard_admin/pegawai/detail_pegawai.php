@@ -948,6 +948,117 @@
   </table>
   </div>
 </section>
+<section id="data-dp3">
+  <div class="well">
+	<div class="page-header">
+    	<h1>Data Riwayat Jabatan</h1>
+  	</div>
+  	
+  	<table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Nama Perusahaan</th>
+		<th>Jabatan</th>
+        <th>Dari Tanggal</th>
+        <th>Sampai Tanggal</th>
+      </tr>
+    </thead>
+    <tbody>
+	<?php
+		$no=1;
+		foreach($data_dp3->result_array() as $dp3)
+		{
+	?>
+      <tr>
+        <td><?php echo $no; ?></td>
+        <td><?php echo $dp3['tahun']; ?></td>
+        <td><?php echo $dp3['rata_rata']; ?></td>
+        <td><?php echo $dp3['atasan']; ?></td>
+        <td><?php echo $dp3['penilai']; ?></td>
+        <td><?php echo $dp3['mengetahui']; ?></td>
+      </tr>
+	 <?php
+	 		$no++;
+	 	}
+	 ?>
+    </tbody>
+  </table>
+  </div>
+</section>
+<section id="data-pekerjaan">
+	  <div class="well">
+		<div class="page-header">
+	    	<h1>Data Riwayat Pekerjaan</h1>
+	  	</div>
+	  	<table class="table table-hover table-condensed">
+	    <thead>
+	      <tr>
+	        <th>No.</th>
+	        <th>Nama Perusahaan</th>
+			<th>Jabatan</th>
+			<th>Dari Tanggal</th>
+	        <th>Sampai Tanggal</th>
+			
+	      </tr>
+	    </thead>
+	    <tbody>
+		<?php
+			$no=1;
+			foreach($data_riwayat_pekerjaan->result_array() as $dp3)
+			{
+		?>
+	      <tr>
+	        <td><?php echo $no; ?></td>
+	        <td><?php echo $dp3['nama_perusahaan'] ?></td>
+	        <td><?php echo $dp3['bidang_perusahaan'] ?></td>
+	        <td><?php echo $dp3['tanggal_awal_pekerjaan'] ?></td>
+	        <td><?php echo $dp3['tanggal_akhir_pekerjaan'] ?></td>
+			
+	      </tr>
+		 <?php
+		 		$no++;
+		 	}
+		 ?>
+	    </tbody>
+	  </table>
+	  </div>
+	</section>
+	<section id="data-kesehatan">
+	  <div class="well">
+		<div class="page-header">
+	    	<h1>Data Riwayat Kesehatan</h1>
+	  	</div>
+
+	  	<table class="table table-hover table-condensed">
+	    <thead>
+	      <tr>
+	        <th>No.</th>
+	        <th>Nama Penyakit</th>
+			<th>Tanggal Dirawat</th>
+			
+	      </tr>
+	    </thead>
+	    <tbody>
+		<?php
+			$no=1;
+			foreach($data_riwayat_kesehatan->result_array() as $dp3)
+			{
+		?>
+	      <tr>
+	        <td><?php echo $no; ?></td>
+	        <td><?php echo $dp3['nama_penyakit'] ?></td>
+	        <td><?php echo $dp3['tanggal_riwayat'] ?></td>
+			
+	      </tr>
+		 <?php
+		 		$no++;
+		 	}
+		 ?>
+	    </tbody>
+	  </table>
+	  </div>
+	</section>
 <div class="container">
 <?php include "application/views/dashboard_admin/home/footer.php" ?>	
 </div>   

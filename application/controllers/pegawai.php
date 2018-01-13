@@ -113,6 +113,8 @@ class Pegawai extends CI_Controller {
 			, a.tanggal_selesai, a.masa_berlaku from tbl_data_hukuman a left join tbl_master_hukuman b on a.id_master_hukuman=b.id_hukuman where
 				a.id_pegawai='".$id['id_pegawai']."'");
 				$d['data_dp3'] = $this->db->get_where("tbl_data_dp3",$id);
+				$d['data_riwayat_pekerjaan'] = $this->db->get_where("tbl_data_riwayat_pekerjaan",$id);
+				$d['data_riwayat_kesehatan'] = $this->db->get_where("tbl_data_riwayat_kesehatan",$id);
 				
 				$this->load->view('dashboard_admin/pegawai/detail_pegawai',$d);
 			}
@@ -219,6 +221,8 @@ class Pegawai extends CI_Controller {
 			, a.tanggal_selesai, a.masa_berlaku from tbl_data_hukuman a left join tbl_master_hukuman b on a.id_master_hukuman=b.id_hukuman where
 				a.id_pegawai='".$id['id_pegawai']."'");
 				$d['data_dp3'] = $this->db->get_where("tbl_data_dp3",$id);
+				$d['data_riwayat_pekerjaan'] = $this->db->get_where("tbl_data_riwayat_pekerjaan",$id);
+				$d['data_riwayat_kesehatan'] = $this->db->get_where("tbl_data_riwayat_kesehatan",$id);
         $this->load->view('dashboard_admin/pegawai/detail',$d);
        	$sumber = $this->load->view('dashboard_admin/pegawai/detail', $d, TRUE);
         $html = $sumber;
@@ -422,6 +426,8 @@ class Pegawai extends CI_Controller {
 			$d['data_seminar'] = $this->db->get_where("tbl_data_seminar",$id);
 			$d['data_organisasi'] = $this->db->get_where("tbl_data_organisasi",$id);
 			$d['data_pendidikan'] = $this->db->get_where("tbl_data_pendidikan",$id);
+			$d['data_riwayat_pekerjaan'] = $this->db->get_where("tbl_data_riwayat_pekerjaan",$id);
+			$d['data_riwayat_kesehatan'] = $this->db->get_where("tbl_data_riwayat_kesehatan",$id);
 			$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
 			$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
 			$d['mst_golongan'] = $this->db->get('tbl_master_golongan');

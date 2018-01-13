@@ -3,20 +3,25 @@
 	<div style="text-align: center;"><h2>Data Karyawan</h2></div>
 </div>
 <div class="clearfix"></div>
-<div class="col-md-8">
-	<table class="table table-bordered">
+<div class="col-md-12">
+	<div class="col-md-3">
+		<img src="<?php echo base_url(); ?>asset/foto_pegawai/medium/<?php echo $foto; ?>">
+	</div>
+	<div class="col-md-5">
+		<table class="table table-bordered">
 		<tbody>
 			<tr>
 				<td class="col-md-3"><label class="font-10">Departemen <br> <i>Bagian</i></label></td>
-				<td class="col-md-9"><?php //echo //$departemen ?></td>
+				<td class="col-md-9"><?php //echo $departemen ?></td>
 			</tr>
 		</tbody>
-	</table>
-</div>
-<div class="col-md-12">
-	<div class="col-md-6">
-		<label>I. Data Pribadi</label>
+	</table>	
 	</div>
+	
+</div>
+<div class="clearfix"></div>
+<div class="col-md-12">
+	<label>I. Data Pribadi</label>
 </div>
 <div class="col-md-12">
 	
@@ -58,9 +63,7 @@
 	</table>	
 </div>
 <div class="col-md-12">
-	<div class="col-md-6">
-		<label>II. Latar Belakang Keluarga</label>
-	</div>
+	<label>II. Latar Belakang Keluarga</label>
 </div>
 <div class="col-md-12">
 	<?php if ($data_keluarga->num_rows() == 0) { ?>
@@ -111,9 +114,7 @@
     
 </div>
 <div class="col-md-12">
-	<div class="col-md-6">
-		<label>III. Latar Belakang Pendidikan dan Kemampuan Berbahasa</label>
-	</div>
+	<label>III. Latar Belakang Pendidikan dan Kemampuan Berbahasa</label>
 </div>
 <div class="col-md-12">
 	<div class="col-md-6">
@@ -176,9 +177,7 @@
 
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<p>2. Pendidikan Non Formal (termasuk Kursus, Pelatihan, Seminar, Lokakarya)</p>
-	</div>
+	<p>2. Pendidikan Non Formal (termasuk Kursus, Pelatihan, Seminar, Lokakarya)</p>
 </div>
 <div class="col-md-12">
 	<?php if ($data_seminar->num_rows() == 0) { ?>
@@ -227,9 +226,7 @@
   	<?php } ?>
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<label>IV. Latar Belakang Organisasi dan Prestasi</label>
-	</div>
+	<label>IV. Latar Belakang Organisasi dan Prestasi</label>
 </div>
 <div class="col-md-12">
 	<div class="col-md-12">
@@ -292,9 +289,7 @@
 	
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<p>2. Penghargaan</p>
-	</div>
+	<p>2. Penghargaan</p>
 </div>
 <div class="col-md-12">
 	<?php if ($data_penghargaan->num_rows() == 0) { ?>
@@ -336,18 +331,14 @@
 	
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<label>V. Pengalaman Kerja</label>
-	</div>
+	<label>V. Pengalaman Kerja</label>
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<p>1. Mohon Isi dimulai dari Pekerjaan Terakhir</p>
-	</div>
+	<p>1. Mohon Isi dimulai dari Pekerjaan Terakhir</p>
 </div>
 <div class="col-md-12">
-	
-	<table class="table table-bordered">
+	<?php if ($data_riwayat_pekerjaan->num_rows() == 0) { ?>
+		<table class="table table-bordered">
 		<tbody>
 			<tr>
 				<td class="col-md-3">1. Nama Perusahaan</td>
@@ -418,12 +409,44 @@
 				<td></td>
 			</tr>
 		</tbody>
-	</table>	
+	</table>
+	<?php } else { ?> 
+	
+		<table class="table table-bordered">
+		<tbody>
+			<?php
+				$no=1;
+				foreach($data_riwayat_pekerjaan->result_array() as $drj) {
+			?>
+			<tr>
+				<td class="col-md-3"><?php echo $no ?> Nama Perusahaan</td>
+				<td><?php echo $drj['nama_perusahaan']; ?></td>
+			</tr>
+			<tr>
+				<td>Bergerak di Bidang</td> 
+				<td><?php echo $drj['bidang_perusahaan']; ?></td>
+			</tr>
+			<tr>
+				<td>Jabatan</td>
+				<td><?php echo $drj['jabatan_perusahaan']; ?></td>
+			</tr>
+			<tr>
+				<td>Dari (Bln / thn) - Sampai (Bln / Thn)</td>
+				<td><?php echo $drj['tanggal_awal_pekerjaan']; ?> - <?php echo $drj['tanggal_akhir_pekerjaan']; ?></td>
+			</tr>
+			<tr>
+				<td>Alasan Berhenti</td>
+				<td><?php echo $drj['alasan_berhenti']; ?></td>
+			</tr>
+			<?php $no++; } ?>
+		</tbody>
+	</table>
+  		
+	<?php } ?>
+		
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<p>2. Sebutkan orang - orang yang pernah menjadi atasan dalam karier Anda dalam perushaan di atas!</p>
-	</div>
+	<p>2. Sebutkan orang - orang yang pernah menjadi atasan dalam karier Anda dalam perushaan di atas!</p>
 </div>
 <div class="col-md-12">
 	<table class="table table-bordered">
@@ -453,9 +476,7 @@
 	</table>
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<p>3. Pernahkah anda melakukan pembaharuan / perubahan selama anda bekerja jelaskan</p>
-	</div>
+	<p>3. Pernahkah anda melakukan pembaharuan / perubahan selama anda bekerja jelaskan</p>
 </div>
 <div class="col-md-12">
 	<table class="table-pembaharuan">
@@ -467,90 +488,64 @@
 	</table>
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<label>VI. Riwayat Kesehatan</label>
-	</div>
+	<label>VI. Riwayat Kesehatan</label>
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<p>1. Silahkan berikan tanda checklist dan keterangan sesuai dengan riwayat kesehatan anda</p>
-	</div>
+	<p>1. Silahkan berikan tanda checklist dan keterangan sesuai dengan riwayat kesehatan anda</p>
 </div>
 <div class="col-md-12">
-	<table class="table table-bordered">
+	<?php if ($data_riwayat_kesehatan->num_rows() == 0) { ?>
+		<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>No.</th>
+				<th class="text-center">Penyakit</th>
+				<th class="text-center">Pernah dirawat pada (tgl / bln/ thn)</th>
+				<th class="text-center">Keterangan</th>
+			</tr>
+		</thead>
 		<tbody>
+			
 			<tr>
 				<td></td>
-				<td class="text-center">Penyakit</td>
-				<td class="text-center">Pernah dirawat pada (tgl / bln/ thn)</td>
-				<td class="text-center">Keterangan</td>
-			</tr>
-			<tr>
 				<td></td>
-				<td>Jantung</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Hipertensi</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Diabetes</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Hepatitis</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Kanker</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>TBC</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Asma</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>AIDS</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Penyakit Lainnya</td>
 				<td></td>
 				<td></td>
 			</tr>
 		</tbody>
 	</table>
+	<?php } else { ?> 
+		<table class="table table-bordered">
+			<thead>
+		      <tr>
+		        <th>No.</th>
+				<th class="text-center">Penyakit</th>
+				<th class="text-center">Pernah dirawat pada (tgl / bln/ thn)</th>
+				<th class="text-center">Keterangan</th>
+		      </tr>
+    		</thead>
+    		<tbody>
+			<?php
+				$no=1;
+				foreach($data_riwayat_kesehatan->result_array() as $drj) {
+			?>
+		      <tr>
+		        <td><?php echo $no; ?></td>
+		        <td><?php echo $drj['nama_penyakit']; ?></td>
+		        <td><?php echo $drj['tanggal_riwayat']; ?></td>
+		        <td><?php echo $drj['keterangan']; ?></td>
+		      </tr>
+	 		<?php $no++; } ?>
+    		</tbody>
+  		</table>
+	<?php } ?>
+	
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<label>VII. Referensi</label>
-	</div>
+	<label>VII. Referensi</label>
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<p>1. Silahkan tulis nama kerabat untuk referensi anda</p>
-	</div>
+	<p>1. Silahkan tulis nama kerabat untuk referensi anda</p>
 </div>
 <div class="col-md-12">
 	<table class="table table-bordered">
@@ -575,9 +570,7 @@
 	</table>
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<p>2. Silahkan tulis nama orang yang dapat dihubungi segera dalam keadaan mendesak / darurat</p>
-	</div>
+	<p>2. Silahkan tulis nama orang yang dapat dihubungi segera dalam keadaan mendesak / darurat</p>
 </div>
 <div class="col-md-12">
 	<table class="table table-bordered">
@@ -602,14 +595,10 @@
 	</table>
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<label>VIII. Lain - Lain</label>
-	</div>
+	<label>VIII. Lain - Lain</label>
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<p>1. Silahkan Beri tanda checklist dan keterangan sesuai dengan kesediaan Anda!</p>
-	</div>
+	<p>1. Silahkan Beri tanda checklist dan keterangan sesuai dengan kesediaan Anda!</p>
 </div>
 <div class="col-md-12">
 	
@@ -654,9 +643,7 @@
 	
 </div>
 <div class="col-md-12">
-	<div class="col-md-12">
-		<p>Dengan ini Saya menyatakan bahwa semua data yang Saya tuliskan diatas adalah benar. Saya menyadari bahwa ketidakjujuran mengenai data-data di atas dapat mengakibatkan pembatalan atau pemutusan hubungan kerja dari pihak perusahaan. </p>
-	</div>
+	<p>Dengan ini Saya menyatakan bahwa semua data yang Saya tuliskan diatas adalah benar. Saya menyadari bahwa ketidakjujuran mengenai data-data di atas dapat mengakibatkan pembatalan atau pemutusan hubungan kerja dari pihak perusahaan. </p>
 </div>
 <div class="col-md-8"></div>
 <div class="col-md-2 padding5 pull-right">
