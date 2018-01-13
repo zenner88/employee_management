@@ -115,7 +115,10 @@ class Pegawai extends CI_Controller {
 				$d['data_dp3'] = $this->db->get_where("tbl_data_dp3",$id);
 				$d['data_riwayat_pekerjaan'] = $this->db->get_where("tbl_data_riwayat_pekerjaan",$id);
 				$d['data_riwayat_kesehatan'] = $this->db->get_where("tbl_data_riwayat_kesehatan",$id);
-				
+				$d['data_referensi'] = $this->db->get_where("tbl_data_referensi",$id);
+				$d['data_lain'] = $this->db->get_where("tbl_data_lain",$id);
+				$d['mst_pertanyaan'] = $this->db->get('tbl_master_pertanyaan');
+				$d['data_atasan_pekerjaan'] = $this->db->get_where("tbl_data_atasan_pekerjaan",$id);
 				$this->load->view('dashboard_admin/pegawai/detail_pegawai',$d);
 			}
 			else
@@ -223,6 +226,10 @@ class Pegawai extends CI_Controller {
 				$d['data_dp3'] = $this->db->get_where("tbl_data_dp3",$id);
 				$d['data_riwayat_pekerjaan'] = $this->db->get_where("tbl_data_riwayat_pekerjaan",$id);
 				$d['data_riwayat_kesehatan'] = $this->db->get_where("tbl_data_riwayat_kesehatan",$id);
+				$d['data_referensi'] = $this->db->get_where("tbl_data_referensi",$id);
+				$d['data_lain'] = $this->db->get_where("tbl_data_lain",$id);
+				$d['mst_pertanyaan'] = $this->db->get('tbl_master_pertanyaan');
+				$d['data_atasan_pekerjaan'] = $this->db->get_where("tbl_data_atasan_pekerjaan",$id);
         $this->load->view('dashboard_admin/pegawai/detail',$d);
        	$sumber = $this->load->view('dashboard_admin/pegawai/detail', $d, TRUE);
         $html = $sumber;
@@ -428,6 +435,10 @@ class Pegawai extends CI_Controller {
 			$d['data_pendidikan'] = $this->db->get_where("tbl_data_pendidikan",$id);
 			$d['data_riwayat_pekerjaan'] = $this->db->get_where("tbl_data_riwayat_pekerjaan",$id);
 			$d['data_riwayat_kesehatan'] = $this->db->get_where("tbl_data_riwayat_kesehatan",$id);
+			$d['data_referensi'] = $this->db->get_where("tbl_data_referensi",$id);
+			$d['data_lain'] = $this->db->get_where("tbl_data_lain",$id);
+			$d['data_atasan_pekerjaan'] = $this->db->get_where("tbl_data_atasan_pekerjaan",$id);
+				$d['mst_pertanyaan'] = $this->db->get('tbl_master_pertanyaan');
 			$d['mst_status_pegawai'] = $this->db->get('tbl_master_status_pegawai');
 			$d['mst_lokasi_kerja'] = $this->db->get('tbl_master_lokasi_kerja');
 			$d['mst_golongan'] = $this->db->get('tbl_master_golongan');

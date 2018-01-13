@@ -1609,7 +1609,7 @@
 		  		<div class="navbar-inner">
       				<div class="nav-collapse">
       					<ul class="nav">
-        					<li><a href="<?php echo base_url(); ?>data_riwayat_pekerjaan/tambah" class="small-box"><i class="icon-plus-sign icon-white"></i> Tambah Data Riwayat Jabatan</a></li>
+        					<li><a href="<?php echo base_url(); ?>data_riwayat_pekerjaan/tambah" class="small-box"><i class="icon-plus-sign icon-white"></i> Tambah Data Riwayat Pekerjaan</a></li>
       					</ul>
       				</div>
       			</div>
@@ -1644,6 +1644,62 @@
 		          <ul class="dropdown-menu">
 		            <li><a href="<?php echo base_url(); ?>data_riwayat_pekerjaan/edit/<?php echo $dp3['id_riwayat_pekerjaan']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
 		            <li><a href="<?php echo base_url(); ?>data_riwayat_pekerjaan/hapus/<?php echo $dp3['id_riwayat_pekerjaan']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
+		          </ul>
+		        </div><!-- /btn-group -->
+			</td>
+	      </tr>
+		 <?php
+		 		$no++;
+		 	}
+		 ?>
+	    </tbody>
+	  </table>
+	  </div>
+	</section>
+	<section id="data-atasan_pekerjaan">
+	  <div class="well">
+		<div class="page-header">
+	    	<h1>Data Atasan Pekerjaan</h1>
+	  	</div>
+	  	<div class="navbar navbar-inverse">
+		  		<div class="navbar-inner">
+      				<div class="nav-collapse">
+      					<ul class="nav">
+        					<li><a href="<?php echo base_url(); ?>data_atasan_pekerjaan/tambah" class="small-box"><i class="icon-plus-sign icon-white"></i> Tambah Data Atasan Pekerjaan</a></li>
+      					</ul>
+      				</div>
+      			</div>
+      		</div>
+	  	<table class="table table-hover table-condensed">
+	    <thead>
+	      <tr>
+	        <th>No.</th>
+	        <th>Nama</th>
+	        <th>Jabatan</th>
+			<th>Perusahaan</th>
+			<th>Nomor Telepon</th>
+			<th>Aksi</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+		<?php
+			$no=1;
+			foreach($data_atasan_pekerjaan->result_array() as $dp3)
+			{
+		?>
+	      <tr>
+	        <td><?php echo $no; ?></td>
+	        <td><?php echo $dp3['nama_atasan_pekerjaan'] ?></td>
+	        <td><?php echo $dp3['jabatan_atasan_pekerjaan'] ?></td>
+	        <td><?php echo $dp3['perusahaan_atasan_pekerjaan'] ?></td>
+	        <td><?php echo $dp3['nomor_telepon_pekerjaan'] ?></td>
+			<td>
+		        <div class="btn-group">
+		          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_atasan_pekerjaan/detail/<?php echo $dp3['id_atasan_pekerjaan']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
+		          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="<?php echo base_url(); ?>data_atasan_pekerjaan/edit/<?php echo $dp3['id_atasan_pekerjaan']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
+		            <li><a href="<?php echo base_url(); ?>data_atasan_pekerjaan/hapus/<?php echo $dp3['id_atasan_pekerjaan']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
 		          </ul>
 		        </div><!-- /btn-group -->
 			</td>
@@ -1696,6 +1752,120 @@
 		          <ul class="dropdown-menu">
 		            <li><a href="<?php echo base_url(); ?>data_riwayat_kesehatan/edit/<?php echo $dp3['id_riwayat_kesehatan']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
 		            <li><a href="<?php echo base_url(); ?>data_riwayat_kesehatan/hapus/<?php echo $dp3['id_riwayat_kesehatan']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
+		          </ul>
+		        </div><!-- /btn-group -->
+			</td>
+	      </tr>
+		 <?php
+		 		$no++;
+		 	}
+		 ?>
+	    </tbody>
+	  </table>
+	  </div>
+	</section>
+	<section id="data-referensi">
+	  <div class="well">
+		<div class="page-header">
+	    	<h1>Data Referensi</h1>
+	  	</div>
+	  	<div class="navbar navbar-inverse">
+		  		<div class="navbar-inner">
+      				<div class="nav-collapse">
+      					<ul class="nav">
+        					<li><a href="<?php echo base_url(); ?>data_referensi/tambah" class="small-box"><i class="icon-plus-sign icon-white"></i> Tambah Data Referensi</a></li>
+      					</ul>
+      				</div>
+      			</div>
+      		</div>
+	  	<table class="table table-hover table-condensed">
+	    <thead>
+	      <tr>
+	        <th>No.</th>
+	        <th>Nama</th>
+			<th>Hubungan</th>
+			<th>No Telp</th>
+			<th>Jabatan</th>
+			<th>Perusahaan</th>
+			<th>Aksi</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+		<?php
+			$no=1;
+			foreach($data_referensi->result_array() as $dp3)
+			{
+		?>
+	      <tr>
+	        <td><?php echo $no; ?></td>
+	        <td><?php echo $dp3['nama_referensi'] ?></td>
+	        <td><?php echo $dp3['jabatan_referensi'] ?></td>
+	        <td><?php echo $dp3['no_telepon_referensi'] ?></td>
+	        <td><?php echo $dp3['perusahaan_referensi'] ?></td>
+	        <td><?php echo $dp3['hubungan_referensi'] ?></td>
+			<td>
+		        <div class="btn-group">
+		          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_referensi/detail/<?php echo $dp3['id_referensi']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
+		          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="<?php echo base_url(); ?>data_referensi/edit/<?php echo $dp3['id_referensi']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
+		            <li><a href="<?php echo base_url(); ?>data_referensi/hapus/<?php echo $dp3['id_referensi']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
+		          </ul>
+		        </div><!-- /btn-group -->
+			</td>
+	      </tr>
+		 <?php
+		 		$no++;
+		 	}
+		 ?>
+	    </tbody>
+	  </table>
+	  </div>
+	</section>
+	<section id="data-lain">
+	  <div class="well">
+		<div class="page-header">
+	    	<h1>Data Lain - Lain</h1>
+	  	</div>
+	  	<div class="navbar navbar-inverse">
+		  		<div class="navbar-inner">
+      				<div class="nav-collapse">
+      					<ul class="nav">
+        					<li><a href="<?php echo base_url(); ?>data_lain/tambah" class="small-box"><i class="icon-plus-sign icon-white"></i> Tambah Data Lain - Lain</a></li>
+      					</ul>
+      				</div>
+      			</div>
+      		</div>
+	  	<table class="table table-hover table-condensed">
+	    <thead>
+	      <tr>
+	        <th>No.</th>
+	        <th>Pertanyaan</th>
+			<th>Keterangan</th>
+			<th>Aksi</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+		<?php
+			$no=1;
+			foreach($data_lain->result_array() as $dp3)
+			{
+		?>
+	      <tr>
+	        <td><?php echo $no; ?></td>
+	        <td><?php foreach ($mst_pertanyaan->result_array() as $key) {
+	        	if ($key['id_pertanyaan'] == $dp3['id_pertanyaan']) {
+	        		echo $key['nama_pertanyaan'];
+	        	}
+	        } ?></td>
+	        <td><?php echo $dp3['keterangan'] ?></td>
+			<td>
+		        <div class="btn-group">
+		          <a class="btn btn-small medium-box" href="<?php echo base_url(); ?>data_lain/detail/<?php echo $dp3['id_lain']; ?>"><i class="icon-ok-circle"></i> Lihat Detail</a>
+		          <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="<?php echo base_url(); ?>data_lain/edit/<?php echo $dp3['id_lain']; ?>" class="medium-box"><i class="icon-pencil"></i> Edit Data</a></li>
+		            <li><a href="<?php echo base_url(); ?>data_lain/hapus/<?php echo $dp3['id_lain']; ?>" onClick="return confirm('Anda yakin..???');"><i class="icon-trash"></i> Hapus Data</a></li>
 		          </ul>
 		        </div><!-- /btn-group -->
 			</td>

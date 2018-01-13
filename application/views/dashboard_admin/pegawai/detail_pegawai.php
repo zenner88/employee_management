@@ -1024,6 +1024,44 @@
 	  </table>
 	  </div>
 	</section>
+	<section id="data-pekerjaan">
+	  <div class="well">
+		<div class="page-header">
+	    	<h1>Data Atasan Pekerjaan</h1>
+	  	</div>
+	  	<table class="table table-hover table-condensed">
+	    <thead>
+	      <tr>
+	        <th>No.</th>
+	        <th>Nama</th>
+			<th>Jabatan</th>
+			<th>Perusahaan</th>
+	        <th>No Telepon</th>
+			
+	      </tr>
+	    </thead>
+	    <tbody>
+		<?php
+			$no=1;
+			foreach($data_atasan_pekerjaan->result_array() as $dp3)
+			{
+		?>
+	      <tr>
+	        <td><?php echo $no; ?></td>
+	        <td><?php echo $dp3['nama_atasan_pekerjaan'] ?></td>
+	        <td><?php echo $dp3['jabatan_atasan_pekerjaan'] ?></td>
+	        <td><?php echo $dp3['perusahaan_atasan_pekerjaan'] ?></td>
+	        <td><?php echo $dp3['nomor_telepon_pekerjaan'] ?></td>
+			
+	      </tr>
+		 <?php
+		 		$no++;
+		 	}
+		 ?>
+	    </tbody>
+	  </table>
+	  </div>
+	</section>
 	<section id="data-kesehatan">
 	  <div class="well">
 		<div class="page-header">
@@ -1050,6 +1088,82 @@
 	        <td><?php echo $dp3['nama_penyakit'] ?></td>
 	        <td><?php echo $dp3['tanggal_riwayat'] ?></td>
 			
+	      </tr>
+		 <?php
+		 		$no++;
+		 	}
+		 ?>
+	    </tbody>
+	  </table>
+	  </div>
+	</section>
+	<section id="data-referensi">
+	  <div class="well">
+		<div class="page-header">
+	    	<h1>Data Referensi</h1>
+	  	</div>
+
+	  	<table class="table table-hover table-condensed">
+	    <thead>
+	      <tr>
+	        <th>No.</th>
+	        <th>Nama</th>
+			<th>Hubungan</th>
+			<th>No Telp</th>
+			<th>Jabatan</th>
+			<th>Perusahaan</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+		<?php
+			$no=1;
+			foreach($data_referensi->result_array() as $dp3)
+			{
+		?>
+	      <tr>
+	        <td><?php echo $no; ?></td>
+	        <td><?php echo $dp3['nama_referensi'] ?></td>
+	        <td><?php echo $dp3['hubungan_referensi'] ?></td>
+			<td><?php echo $dp3['no_telepon_referensi'] ?></td>
+			<td><?php echo $dp3['jabatan_referensi'] ?></td>
+			<td><?php echo $dp3['perusahaan_referensi'] ?></td>
+	      </tr>
+		 <?php
+		 		$no++;
+		 	}
+		 ?>
+	    </tbody>
+	  </table>
+	  </div>
+	</section>
+	<section id="data-referensi">
+	  <div class="well">
+		<div class="page-header">
+	    	<h1>Data Lain - Lain</h1>
+	  	</div>
+
+	  	<table class="table table-hover table-condensed">
+	    <thead>
+	      <tr>
+	        <th>No.</th>
+	        <th>Pertanyaan</th>
+			<th>Keterangan</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+		<?php
+			$no=1;
+			foreach($data_lain->result_array() as $dp3)
+			{
+		?>
+	      <tr>
+	        <td><?php echo $no; ?></td>
+	        <td><?php foreach ($mst_pertanyaan->result_array() as $key) {
+	        	if ($key['id_pertanyaan'] == $dp3['id_pertanyaan']) {
+	        		echo $key['nama_pertanyaan'];
+	        	}
+	        } ?></td>
+	        <td><?php echo $dp3['keterangan'] ?></td>
 	      </tr>
 		 <?php
 		 		$no++;

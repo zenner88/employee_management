@@ -334,7 +334,7 @@
 	<label>V. Pengalaman Kerja</label>
 </div>
 <div class="col-md-12">
-	<p>1. Mohon Isi dimulai dari Pekerjaan Terakhir</p>
+	<p>1. Riwayat Pekerjaan</p>
 </div>
 <div class="col-md-12">
 	<?php if ($data_riwayat_pekerjaan->num_rows() == 0) { ?>
@@ -446,27 +446,23 @@
 		
 </div>
 <div class="col-md-12">
-	<p>2. Sebutkan orang - orang yang pernah menjadi atasan dalam karier Anda dalam perushaan di atas!</p>
+	<p>2. Atasan Riwayat Pekerjaan</p>
 </div>
 <div class="col-md-12">
-	<table class="table table-bordered">
+	<?php if ($data_atasan_pekerjaan->num_rows() == 0) { ?>
+		<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>No.</th>
+				<th class="text-center">Nama</th>
+				<th class="text-center">Jabatan</th>
+				<th class="text-center">Perusahaan</th>
+				<th class="text-center">Nomor Telepon</th>
+			</tr>
+		</thead>
 		<tbody>
+			
 			<tr>
-				<td class="text-center">No</td>
-				<td class="text-center">Nama</td>
-				<td class="text-center">Jabatan</td>
-				<td class="text-center">Perusahaan</td>
-				<td class="text-center">Nomor Kontak</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -474,24 +470,36 @@
 			</tr>
 		</tbody>
 	</table>
-</div>
-<div class="col-md-12">
-	<p>3. Pernahkah anda melakukan pembaharuan / perubahan selama anda bekerja jelaskan</p>
-</div>
-<div class="col-md-12">
-	<table class="table-pembaharuan">
-		<tbody>
-			<tr>
-				<td></td>
-			</tr>
-		</tbody>
-	</table>
+	<?php } else { ?> 
+		<table class="table table-bordered">
+			<thead>
+		      <tr>
+		        <th>No.</th>
+				<th class="text-center">Nama</th>
+				<th class="text-center">Jabatan</th>
+				<th class="text-center">Perusahaan</th>
+				<th class="text-center">Nomor Telepon</th>
+		      </tr>
+    		</thead>
+    		<tbody>
+			<?php
+				$no=1;
+				foreach($data_atasan_pekerjaan->result_array() as $drj) {
+			?>
+		      <tr>
+		        <td><?php echo $no; ?></td>
+		        <td><?php echo $drj['nama_atasan_pekerjaan']; ?></td>
+		        <td><?php echo $drj['jabatan_atasan_pekerjaan']; ?></td>
+		        <td><?php echo $drj['perusahaan_atasan_pekerjaan']; ?></td>
+		        <td><?php echo $drj['nomor_telepon_pekerjaan']; ?></td>
+		      </tr>
+	 		<?php $no++; } ?>
+    		</tbody>
+  		</table>
+	<?php } ?>
 </div>
 <div class="col-md-12">
 	<label>VI. Riwayat Kesehatan</label>
-</div>
-<div class="col-md-12">
-	<p>1. Silahkan berikan tanda checklist dan keterangan sesuai dengan riwayat kesehatan anda</p>
 </div>
 <div class="col-md-12">
 	<?php if ($data_riwayat_kesehatan->num_rows() == 0) { ?>
@@ -545,102 +553,108 @@
 	<label>VII. Referensi</label>
 </div>
 <div class="col-md-12">
-	<p>1. Silahkan tulis nama kerabat untuk referensi anda</p>
-</div>
-<div class="col-md-12">
-	<table class="table table-bordered">
+	<?php if ($data_referensi->num_rows() == 0) { ?>
+		<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>No.</th>
+				<th class="text-center">Nama</th>
+				<th class="text-center">No Telepon</th>
+				<th class="text-center">Hubungan</th>
+				<th class="text-center">Jabatan</th>
+				<th class="text-center">Perusahaan</th>
+			</tr>
+		</thead>
 		<tbody>
+			
 			<tr>
-				<td class="col-md-3">Nama</td>
 				<td></td>
-				<td class="col-md-3">No Telepon</td>
 				<td></td>
-			</tr>
-			<tr>
-				<td>Jabatan</td>
 				<td></td>
-				<td>Perusahaan</td>
 				<td></td>
-			</tr>
-			<tr>
-				<td>Hubungan</td>
-				<td colspan="3"></td>
 			</tr>
 		</tbody>
 	</table>
-</div>
-<div class="col-md-12">
-	<p>2. Silahkan tulis nama orang yang dapat dihubungi segera dalam keadaan mendesak / darurat</p>
-</div>
-<div class="col-md-12">
-	<table class="table table-bordered">
-		<tbody>
-			<tr>
-				<td class="col-md-3">Nama</td>
-				<td></td>
-				<td class="col-md-3">No Telepon</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>Jabatan</td>
-				<td></td>
-				<td>Perusahaan</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>Hubungan</td>
-				<td colspan="3"></td>
-			</tr>
-		</tbody>
-	</table>
+	<?php } else { ?> 
+		<table class="table table-bordered">
+			<thead>
+		      <tr>
+		        <th>No.</th>
+				<th class="text-center">Nama</th>
+				<th class="text-center">No Telepon</th>
+				<th class="text-center">Hubungan</th>
+				<th class="text-center">Jabatan</th>
+				<th class="text-center">Perusahaan</th>
+		      </tr>
+    		</thead>
+    		<tbody>
+			<?php
+				$no=1;
+				foreach($data_referensi->result_array() as $drj) {
+			?>
+		      <tr>
+		        <td><?php echo $no; ?></td>
+		        <td><?php echo $drj['nama_referensi']; ?></td>
+		        <td><?php echo $drj['no_telepon_referensi']; ?></td>
+		        <td><?php echo $drj['hubungan_referensi']; ?></td>
+		        <td><?php echo $drj['jabatan_referensi']; ?></td>
+		        <td><?php echo $drj['perusahaan_referensi']; ?></td>
+		      </tr>
+	 		<?php $no++; } ?>
+    		</tbody>
+  		</table>
+	<?php } ?>
+	
 </div>
 <div class="col-md-12">
 	<label>VIII. Lain - Lain</label>
 </div>
 <div class="col-md-12">
-	<p>1. Silahkan Beri tanda checklist dan keterangan sesuai dengan kesediaan Anda!</p>
-</div>
-<div class="col-md-12">
-	
-	<table class="table-data-diri">
+	<?php if ($data_lain->num_rows() == 0) { ?>
+		<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>No.</th>
+				<th class="text-center">Pertanyaan</th>
+				<th class="text-center">Keterangan</th>
+			</tr>
+		</thead>
 		<tbody>
+			
 			<tr>
 				<td></td>
-				<td>Ketersediaan Anda perihal</td>
-				<td>Keterangan</td>
-			</tr>
-			<tr>
 				<td></td>
-				<td>melakukan perjalanan dinas</td>
-				<td></td>
-			</tr>		
-		</tbody>
-	</table>
-	<table class="table-alamat">
-		<tbody>
-			<tr>
-				<td>Apakah anda memiliki keluarga, kerabat, atau teman yang bekerja di YBPI? sebutkan?</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>Apakah anda pernah melamar ke YBPI sebelumnya?, jika ya, kapan dan untuk posisi apa?</td>
-				<td></td>
-			</tr>		
-			<tr>
-				<td>Apakah Anda pernah terlibat dengan pihak Kepolisian berkaitan dengan isu pelanggaran kriminal, persidangan atau pelanggaran perdata?</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>Apakah Anda memiliki kepemilikan atau keterikatan dengan perusahaan lain?</td>
-				<td></td>
-			</tr>	
-			<tr>
-				<td>Jika Anda diterima, kapan Anda dapat mulai bekerja?</td>
 				<td></td>
 			</tr>
 		</tbody>
 	</table>
-	
+	<?php } else { ?> 
+		<table class="table table-bordered">
+			<thead>
+		      <tr>
+		        <th>No.</th>
+				<th class="text-center">Pertanyaan</th>
+				<th class="text-center">Keterangan</th>
+		      </tr>
+    		</thead>
+    		<tbody>
+			<?php
+				$no=1;
+				foreach($data_lain->result_array() as $drj) {
+			?>
+		      <tr>
+		        <td><?php echo $no; ?></td>
+		        <td><?php foreach ($mst_pertanyaan->result_array() as $key) {
+	        	if ($key['id_pertanyaan'] == $drj['id_pertanyaan']) {
+	        		echo $key['nama_pertanyaan'];
+	        	}
+	        } ?></td>
+	        <td><?php echo $drj['keterangan'] ?></td>
+		      </tr>
+	 		<?php $no++; } ?>
+    		</tbody>
+  		</table>
+	<?php } ?>
 </div>
 <div class="col-md-12">
 	<p>Dengan ini Saya menyatakan bahwa semua data yang Saya tuliskan diatas adalah benar. Saya menyadari bahwa ketidakjujuran mengenai data-data di atas dapat mengakibatkan pembatalan atau pemutusan hubungan kerja dari pihak perusahaan. </p>
