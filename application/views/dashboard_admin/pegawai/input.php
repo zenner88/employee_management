@@ -25,7 +25,11 @@
 		  <li><a href="#data-gaji">Gaji Pokok</a></li>
 		  <li><a href="#data-hukuman">Hukuman</a></li>
 		  <li><a href="#data-dp3">Penilaian</a></li>
-		  <li><a href="#data-dp3">Riwayat Pekerjaan</a></li>
+		  <li><a href="#data-pekerjaan" class="line-menu">Riwayat Pekerjaan</a></li>
+		  <li><a href="#data-atasan_pekerjaan" class="line-menu">Atasan Pekerjaan</a></li>
+		  <li><a href="#data-kesehatan" class="line-menu">Riwayat Kesehatan</a></li>
+		  <li><a href="#data-referensi" class="line-menu">Referensi</a></li>
+		  <li><a href="#data-lain" class="line-menu">Lain - Lain</a></li>
 		</ul>
 	  </div>
 	</header>

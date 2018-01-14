@@ -710,8 +710,8 @@ class Pegawai extends CI_Controller {
 							$img['maintain_ratio']= TRUE;
 				 
 							/// Limit Width Resize
-							$limit_medium   = 425 ;
-							$limit_thumb    = 220 ;
+							$limit_medium   = 354 ;
+							$limit_thumb    = 457;
 				 
 							// Size Image Limit was using (LIMIT TOP)
 							$limit_use  = $data['image_width'] > $data['image_height'] ? $data['image_width'] : $data['image_height'] ;
@@ -723,8 +723,8 @@ class Pegawai extends CI_Controller {
 							}
 				 
 							//// Making THUMBNAIL ///////
-							$img['width']  = $limit_use > $limit_thumb ?  $data['image_width'] * $percent_thumb : $data['image_width'] ;
-							$img['height'] = $limit_use > $limit_thumb ?  $data['image_height'] * $percent_thumb : $data['image_height'] ;
+							$img['width']  = 1280;
+							$img['height'] = 475;
 				 
 							// Configuration Of Image Manipulation :: Dynamic
 							$img['thumb_marker'] = '';
@@ -738,8 +738,8 @@ class Pegawai extends CI_Controller {
 							$this->image_lib->clear() ;
 				 
 							////// Making MEDIUM /////////////
-							$img['width']   = $limit_use > $limit_medium ?  $data['image_width'] * $percent_medium : $data['image_width'] ;
-							$img['height']  = $limit_use > $limit_medium ?  $data['image_height'] * $percent_medium : $data['image_height'] ;
+							$img['width']  = 1280;
+							$img['height'] = 475;
 				 
 							// Configuration Of Image Manipulation :: Dynamic
 							$img['thumb_marker'] = '';
@@ -843,8 +843,8 @@ class Pegawai extends CI_Controller {
 							$img['maintain_ratio']= TRUE;
 				 
 							/// Limit Width Resize
-							$limit_medium   = 425 ;
-							$limit_thumb    = 220 ;
+							$limit_medium   = 354 ;
+							$limit_thumb    = 457;
 				 
 							// Size Image Limit was using (LIMIT TOP)
 							$limit_use  = $data['image_width'] > $data['image_height'] ? $data['image_width'] : $data['image_height'] ;
@@ -856,8 +856,8 @@ class Pegawai extends CI_Controller {
 							}
 				 
 							//// Making THUMBNAIL ///////
-							$img['width']  = $limit_use > $limit_thumb ?  $data['image_width'] * $percent_thumb : $data['image_width'] ;
-							$img['height'] = $limit_use > $limit_thumb ?  $data['image_height'] * $percent_thumb : $data['image_height'] ;
+							$img['width']  = 1280;
+							$img['height'] = 475;
 				 
 							// Configuration Of Image Manipulation :: Dynamic
 							$img['thumb_marker'] = '';
@@ -871,8 +871,8 @@ class Pegawai extends CI_Controller {
 							$this->image_lib->clear() ;
 				 
 							////// Making MEDIUM /////////////
-							$img['width']   = $limit_use > $limit_medium ?  $data['image_width'] * $percent_medium : $data['image_width'] ;
-							$img['height']  = $limit_use > $limit_medium ?  $data['image_height'] * $percent_medium : $data['image_height'] ;
+							$img['width']  = 1280;
+							$img['height'] = 475;
 				 
 							// Configuration Of Image Manipulation :: Dynamic
 							$img['thumb_marker'] = '';

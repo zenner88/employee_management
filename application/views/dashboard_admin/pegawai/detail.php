@@ -4,9 +4,7 @@
 </div>
 <div class="clearfix"></div>
 <div class="col-md-12">
-	<div class="col-md-3">
-		<img src="<?php echo base_url(); ?>asset/foto_pegawai/medium/<?php echo $foto; ?>">
-	</div>
+	
 	<div class="col-md-5">
 		<table class="table table-bordered">
 		<tbody>
@@ -17,7 +15,9 @@
 		</tbody>
 	</table>	
 	</div>
-	
+	<div class="col-md-3">
+		<img src="<?php echo base_url(); ?>asset/foto_pegawai/medium/<?php echo $foto; ?>">
+	</div>
 </div>
 <div class="clearfix"></div>
 <div class="col-md-12">
@@ -659,6 +659,7 @@
 <div class="col-md-12">
 	<p>Dengan ini Saya menyatakan bahwa semua data yang Saya tuliskan diatas adalah benar. Saya menyadari bahwa ketidakjujuran mengenai data-data di atas dapat mengakibatkan pembatalan atau pemutusan hubungan kerja dari pihak perusahaan. </p>
 </div>
+<div class="col-md-12">
 <div class="col-md-8"></div>
 <div class="col-md-2 padding5 pull-right">
 	<hr>
@@ -666,8 +667,9 @@
 <div class="col-md-2 padding5 pull-right">
 	<hr>
 </div>
-<div class="clearfix"></div>
 <div class="col-md-8"></div>
 <div class="col-md-3 pull-right">
 	<div class="border-line"></div>
+</div>	
 </div>
+
