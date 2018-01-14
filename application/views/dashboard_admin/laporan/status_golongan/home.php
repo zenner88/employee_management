@@ -18,18 +18,6 @@
 			<select class="span3" name="id_status_pegawai_golongan">
 			<option value="">- Status Pegawai -</option>
 			<?php
-			if($this->session->userdata('id_status_pegawai_golongan')=="Semua")
-			{
-			?>
-				<option value="Semua" selected="selected">Semua Status Pegawai</option>
-			<?php
-			}
-			else
-			{
-			?>
-				<option value="Semua">Semua Status Pegawai</option>
-			<?php
-			}
 			  		foreach($mst_status_pegawai->result_array() as $msk)
 			  		{
 			  			if($this->session->userdata('id_status_pegawai_golongan')==$msk['id_status_pegawai'])
@@ -46,6 +34,7 @@
 			  			}
 			  		}
 			  	?>
+
 			</select>
 		</div>
 		<div class="span2"><strong>Golongan</strong></div>
@@ -54,18 +43,6 @@
 			<select class="span3" name="id_golongan_golongan">
 			<option value="">- Golongan -</option>
 			<?php
-			if($this->session->userdata('id_golongan_golongan')=="Semua")
-			{
-			?>
-				<option value="Semua" selected="selected">Semua Golongan</option>
-			<?php
-			}
-			else
-			{
-			?>
-				<option value="Semua">Semua Golongan</option>
-			<?php
-			}
 			  		foreach($mst_golongan->result_array() as $msk)
 			  		{
 			  			if($this->session->userdata('id_golongan_golongan')==$msk['id_golongan'])
@@ -82,6 +59,7 @@
 			  			}
 			  		}
 			  	?>
+
 			</select>
 		</div>
 		<div class="span2"><strong>Satuan Kerja</strong></div>
@@ -90,18 +68,6 @@
 			<select class="span3" name="id_satuan_kerja_golongan">
 			<option value="">- Satuan Kerja -</option>
 			<?php
-			if($this->session->userdata('id_satuan_kerja_golongan')=="Semua")
-			{
-			?>
-				<option value="Semua" selected="selected">Semua Satuan Kerja</option>
-			<?php
-			}
-			else
-			{
-			?>
-				<option value="Semua">Semua Satuan Kerja</option>
-			<?php
-			}
 			  		foreach($mst_satuan_kerja->result_array() as $msk)
 			  		{
 			  			if($this->session->userdata('id_satuan_kerja_golongan')==$msk['id_satuan_kerja'])
@@ -118,6 +84,7 @@
 			  			}
 			  		}
 			  	?>
+
 			</select>
 		</div>
 		<div class="span2"><strong>Lokasi Kerja</strong></div>
@@ -126,18 +93,6 @@
 			<select class="span3" name="id_lokasi_kerja_golongan">
 			<option value="">- Lokasi Kerja -</option>
 			<?php
-			if($this->session->userdata('id_lokasi_kerja_golongan')=="Semua")
-			{
-			?>
-				<option value="Semua" selected="selected">Semua Lokasi Kerja</option>
-			<?php
-			}
-			else
-			{
-			?>
-				<option value="Semua">Semua Lokasi Kerja</option>
-			<?php
-			}
 			  		foreach($mst_lokasi_kerja->result_array() as $mlk)
 			  		{
 			  			if($this->session->userdata('id_lokasi_kerja_golongan')==$mlk['id_lokasi_kerja'])
@@ -154,6 +109,7 @@
 			  			}
 			  		}
 			  	?>
+			
 			</select>
 		</div>
 			

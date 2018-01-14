@@ -27,9 +27,9 @@ class laporan_pegawai_ikut_pelatihan extends CI_Controller {
 			}
 			else
 			{
-				if ($this->session->userdata('id_satuan_kerja_pelatihan') == "Semua" && $this->session->userdata('id_lokasi_kerja_pelatihan') == "Semua") {
-					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai");		
-				} else if($this->session->userdata('id_lokasi_kerja_pelatihan') == "Semua") {
+				if ($this->session->userdata('id_satuan_kerja_pelatihan') == "" && $this->session->userdata('id_lokasi_kerja_pelatihan') !== "") {
+					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja_pelatihan')."'");		
+				} else if($this->session->userdata('id_satuan_kerja_pelatihan') !== "" && $this->session->userdata('id_lokasi_kerja_pelatihan') == "") {
 					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja_pelatihan')."'");	
 				} else {
 					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja_pelatihan')."' AND a.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja_pelatihan')."'");
@@ -55,9 +55,9 @@ class laporan_pegawai_ikut_pelatihan extends CI_Controller {
 			}
 			else
 			{
-				if ($this->session->userdata('id_satuan_kerja_pelatihan') == "Semua" && $this->session->userdata('id_lokasi_kerja_pelatihan') == "Semua") {
-					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai");		
-				} else if($this->session->userdata('id_lokasi_kerja_pelatihan') == "Semua") {
+				if ($this->session->userdata('id_satuan_kerja_pelatihan') == "" && $this->session->userdata('id_lokasi_kerja_pelatihan') !== "") {
+					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja_pelatihan')."'");		
+				} else if($this->session->userdata('id_satuan_kerja_pelatihan') !== "" && $this->session->userdata('id_lokasi_kerja_pelatihan') == "") {
 					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja_pelatihan')."'");	
 				} else {
 					$d['data_pegawai'] = $this->db->query("SELECT a.id_pegawai, a.nip, a.nama_pegawai, pelatihan.uraian as nama_pelatihan, pelatihan.lokasi as lokasi_pelatihan, pelatihan.tanggal_sertifikat, pelatihan.jam_pelatihan FROM `tbl_data_pegawai` as a LEFT JOIN tbl_data_pelatihan as pelatihan ON a.id_pegawai = pelatihan.id_pegawai WHERE a.id_satuan_kerja = '".$this->session->userdata('id_satuan_kerja_pelatihan')."' AND a.lokasi_kerja = '".$this->session->userdata('id_lokasi_kerja_pelatihan')."'");

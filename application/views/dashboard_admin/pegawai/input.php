@@ -25,6 +25,7 @@
 		  <li><a href="#data-gaji">Gaji Pokok</a></li>
 		  <li><a href="#data-hukuman">Hukuman</a></li>
 		  <li><a href="#data-dp3">Penilaian</a></li>
+		  <li><a href="#data-dp3">Riwayat Pekerjaan</a></li>
 		</ul>
 	  </div>
 	</header>
